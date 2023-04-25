@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ManageAccount.cs" />
+    <Compile Include="BLL\ManageComputer.cs" />
     <Compile Include="BLL\QuanLyTaiKhoan.cs" />
     <Compile Include="QuanLyNet.designer.cs">
       <AutoGen>True</AutoGen>

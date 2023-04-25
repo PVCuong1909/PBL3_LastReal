@@ -28,177 +28,191 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.pn_Title = new System.Windows.Forms.Panel();
+            this.lb_NameComputer = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_DichVu = new System.Windows.Forms.Button();
-            this.btn_DangXuat = new System.Windows.Forms.Button();
-            this.btn_MatKhau = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.pn_Main = new System.Windows.Forms.Panel();
+            this.btn_Service = new System.Windows.Forms.Button();
+            this.btn_LogOut = new System.Windows.Forms.Button();
+            this.btn_Password = new System.Windows.Forms.Button();
+            this.btn_Mess = new System.Windows.Forms.Button();
+            this.tb_ServiceCost = new System.Windows.Forms.TextBox();
+            this.tb_TimeCost = new System.Windows.Forms.TextBox();
+            this.tb_RemainTime = new System.Windows.Forms.TextBox();
+            this.tb_SumTime = new System.Windows.Forms.TextBox();
+            this.tb_UseTime = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pn_Title.SuspendLayout();
+            this.pn_Main.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pn_Title
             // 
-            this.panel1.BackColor = System.Drawing.Color.DimGray;
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(382, 37);
-            this.panel1.TabIndex = 0;
+            this.pn_Title.BackColor = System.Drawing.Color.DimGray;
+            this.pn_Title.Controls.Add(this.lb_NameComputer);
+            this.pn_Title.Controls.Add(this.label1);
+            this.pn_Title.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pn_Title.Location = new System.Drawing.Point(0, 0);
+            this.pn_Title.Margin = new System.Windows.Forms.Padding(2);
+            this.pn_Title.Name = "pn_Title";
+            this.pn_Title.Size = new System.Drawing.Size(286, 30);
+            this.pn_Title.TabIndex = 0;
             // 
-            // label2
+            // lb_NameComputer
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 20);
-            this.label2.TabIndex = 2;
+            this.lb_NameComputer.AutoSize = true;
+            this.lb_NameComputer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_NameComputer.ForeColor = System.Drawing.Color.White;
+            this.lb_NameComputer.Location = new System.Drawing.Point(131, 7);
+            this.lb_NameComputer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_NameComputer.Name = "lb_NameComputer";
+            this.lb_NameComputer.Size = new System.Drawing.Size(0, 17);
+            this.lb_NameComputer.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(349, 9);
+            this.label1.Location = new System.Drawing.Point(262, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 20);
+            this.label1.Size = new System.Drawing.Size(18, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "X";
             // 
-            // panel2
+            // pn_Main
             // 
-            this.panel2.BackgroundImage = global::PBL3_LastReal.Properties.Resources._6660efc642a59dfbc4b4;
-            this.panel2.Controls.Add(this.btn_DichVu);
-            this.panel2.Controls.Add(this.btn_DangXuat);
-            this.panel2.Controls.Add(this.btn_MatKhau);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(40, 61);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(302, 380);
-            this.panel2.TabIndex = 1;
+            this.pn_Main.BackgroundImage = global::PBL3_LastReal.Properties.Resources._6660efc642a59dfbc4b4;
+            this.pn_Main.Controls.Add(this.btn_Service);
+            this.pn_Main.Controls.Add(this.btn_LogOut);
+            this.pn_Main.Controls.Add(this.btn_Password);
+            this.pn_Main.Controls.Add(this.btn_Mess);
+            this.pn_Main.Controls.Add(this.tb_ServiceCost);
+            this.pn_Main.Controls.Add(this.tb_TimeCost);
+            this.pn_Main.Controls.Add(this.tb_RemainTime);
+            this.pn_Main.Controls.Add(this.tb_SumTime);
+            this.pn_Main.Controls.Add(this.tb_UseTime);
+            this.pn_Main.Controls.Add(this.label7);
+            this.pn_Main.Controls.Add(this.label6);
+            this.pn_Main.Controls.Add(this.label5);
+            this.pn_Main.Controls.Add(this.label4);
+            this.pn_Main.Controls.Add(this.label3);
+            this.pn_Main.Location = new System.Drawing.Point(30, 50);
+            this.pn_Main.Margin = new System.Windows.Forms.Padding(2);
+            this.pn_Main.Name = "pn_Main";
+            this.pn_Main.Size = new System.Drawing.Size(226, 309);
+            this.pn_Main.TabIndex = 1;
             // 
-            // btn_DichVu
+            // btn_Service
             // 
-            this.btn_DichVu.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_DichVu.ForeColor = System.Drawing.Color.White;
-            this.btn_DichVu.Location = new System.Drawing.Point(172, 314);
-            this.btn_DichVu.Name = "btn_DichVu";
-            this.btn_DichVu.Size = new System.Drawing.Size(80, 45);
-            this.btn_DichVu.TabIndex = 14;
-            this.btn_DichVu.Text = "Dịch vụ";
-            this.btn_DichVu.UseVisualStyleBackColor = false;
-            this.btn_DichVu.Click += new System.EventHandler(this.btn_DichVu_Click);
+            this.btn_Service.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_Service.ForeColor = System.Drawing.Color.White;
+            this.btn_Service.Location = new System.Drawing.Point(129, 255);
+            this.btn_Service.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Service.Name = "btn_Service";
+            this.btn_Service.Size = new System.Drawing.Size(60, 37);
+            this.btn_Service.TabIndex = 14;
+            this.btn_Service.Text = "Dịch vụ";
+            this.btn_Service.UseVisualStyleBackColor = false;
+            this.btn_Service.Click += new System.EventHandler(this.btn_DichVu_Click);
             // 
-            // btn_DangXuat
+            // btn_LogOut
             // 
-            this.btn_DangXuat.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_DangXuat.ForeColor = System.Drawing.Color.White;
-            this.btn_DangXuat.Location = new System.Drawing.Point(172, 258);
-            this.btn_DangXuat.Name = "btn_DangXuat";
-            this.btn_DangXuat.Size = new System.Drawing.Size(80, 45);
-            this.btn_DangXuat.TabIndex = 13;
-            this.btn_DangXuat.Text = "Đăng xuất";
-            this.btn_DangXuat.UseVisualStyleBackColor = false;
-            this.btn_DangXuat.Click += new System.EventHandler(this.btn_DangXuat_Click);
+            this.btn_LogOut.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_LogOut.ForeColor = System.Drawing.Color.White;
+            this.btn_LogOut.Location = new System.Drawing.Point(129, 210);
+            this.btn_LogOut.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_LogOut.Name = "btn_LogOut";
+            this.btn_LogOut.Size = new System.Drawing.Size(60, 37);
+            this.btn_LogOut.TabIndex = 13;
+            this.btn_LogOut.Text = "Đăng xuất";
+            this.btn_LogOut.UseVisualStyleBackColor = false;
+            this.btn_LogOut.Click += new System.EventHandler(this.btn_DangXuat_Click);
             // 
-            // btn_MatKhau
+            // btn_Password
             // 
-            this.btn_MatKhau.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_MatKhau.ForeColor = System.Drawing.Color.White;
-            this.btn_MatKhau.Location = new System.Drawing.Point(45, 314);
-            this.btn_MatKhau.Name = "btn_MatKhau";
-            this.btn_MatKhau.Size = new System.Drawing.Size(80, 45);
-            this.btn_MatKhau.TabIndex = 12;
-            this.btn_MatKhau.Text = "Mật khẩu";
-            this.btn_MatKhau.UseVisualStyleBackColor = false;
-            this.btn_MatKhau.Click += new System.EventHandler(this.btn_MatKhau_Click);
+            this.btn_Password.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_Password.ForeColor = System.Drawing.Color.White;
+            this.btn_Password.Location = new System.Drawing.Point(34, 255);
+            this.btn_Password.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Password.Name = "btn_Password";
+            this.btn_Password.Size = new System.Drawing.Size(60, 37);
+            this.btn_Password.TabIndex = 12;
+            this.btn_Password.Text = "Mật khẩu";
+            this.btn_Password.UseVisualStyleBackColor = false;
+            this.btn_Password.Click += new System.EventHandler(this.btn_MatKhau_Click);
             // 
-            // button1
+            // btn_Mess
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(45, 258);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 45);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Tin nhắn";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_Mess.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_Mess.ForeColor = System.Drawing.Color.White;
+            this.btn_Mess.Location = new System.Drawing.Point(34, 210);
+            this.btn_Mess.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Mess.Name = "btn_Mess";
+            this.btn_Mess.Size = new System.Drawing.Size(60, 37);
+            this.btn_Mess.TabIndex = 11;
+            this.btn_Mess.Text = "Tin nhắn";
+            this.btn_Mess.UseVisualStyleBackColor = false;
             // 
-            // textBox5
+            // tb_ServiceCost
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(139, 227);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(142, 22);
-            this.textBox5.TabIndex = 10;
+            this.tb_ServiceCost.Enabled = false;
+            this.tb_ServiceCost.Location = new System.Drawing.Point(104, 184);
+            this.tb_ServiceCost.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_ServiceCost.Name = "tb_ServiceCost";
+            this.tb_ServiceCost.Size = new System.Drawing.Size(108, 20);
+            this.tb_ServiceCost.TabIndex = 10;
             // 
-            // textBox4
+            // tb_TimeCost
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(139, 177);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(142, 22);
-            this.textBox4.TabIndex = 9;
+            this.tb_TimeCost.Enabled = false;
+            this.tb_TimeCost.Location = new System.Drawing.Point(104, 144);
+            this.tb_TimeCost.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_TimeCost.Name = "tb_TimeCost";
+            this.tb_TimeCost.Size = new System.Drawing.Size(108, 20);
+            this.tb_TimeCost.TabIndex = 9;
             // 
-            // textBox3
+            // tb_RemainTime
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(139, 127);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(142, 22);
-            this.textBox3.TabIndex = 8;
+            this.tb_RemainTime.Enabled = false;
+            this.tb_RemainTime.Location = new System.Drawing.Point(104, 103);
+            this.tb_RemainTime.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_RemainTime.Name = "tb_RemainTime";
+            this.tb_RemainTime.Size = new System.Drawing.Size(108, 20);
+            this.tb_RemainTime.TabIndex = 8;
             // 
-            // textBox2
+            // tb_SumTime
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(139, 27);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(142, 22);
-            this.textBox2.TabIndex = 7;
+            this.tb_SumTime.Enabled = false;
+            this.tb_SumTime.Location = new System.Drawing.Point(104, 22);
+            this.tb_SumTime.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_SumTime.Name = "tb_SumTime";
+            this.tb_SumTime.Size = new System.Drawing.Size(108, 20);
+            this.tb_SumTime.TabIndex = 7;
             // 
-            // textBox1
+            // tb_UseTime
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(139, 77);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(142, 22);
-            this.textBox1.TabIndex = 6;
+            this.tb_UseTime.Enabled = false;
+            this.tb_UseTime.Location = new System.Drawing.Point(104, 63);
+            this.tb_UseTime.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_UseTime.Name = "tb_UseTime";
+            this.tb_UseTime.Size = new System.Drawing.Size(108, 20);
+            this.tb_UseTime.TabIndex = 6;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(20, 230);
+            this.label7.Location = new System.Drawing.Point(15, 187);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 16);
+            this.label7.Size = new System.Drawing.Size(79, 13);
             this.label7.TabIndex = 5;
             this.label7.Text = "Chi phí dịch vụ";
             // 
@@ -207,9 +221,10 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(20, 130);
+            this.label6.Location = new System.Drawing.Point(15, 106);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(105, 16);
+            this.label6.Size = new System.Drawing.Size(85, 13);
             this.label6.TabIndex = 4;
             this.label6.Text = "Thời gian còn lại";
             // 
@@ -218,9 +233,10 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(20, 180);
+            this.label5.Location = new System.Drawing.Point(15, 146);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 16);
+            this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Chi phí thời gian";
             // 
@@ -229,9 +245,10 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(20, 80);
+            this.label4.Location = new System.Drawing.Point(15, 65);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 16);
+            this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Thời gian sử dụng";
             // 
@@ -240,53 +257,55 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(20, 30);
+            this.label3.Location = new System.Drawing.Point(15, 24);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 16);
+            this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Tổng thời gian";
             // 
             // fClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PBL3_LastReal.Properties.Resources._13b17612f771282f7160;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(382, 468);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(286, 380);
+            this.Controls.Add(this.pn_Main);
+            this.Controls.Add(this.pn_Title);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fClient";
             this.Load += new System.EventHandler(this.fClient_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pn_Title.ResumeLayout(false);
+            this.pn_Title.PerformLayout();
+            this.pn_Main.ResumeLayout(false);
+            this.pn_Main.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pn_Title;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btn_DichVu;
-        private System.Windows.Forms.Button btn_DangXuat;
-        private System.Windows.Forms.Button btn_MatKhau;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel pn_Main;
+        private System.Windows.Forms.Button btn_Service;
+        private System.Windows.Forms.Button btn_LogOut;
+        private System.Windows.Forms.Button btn_Password;
+        private System.Windows.Forms.Button btn_Mess;
+        private System.Windows.Forms.TextBox tb_ServiceCost;
+        private System.Windows.Forms.TextBox tb_TimeCost;
+        private System.Windows.Forms.TextBox tb_RemainTime;
+        private System.Windows.Forms.TextBox tb_SumTime;
+        private System.Windows.Forms.TextBox tb_UseTime;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lb_NameComputer;
     }
 }
