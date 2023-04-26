@@ -38,6 +38,5 @@ namespace PBL3_LastReal.BLL
                 db.SubmitChanges();
             }
         }
-        
     }
 }

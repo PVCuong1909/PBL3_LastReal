@@ -77,5 +77,25 @@ namespace PBL3_LastReal.BLL
             }
             return id;
         }
+        public bool checkPassword(string ID_Account, string Password)
+        {
+            bool check = false;
+            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                string password = MD5Hash(Password);
+                if(db.Accounts.Where(p => p.ID_Account == ID_Account && p.Password == password).Count() == 1)
+                    check = true;
+            }
+            return check;
+        }
+        public void changePassword(string ID_Account, string newPassword)
+        {
+            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                string password = MD5Hash(newPassword);
+                db.Accounts.Where(p => p.ID_Account == ID_Account).First().Password = password;
+                db.SubmitChanges();
+            }    
+        }
     }
 }

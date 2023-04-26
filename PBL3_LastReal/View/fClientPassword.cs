@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PBL3_LastReal.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,26 +13,46 @@ namespace PBL3_LastReal.View
 {
     public partial class fClientPassword : Form
     {
-        public string ID_TK;
-        public fClientPassword()
+        private string ID_TK;
+        public fClientPassword(string id_Account)
         {
             InitializeComponent();
+            ID_TK = id_Account;
         }
 
         private void btn_Huy_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
-        private void fClientPassword_Load(object sender, EventArgs e)
-        {
-            MessageBox.Show(ID_TK);
-        }
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            QuanLyNetDataContext db = new QuanLyNetDataContext();
-            //var query = db.Histories.Where(p => p.ID_Computer == Convert.ToInt32(ID_May)).FirstOrDefault();
+            string password = tb_password.Text;
+            string newPassword = tb_newPassword.Text;
+            string checkNewPassword = tb_checkNewPassword.Text;
+            if(password == "" || newPassword == "" || checkNewPassword == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+            }
+            else
+            {
+                if(ManageAccount.Instance.checkPassword(ID_TK,password) == true)
+                {
+                    if(newPassword == checkNewPassword)
+                    {
+                        ManageAccount.Instance.changePassword(ID_TK, checkNewPassword);
+                        MessageBox.Show("Đổi mật khẩu thành công");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mật khẩu mới không trùng khớp!");
+                    }        
+                }   
+                else
+                {
+                    MessageBox.Show("Mật khẩu hiện tại không chính xác!");
+                }
+            }    
         }
-
-        
     }
 }

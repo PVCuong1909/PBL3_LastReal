@@ -46,10 +46,7 @@ namespace PBL3_LastReal.View
 
         private void btn_DangXuat_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            fLogin f = new fLogin();
-            f.ShowDialog();
-            this.Close();
+            this.Dispose();
         }
     }
 }
