@@ -22,7 +22,7 @@ namespace PBL3_LastReal.View
         }
         private void GUI()
         {
-            dgv.DataSource = ManageHistory.Instance.seeHistoryByIdCom(ID_Com).Select(p => new {p.ID_Account, p.TimeBegin, p.TimeEnd}).ToList();
+            dgv.DataSource = ManageHistory.Instance.seeHistoryByIdCom(ID_Com).Select(p => new { p.ID_Account, p.TimeBegin, p.TimeEnd }).ToList();
         }
 
         private void btn_Out_Click(object sender, EventArgs e)

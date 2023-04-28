@@ -56,6 +56,7 @@
     <Compile Include="BLL\ManageAccount.cs" />
     <Compile Include="BLL\ManageComputer.cs" />
     <Compile Include="BLL\ManageHistory.cs" />
+    <Compile Include="BLL\ManagerService.cs" />
     <Compile Include="QuanLyNet.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

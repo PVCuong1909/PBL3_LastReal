@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_QuanNet" Class="QuanLyNetDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-ILLMULD\PVCSERVER;Initial Catalog=QL_QuanNet;Integrated Security=True" SettingsObjectName="PBL3_LastReal.Properties.Settings" SettingsPropertyName="QL_QuanNetConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_QuanNetReal" Class="QuanLyNetDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI\SQLEXPRESS;Initial Catalog=QL_QuanNetReal;Integrated Security=True" SettingsObjectName="PBL3_LastReal.Properties.Settings" SettingsPropertyName="QL_QuanNetConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="ID_Account" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -70,18 +70,7 @@
       <Column Name="ID_Price" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ImPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ExPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Price_Product" Member="Products" ThisKey="ID_Price" OtherKey="ID_Price" Type="Product" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Product" Member="Products">
-    <Type Name="Product">
-      <Column Name="ID_Product" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ID_Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Path" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Chose" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="Price_Product" Member="Price" ThisKey="ID_Price" OtherKey="ID_Price" Type="Price" IsForeignKey="true" />
+      <Association Name="Price_Product1" Member="Products" ThisKey="ID_Price" OtherKey="ID_Price" Type="Product" />
     </Type>
   </Table>
   <Table Name="dbo.Salary" Member="Salaries">
@@ -117,6 +106,18 @@
       <Column Name="TimeEnd" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
       <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="WorkShift_DetailWorkShift" Member="DetailWorkShifts" ThisKey="ID_WorkShift" OtherKey="ID_WorkShift" Type="DetailWorkShift" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="ID_Product" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Path" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Chose" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SLDaDat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Price_Product1" Member="Price" ThisKey="ID_Price" OtherKey="ID_Price" Type="Price" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
