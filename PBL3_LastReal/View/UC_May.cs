@@ -86,5 +86,74 @@ namespace PBL3_LastReal.View
                 GUI();
             }    
         }
+
+        private void btn_SeeHistory_Click(object sender, EventArgs e)
+        {
+            if(dgv.SelectedRows.Count == 1)
+            {
+                string id = dgv.SelectedRows[0].Cells[0].Value.ToString();
+                fSeeHistory f = new fSeeHistory(id);
+                f.ShowDialog();
+            }
+            else if(dgv.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Chọn máy cần xem lịch sử!");
+            }
+            else
+            {
+                MessageBox.Show("Không thêm xem nhiều máy cùng một lúc!");
+            }
+        }
+
+        private void dgv_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if(dgv.SelectedRows.Count == 1)
+            {
+                string id = dgv.SelectedRows[0].Cells[0].Value.ToString();
+                string state = dgv.SelectedRows[0].Cells[3].Value.ToString();
+                if(state == "1")
+                {
+                    tb_id.Text = ManageComputer.Instance.getComputerByID(id).ID_Computer.ToString();
+                    tb_price.Text = ManageComputer.Instance.getComputerByID(id).Price.ToString();
+                    tb_type.Text = ManageComputer.Instance.getComputerByID(id).Type.ToString();
+                    if (ManageComputer.Instance.getComputerByID(id).State.ToString() == "0")
+                    {
+                        tb_state.Text = "Chưa sử dụng";
+                    }
+                    else if (ManageComputer.Instance.getComputerByID(id).State.ToString() == "1")
+                    {
+                        tb_state.Text = "Đang sử dụng";
+                    }
+                    else if (ManageComputer.Instance.getComputerByID(id).State.ToString() == "2")
+                    {
+                        tb_state.Text = "Đang hỏng";
+                    }
+
+                    tb_IDTK.Text = ManageHistory.Instance.getHistotyByIDAndTimeBeginAcc(id).ID_Account;
+                    tb_money.Text = ManageHistory.Instance.getHistotyByIDAndTimeBeginAcc(id).Money.ToString();
+                    tb_username.Text = ManageHistory.Instance.getHistotyByIDAndTimeBeginAcc(id).Username;
+                    tb_name.Text = ManageHistory.Instance.getHistoryByIDAndTimeBeginPer(id).Name;
+
+                }
+                else
+                {
+                    tb_id.Text = ManageComputer.Instance.getComputerByID(id).ID_Computer.ToString();
+                    tb_price.Text = ManageComputer.Instance.getComputerByID(id).Price.ToString();
+                    tb_type.Text = ManageComputer.Instance.getComputerByID(id).Type.ToString();
+                    if(ManageComputer.Instance.getComputerByID(id).State.ToString() == "0")
+                    {
+                        tb_state.Text = "Chưa sử dụng";
+                    }
+                    else if (ManageComputer.Instance.getComputerByID(id).State.ToString() == "1")
+                    {
+                        tb_state.Text = "Đang sử dụng";
+                    }
+                    else if (ManageComputer.Instance.getComputerByID(id).State.ToString() == "2")
+                    {
+                        tb_state.Text = "Đang hỏng";
+                    }
+                }
+            }
+        }
     }
 }

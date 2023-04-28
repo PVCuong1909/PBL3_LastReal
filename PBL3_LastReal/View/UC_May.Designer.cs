@@ -38,21 +38,21 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_update = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_SeeHistory = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tb_id = new System.Windows.Forms.TextBox();
+            this.tb_type = new System.Windows.Forms.TextBox();
+            this.tb_state = new System.Windows.Forms.TextBox();
+            this.tb_price = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ID_TaiK = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.tb_IDTK = new System.Windows.Forms.TextBox();
+            this.tb_username = new System.Windows.Forms.TextBox();
+            this.tb_money = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
             this.cb_using = new System.Windows.Forms.CheckBox();
             this.cb_free = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -87,6 +87,7 @@
             this.dgv.RowTemplate.Height = 24;
             this.dgv.Size = new System.Drawing.Size(450, 279);
             this.dgv.TabIndex = 0;
+            this.dgv.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseDoubleClick);
             // 
             // label1
             // 
@@ -169,17 +170,18 @@
             this.btn_update.UseVisualStyleBackColor = false;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
-            // button3
+            // btn_SeeHistory
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(670, 388);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 46);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "Xem lịch sử";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_SeeHistory.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_SeeHistory.ForeColor = System.Drawing.Color.White;
+            this.btn_SeeHistory.Location = new System.Drawing.Point(670, 388);
+            this.btn_SeeHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_SeeHistory.Name = "btn_SeeHistory";
+            this.btn_SeeHistory.Size = new System.Drawing.Size(112, 46);
+            this.btn_SeeHistory.TabIndex = 25;
+            this.btn_SeeHistory.Text = "Xem lịch sử";
+            this.btn_SeeHistory.UseVisualStyleBackColor = false;
+            this.btn_SeeHistory.Click += new System.EventHandler(this.btn_SeeHistory_Click);
             // 
             // btn_delete
             // 
@@ -194,37 +196,37 @@
             this.btn_delete.UseVisualStyleBackColor = false;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
-            // textBox2
+            // tb_id
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(554, 73);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(111, 22);
-            this.textBox2.TabIndex = 26;
+            this.tb_id.Enabled = false;
+            this.tb_id.Location = new System.Drawing.Point(554, 73);
+            this.tb_id.Name = "tb_id";
+            this.tb_id.Size = new System.Drawing.Size(111, 22);
+            this.tb_id.TabIndex = 26;
             // 
-            // textBox3
+            // tb_type
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(555, 116);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(111, 22);
-            this.textBox3.TabIndex = 27;
+            this.tb_type.Enabled = false;
+            this.tb_type.Location = new System.Drawing.Point(555, 116);
+            this.tb_type.Name = "tb_type";
+            this.tb_type.Size = new System.Drawing.Size(111, 22);
+            this.tb_type.TabIndex = 27;
             // 
-            // textBox4
+            // tb_state
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(758, 116);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(111, 22);
-            this.textBox4.TabIndex = 28;
+            this.tb_state.Enabled = false;
+            this.tb_state.Location = new System.Drawing.Point(758, 116);
+            this.tb_state.Name = "tb_state";
+            this.tb_state.Size = new System.Drawing.Size(111, 22);
+            this.tb_state.TabIndex = 28;
             // 
-            // textBox5
+            // tb_price
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(758, 73);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(111, 22);
-            this.textBox5.TabIndex = 29;
+            this.tb_price.Enabled = false;
+            this.tb_price.Location = new System.Drawing.Point(758, 73);
+            this.tb_price.Name = "tb_price";
+            this.tb_price.Size = new System.Drawing.Size(111, 22);
+            this.tb_price.TabIndex = 29;
             // 
             // label2
             // 
@@ -281,37 +283,37 @@
             this.label10.TabIndex = 34;
             this.label10.Text = "Họ và tên";
             // 
-            // textBox6
+            // tb_IDTK
             // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(555, 237);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(111, 22);
-            this.textBox6.TabIndex = 35;
+            this.tb_IDTK.Enabled = false;
+            this.tb_IDTK.Location = new System.Drawing.Point(555, 237);
+            this.tb_IDTK.Name = "tb_IDTK";
+            this.tb_IDTK.Size = new System.Drawing.Size(111, 22);
+            this.tb_IDTK.TabIndex = 35;
             // 
-            // textBox7
+            // tb_username
             // 
-            this.textBox7.Enabled = false;
-            this.textBox7.Location = new System.Drawing.Point(554, 284);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(111, 22);
-            this.textBox7.TabIndex = 36;
+            this.tb_username.Enabled = false;
+            this.tb_username.Location = new System.Drawing.Point(554, 284);
+            this.tb_username.Name = "tb_username";
+            this.tb_username.Size = new System.Drawing.Size(111, 22);
+            this.tb_username.TabIndex = 36;
             // 
-            // textBox8
+            // tb_money
             // 
-            this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(758, 237);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(111, 22);
-            this.textBox8.TabIndex = 37;
+            this.tb_money.Enabled = false;
+            this.tb_money.Location = new System.Drawing.Point(758, 237);
+            this.tb_money.Name = "tb_money";
+            this.tb_money.Size = new System.Drawing.Size(111, 22);
+            this.tb_money.TabIndex = 37;
             // 
-            // textBox9
+            // tb_name
             // 
-            this.textBox9.Enabled = false;
-            this.textBox9.Location = new System.Drawing.Point(758, 284);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(111, 22);
-            this.textBox9.TabIndex = 38;
+            this.tb_name.Enabled = false;
+            this.tb_name.Location = new System.Drawing.Point(758, 284);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(111, 22);
+            this.tb_name.TabIndex = 38;
             // 
             // cb_using
             // 
@@ -344,21 +346,21 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.cb_free);
             this.Controls.Add(this.cb_using);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.tb_name);
+            this.Controls.Add(this.tb_money);
+            this.Controls.Add(this.tb_username);
+            this.Controls.Add(this.tb_IDTK);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.ID_TaiK);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tb_price);
+            this.Controls.Add(this.tb_state);
+            this.Controls.Add(this.tb_type);
+            this.Controls.Add(this.tb_id);
             this.Controls.Add(this.btn_delete);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_SeeHistory);
             this.Controls.Add(this.btn_update);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label7);
@@ -388,21 +390,21 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.Button btn_update;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_SeeHistory;
         private System.Windows.Forms.Button btn_delete;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tb_id;
+        private System.Windows.Forms.TextBox tb_type;
+        private System.Windows.Forms.TextBox tb_state;
+        private System.Windows.Forms.TextBox tb_price;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label ID_TaiK;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox tb_IDTK;
+        private System.Windows.Forms.TextBox tb_username;
+        private System.Windows.Forms.TextBox tb_money;
+        private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.CheckBox cb_using;
         private System.Windows.Forms.CheckBox cb_free;
     }

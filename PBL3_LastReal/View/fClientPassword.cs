@@ -19,7 +19,6 @@ namespace PBL3_LastReal.View
             InitializeComponent();
             ID_TK = id_Account;
         }
-
         private void btn_Huy_Click(object sender, EventArgs e)
         {
             this.Dispose();

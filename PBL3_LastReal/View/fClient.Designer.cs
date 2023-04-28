@@ -276,7 +276,6 @@
             this.Name = "fClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fClient";
-            this.Load += new System.EventHandler(this.fClient_Load);
             this.pn_Title.ResumeLayout(false);
             this.pn_Title.PerformLayout();
             this.pn_Main.ResumeLayout(false);

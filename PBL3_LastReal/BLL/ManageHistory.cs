@@ -23,7 +23,8 @@ namespace PBL3_LastReal.BLL
             }
             private set { }
         }
-        public void addHistory(int id_com, string id_acc, DateTime timeBegin, DateTime timeEnd)
+        //public void addHistory(int id_com, string id_acc, DateTime timeBegin, DateTime timeEnd)
+        public void addHistoryClickOK(int id_com, string id_acc, DateTime timeBegin)
         {
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
@@ -32,11 +33,70 @@ namespace PBL3_LastReal.BLL
                     ID_Computer = id_com,
                     ID_Account = id_acc,
                     TimeBegin = timeBegin,
-                    TimeEnd = timeEnd
                 };
                 db.Histories.InsertOnSubmit(his);
                 db.SubmitChanges();
             }
+        }
+        public void addHistoryClickLogOut(int id_com, string id_acc, DateTime timeBegin)
+        {
+            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                db.Histories.Where(p => p.ID_Computer == id_com && p.ID_Account == id_acc && p.TimeBegin == timeBegin).First().TimeEnd = DateTime.Now;
+                db.SubmitChanges();
+            }
+        }
+        public List<History> seeHistoryByIdCom(string id_com)
+        {
+            List<History> list = new List<History>();
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                list = db.Histories.Where(p => p.ID_Computer == Convert.ToInt32(id_com))
+                                    .ToList();
+            }
+            return list;
+        }
+        public Account getInformationAccHistory(string id)
+        {
+            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            Account acc = new Account
+                {
+                    Username = db.Histories.Where(p => p.ID_Account == id).First().Account.Username,
+                    Money = db.Histories.Where(p => p.ID_Account == id).First().Account.Money
+                };
+            return acc;
+        }
+        public Person getInformationPerHistory(string id)
+        {
+            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            Person per = new Person
+            {
+                Name = db.Histories.Where(p => p.ID_Account == id).First().Account.Person.Name,
+                DOB = db.Histories.Where(p => p.ID_Account == id).First().Account.Person.DOB,
+                CCCD = db.Histories.Where(p => p.ID_Account == id).First().Account.Person.CCCD,
+                PhoneNum = db.Histories.Where(p => p.ID_Account == id).First().Account.Person.PhoneNum
+            };
+            return per;
+        }
+        public Account getHistotyByIDAndTimeBeginAcc(string id)
+        {
+            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            Account acc = new Account
+            {
+                ID_Account = db.Histories.Where(p => p.ID_Computer == Convert.ToInt32(id) && p.TimeEnd == null).First().ID_Account,
+                Username = db.Histories.Where(p => p.ID_Computer == Convert.ToInt32(id) && p.TimeEnd == null).First().Account.Username,
+                Money = db.Histories.Where(p => p.ID_Computer == Convert.ToInt32(id) && p.TimeEnd == null).First().Account.Money
+            };
+            return acc;  
+        }
+        public Person getHistoryByIDAndTimeBeginPer(string id)
+        {
+            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            Person per = new Person
+            {
+                Name = db.Histories.Where(p => p.ID_Computer == Convert.ToInt32(id) && p.TimeEnd == null).First().Account.Person.Name,
+            };
+            return per;
         }
     }
 }

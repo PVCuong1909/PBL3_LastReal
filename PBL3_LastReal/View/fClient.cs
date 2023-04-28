@@ -33,7 +33,8 @@ namespace PBL3_LastReal.View
         }
         private void btn_DangXuat_Click(object sender, EventArgs e)
         {
-            ManageHistory.Instance.addHistory(id_Computer, id_Account, timeBegin, DateTime.Now);  
+            //ManageHistory.Instance.addHistory(id_Computer, id_Account, timeBegin, DateTime.Now);
+            ManageHistory.Instance.addHistoryClickLogOut(id_Computer, id_Account, timeBegin);
             ManageComputer.Instance.changeStateToFree(id_Computer);
             this.Close();
         }

@@ -56,7 +56,6 @@
     <Compile Include="BLL\ManageAccount.cs" />
     <Compile Include="BLL\ManageComputer.cs" />
     <Compile Include="BLL\ManageHistory.cs" />
-    <Compile Include="BLL\QuanLyTaiKhoan.cs" />
     <Compile Include="QuanLyNet.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,6 +105,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\fSeeHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fSeeHistory.Designer.cs">
+      <DependentUpon>fSeeHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UC_DichVu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -154,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fSeeHistory.resx">
+      <DependentUpon>fSeeHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC_DichVu.resx">
       <DependentUpon>UC_DichVu.cs</DependentUpon>

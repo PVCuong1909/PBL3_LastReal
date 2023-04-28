@@ -35,10 +35,12 @@ namespace PBL3_LastReal.View
             {
                 int id_com = Convert.ToInt32(cbb_ChooseComp.Text);
                 int state = ManageComputer.Instance.getState(id_com);
+                DateTime timeBegin = DateTime.Now;
                 if(state == 0)
                 {
                     this.Hide();
-                    fClient f = new fClient(id_com, id_Account, DateTime.Now);
+                    ManageHistory.Instance.addHistoryClickOK(id_com,id_Account,timeBegin);
+                    fClient f = new fClient(id_com, id_Account, timeBegin);
                     ManageComputer.Instance.changeStateToUsed(id_com);
                     f.ShowDialog();
                 }
