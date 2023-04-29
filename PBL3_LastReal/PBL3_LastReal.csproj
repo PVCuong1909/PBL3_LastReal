@@ -70,6 +70,12 @@
     <Compile Include="View\fAddEditAccount.Designer.cs">
       <DependentUpon>fAddEditAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\fAddEditStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fAddEditStaff.Designer.cs">
+      <DependentUpon>fAddEditStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\fAdminPassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </Compile>
     <EmbeddedResource Include="View\fAddEditAccount.resx">
       <DependentUpon>fAddEditAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fAddEditStaff.resx">
+      <DependentUpon>fAddEditStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\fAdminPassword.resx">
       <DependentUpon>fAdminPassword.cs</DependentUpon>

@@ -16,5 +16,10 @@ namespace PBL3_LastReal.View
         {
             InitializeComponent();
         }
+
+        private void btn_Huy_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }
