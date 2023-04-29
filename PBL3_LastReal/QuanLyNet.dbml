@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_QuanNet" Class="QuanLyNetDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-ILLMULD\PVCSERVER;Initial Catalog=QL_QuanNet;Integrated Security=True" SettingsObjectName="PBL3_LastReal.Properties.Settings" SettingsPropertyName="QL_QuanNetConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=admin-pc\admin;Initial Catalog=QL_QuanNet;User ID=sa" SettingsObjectName="PBL3_LastReal.Properties.Settings" SettingsPropertyName="QL_QuanNetConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="ID_Account" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Username" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
       <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Money" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -20,15 +20,6 @@
       <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Computer" Member="Computers">
-    <Type Name="Computer">
-      <Column Name="ID_Computer" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="State" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Computer_History" Member="Histories" ThisKey="ID_Computer" OtherKey="ID_Computer" Type="History" />
-    </Type>
-  </Table>
   <Table Name="dbo.DetailWorkShift" Member="DetailWorkShifts">
     <Type Name="DetailWorkShift">
       <Column Name="ID_Detail" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -37,6 +28,15 @@
       <Column Name="State" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Person_DetailWorkShift" Member="Person" ThisKey="ID_Person" OtherKey="ID_Person" Type="Person" IsForeignKey="true" />
       <Association Name="WorkShift_DetailWorkShift" Member="WorkShift" ThisKey="ID_WorkShift" OtherKey="ID_WorkShift" Type="WorkShift" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Computer" Member="Computers">
+    <Type Name="Computer">
+      <Column Name="ID_Computer" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Computer_History" Member="Histories" ThisKey="ID_Computer" OtherKey="ID_Computer" Type="History" />
     </Type>
   </Table>
   <Table Name="dbo.History" Member="Histories">
@@ -55,7 +55,7 @@
       <Column Name="ID_Person" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
-      <Column Name="DOB" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="CCCD" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="PhoneNum" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Works" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -79,8 +79,6 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ID_Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Path" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Chose" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Price_Product" Member="Price" ThisKey="ID_Price" OtherKey="ID_Price" Type="Price" IsForeignKey="true" />
     </Type>
   </Table>

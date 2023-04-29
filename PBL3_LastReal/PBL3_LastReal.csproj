@@ -57,6 +57,7 @@
     <Compile Include="BLL\ManageBill.cs" />
     <Compile Include="BLL\ManageComputer.cs" />
     <Compile Include="BLL\ManageHistory.cs" />
+    <Compile Include="BLL\ManagePerson.cs" />
     <Compile Include="BLL\ManagerService.cs" />
     <Compile Include="DTO\Service.cs" />
     <Compile Include="QuanLyNet.designer.cs">

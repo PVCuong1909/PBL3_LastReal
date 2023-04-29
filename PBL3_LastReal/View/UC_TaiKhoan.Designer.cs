@@ -33,17 +33,18 @@
             this.btn_add = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_edit = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_Del = new System.Windows.Forms.Button();
             this.btn_Password = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tb_CCCD = new System.Windows.Forms.TextBox();
+            this.tb_PhoneNum = new System.Windows.Forms.TextBox();
+            this.tb_DOB = new System.Windows.Forms.TextBox();
+            this.tb_Name = new System.Windows.Forms.TextBox();
+            this.btn_Recharge = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,13 +57,15 @@
             this.dgv.RowTemplate.Height = 24;
             this.dgv.Size = new System.Drawing.Size(428, 279);
             this.dgv.TabIndex = 1;
+            this.dgv.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_RowHeaderMouseDoubleClick);
             // 
             // tb_search
             // 
             this.tb_search.Location = new System.Drawing.Point(275, 18);
             this.tb_search.Name = "tb_search";
-            this.tb_search.Size = new System.Drawing.Size(168, 28);
+            this.tb_search.Size = new System.Drawing.Size(168, 24);
             this.tb_search.TabIndex = 16;
+            this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
             // 
             // btn_add
             // 
@@ -85,7 +88,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(11, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(181, 20);
+            this.label1.Size = new System.Drawing.Size(157, 17);
             this.label1.TabIndex = 25;
             this.label1.Text = "Danh sách tài khoản";
             // 
@@ -94,7 +97,7 @@
             this.btn_edit.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_edit.ForeColor = System.Drawing.Color.White;
-            this.btn_edit.Location = new System.Drawing.Point(275, 378);
+            this.btn_edit.Location = new System.Drawing.Point(210, 378);
             this.btn_edit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_edit.Name = "btn_edit";
             this.btn_edit.Size = new System.Drawing.Size(115, 46);
@@ -103,25 +106,26 @@
             this.btn_edit.UseVisualStyleBackColor = false;
             this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
-            // button2
+            // btn_Del
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(489, 378);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 46);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Xóa";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_Del.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_Del.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Del.ForeColor = System.Drawing.Color.White;
+            this.btn_Del.Location = new System.Drawing.Point(352, 378);
+            this.btn_Del.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Del.Name = "btn_Del";
+            this.btn_Del.Size = new System.Drawing.Size(115, 46);
+            this.btn_Del.TabIndex = 27;
+            this.btn_Del.Text = "Xóa";
+            this.btn_Del.UseVisualStyleBackColor = false;
+            this.btn_Del.Click += new System.EventHandler(this.btn_Del_Click);
             // 
             // btn_Password
             // 
             this.btn_Password.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Password.ForeColor = System.Drawing.Color.White;
-            this.btn_Password.Location = new System.Drawing.Point(698, 378);
+            this.btn_Password.Location = new System.Drawing.Point(494, 378);
             this.btn_Password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Password.Name = "btn_Password";
             this.btn_Password.Size = new System.Drawing.Size(115, 46);
@@ -137,7 +141,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(574, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(188, 20);
+            this.label2.Size = new System.Drawing.Size(166, 17);
             this.label2.TabIndex = 29;
             this.label2.Text = "Thông tin khách hàng";
             // 
@@ -148,7 +152,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(516, 166);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 16);
+            this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 31;
             this.label4.Text = "Ngày sinh";
             // 
@@ -159,7 +163,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(516, 107);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 16);
+            this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 32;
             this.label5.Text = "Họ và tên";
             // 
@@ -170,7 +174,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(516, 222);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(139, 16);
+            this.label6.Size = new System.Drawing.Size(118, 13);
             this.label6.TabIndex = 32;
             this.label6.Text = "Căn cước công dân";
             // 
@@ -181,58 +185,73 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(516, 284);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 16);
+            this.label7.Size = new System.Drawing.Size(83, 13);
             this.label7.TabIndex = 33;
             this.label7.Text = "Số điện thoại";
             // 
-            // textBox1
+            // tb_CCCD
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(674, 214);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(168, 28);
-            this.textBox1.TabIndex = 34;
+            this.tb_CCCD.Enabled = false;
+            this.tb_CCCD.Location = new System.Drawing.Point(674, 214);
+            this.tb_CCCD.Name = "tb_CCCD";
+            this.tb_CCCD.Size = new System.Drawing.Size(168, 24);
+            this.tb_CCCD.TabIndex = 34;
             // 
-            // textBox2
+            // tb_PhoneNum
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(674, 276);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(168, 28);
-            this.textBox2.TabIndex = 35;
+            this.tb_PhoneNum.Enabled = false;
+            this.tb_PhoneNum.Location = new System.Drawing.Point(674, 276);
+            this.tb_PhoneNum.Name = "tb_PhoneNum";
+            this.tb_PhoneNum.Size = new System.Drawing.Size(168, 24);
+            this.tb_PhoneNum.TabIndex = 35;
             // 
-            // textBox3
+            // tb_DOB
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(674, 158);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(168, 28);
-            this.textBox3.TabIndex = 36;
+            this.tb_DOB.Enabled = false;
+            this.tb_DOB.Location = new System.Drawing.Point(674, 158);
+            this.tb_DOB.Name = "tb_DOB";
+            this.tb_DOB.Size = new System.Drawing.Size(168, 24);
+            this.tb_DOB.TabIndex = 36;
             // 
-            // textBox4
+            // tb_Name
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(674, 99);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(168, 28);
-            this.textBox4.TabIndex = 37;
+            this.tb_Name.Enabled = false;
+            this.tb_Name.Location = new System.Drawing.Point(674, 99);
+            this.tb_Name.Name = "tb_Name";
+            this.tb_Name.Size = new System.Drawing.Size(168, 24);
+            this.tb_Name.TabIndex = 37;
+            // 
+            // btn_Recharge
+            // 
+            this.btn_Recharge.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_Recharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Recharge.ForeColor = System.Drawing.Color.White;
+            this.btn_Recharge.Location = new System.Drawing.Point(639, 378);
+            this.btn_Recharge.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Recharge.Name = "btn_Recharge";
+            this.btn_Recharge.Size = new System.Drawing.Size(115, 46);
+            this.btn_Recharge.TabIndex = 38;
+            this.btn_Recharge.Text = "Nạp tiền";
+            this.btn_Recharge.UseVisualStyleBackColor = false;
+            this.btn_Recharge.Click += new System.EventHandler(this.btn_Recharge_Click);
             // 
             // UC_TaiKhoan
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::PBL3_LastReal.Properties.Resources._6660efc642a59dfbc4b4;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btn_Recharge);
+            this.Controls.Add(this.tb_Name);
+            this.Controls.Add(this.tb_DOB);
+            this.Controls.Add(this.tb_PhoneNum);
+            this.Controls.Add(this.tb_CCCD);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_Password);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_Del);
             this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_add);
@@ -254,16 +273,17 @@
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_edit;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_Del;
         private System.Windows.Forms.Button btn_Password;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tb_CCCD;
+        private System.Windows.Forms.TextBox tb_PhoneNum;
+        private System.Windows.Forms.TextBox tb_DOB;
+        private System.Windows.Forms.TextBox tb_Name;
+        private System.Windows.Forms.Button btn_Recharge;
     }
 }

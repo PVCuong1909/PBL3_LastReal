@@ -98,5 +98,14 @@ namespace PBL3_LastReal.BLL
             };
             return per;
         }
+        public void delHistoryByID_Acc(string id) 
+        {
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                List<History> histories = db.Histories.Where(p => p.ID_Account == id).ToList();
+                db.Histories.DeleteAllOnSubmit(histories);
+                db.SubmitChanges();
+            }
+        }
     }
 }

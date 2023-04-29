@@ -36,12 +36,12 @@ namespace PBL3_LastReal
     partial void InsertBill(Bill instance);
     partial void UpdateBill(Bill instance);
     partial void DeleteBill(Bill instance);
-    partial void InsertComputer(Computer instance);
-    partial void UpdateComputer(Computer instance);
-    partial void DeleteComputer(Computer instance);
     partial void InsertDetailWorkShift(DetailWorkShift instance);
     partial void UpdateDetailWorkShift(DetailWorkShift instance);
     partial void DeleteDetailWorkShift(DetailWorkShift instance);
+    partial void InsertComputer(Computer instance);
+    partial void UpdateComputer(Computer instance);
+    partial void DeleteComputer(Computer instance);
     partial void InsertHistory(History instance);
     partial void UpdateHistory(History instance);
     partial void DeleteHistory(History instance);
@@ -69,7 +69,7 @@ namespace PBL3_LastReal
     #endregion
 		
 		public QuanLyNetDataContext() : 
-				base(global::PBL3_LastReal.Properties.Settings.Default.QL_QuanNetConnectionString, mappingSource)
+				base(global::PBL3_LastReal.Properties.Settings.Default.QL_QuanNetConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -114,19 +114,19 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		public System.Data.Linq.Table<Computer> Computers
-		{
-			get
-			{
-				return this.GetTable<Computer>();
-			}
-		}
-		
 		public System.Data.Linq.Table<DetailWorkShift> DetailWorkShifts
 		{
 			get
 			{
 				return this.GetTable<DetailWorkShift>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Computer> Computers
+		{
+			get
+			{
+				return this.GetTable<Computer>();
 			}
 		}
 		
@@ -262,7 +262,7 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(40)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(30)")]
 		public string Username
 		{
 			get
@@ -580,168 +580,6 @@ namespace PBL3_LastReal
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Computer")]
-	public partial class Computer : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_Computer;
-		
-		private System.Nullable<int> _Price;
-		
-		private System.Nullable<int> _Type;
-		
-		private System.Nullable<int> _State;
-		
-		private EntitySet<History> _Histories;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_ComputerChanging(int value);
-    partial void OnID_ComputerChanged();
-    partial void OnPriceChanging(System.Nullable<int> value);
-    partial void OnPriceChanged();
-    partial void OnTypeChanging(System.Nullable<int> value);
-    partial void OnTypeChanged();
-    partial void OnStateChanging(System.Nullable<int> value);
-    partial void OnStateChanged();
-    #endregion
-		
-		public Computer()
-		{
-			this._Histories = new EntitySet<History>(new Action<History>(this.attach_Histories), new Action<History>(this.detach_Histories));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Computer", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_Computer
-		{
-			get
-			{
-				return this._ID_Computer;
-			}
-			set
-			{
-				if ((this._ID_Computer != value))
-				{
-					this.OnID_ComputerChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Computer = value;
-					this.SendPropertyChanged("ID_Computer");
-					this.OnID_ComputerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
-		public System.Nullable<int> Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this.OnPriceChanging(value);
-					this.SendPropertyChanging();
-					this._Price = value;
-					this.SendPropertyChanged("Price");
-					this.OnPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
-		public System.Nullable<int> Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="Int")]
-		public System.Nullable<int> State
-		{
-			get
-			{
-				return this._State;
-			}
-			set
-			{
-				if ((this._State != value))
-				{
-					this.OnStateChanging(value);
-					this.SendPropertyChanging();
-					this._State = value;
-					this.SendPropertyChanged("State");
-					this.OnStateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Computer_History", Storage="_Histories", ThisKey="ID_Computer", OtherKey="ID_Computer")]
-		public EntitySet<History> Histories
-		{
-			get
-			{
-				return this._Histories;
-			}
-			set
-			{
-				this._Histories.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Histories(History entity)
-		{
-			this.SendPropertyChanging();
-			entity.Computer = this;
-		}
-		
-		private void detach_Histories(History entity)
-		{
-			this.SendPropertyChanging();
-			entity.Computer = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DetailWorkShift")]
 	public partial class DetailWorkShift : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -955,6 +793,168 @@ namespace PBL3_LastReal
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Computer")]
+	public partial class Computer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_Computer;
+		
+		private System.Nullable<int> _Price;
+		
+		private System.Nullable<int> _Type;
+		
+		private System.Nullable<int> _State;
+		
+		private EntitySet<History> _Histories;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_ComputerChanging(int value);
+    partial void OnID_ComputerChanged();
+    partial void OnPriceChanging(System.Nullable<int> value);
+    partial void OnPriceChanged();
+    partial void OnTypeChanging(System.Nullable<int> value);
+    partial void OnTypeChanged();
+    partial void OnStateChanging(System.Nullable<int> value);
+    partial void OnStateChanged();
+    #endregion
+		
+		public Computer()
+		{
+			this._Histories = new EntitySet<History>(new Action<History>(this.attach_Histories), new Action<History>(this.detach_Histories));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Computer", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_Computer
+		{
+			get
+			{
+				return this._ID_Computer;
+			}
+			set
+			{
+				if ((this._ID_Computer != value))
+				{
+					this.OnID_ComputerChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Computer = value;
+					this.SendPropertyChanged("ID_Computer");
+					this.OnID_ComputerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
+		public System.Nullable<int> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
+		public System.Nullable<int> Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="Int")]
+		public System.Nullable<int> State
+		{
+			get
+			{
+				return this._State;
+			}
+			set
+			{
+				if ((this._State != value))
+				{
+					this.OnStateChanging(value);
+					this.SendPropertyChanging();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Computer_History", Storage="_Histories", ThisKey="ID_Computer", OtherKey="ID_Computer")]
+		public EntitySet<History> Histories
+		{
+			get
+			{
+				return this._Histories;
+			}
+			set
+			{
+				this._Histories.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Histories(History entity)
+		{
+			this.SendPropertyChanging();
+			entity.Computer = this;
+		}
+		
+		private void detach_Histories(History entity)
+		{
+			this.SendPropertyChanging();
+			entity.Computer = null;
 		}
 	}
 	
@@ -1210,7 +1210,7 @@ namespace PBL3_LastReal
 		
 		private string _Name;
 		
-		private string _DOB;
+		private System.Nullable<System.DateTime> _DOB;
 		
 		private string _CCCD;
 		
@@ -1236,7 +1236,7 @@ namespace PBL3_LastReal
     partial void OnTypeChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnDOBChanging(string value);
+    partial void OnDOBChanging(System.Nullable<System.DateTime> value);
     partial void OnDOBChanged();
     partial void OnCCCDChanging(string value);
     partial void OnCCCDChanged();
@@ -1315,8 +1315,8 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOB", DbType="VarChar(50)")]
-		public string DOB
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOB", DbType="Date")]
+		public System.Nullable<System.DateTime> DOB
 		{
 			get
 			{
@@ -1668,10 +1668,6 @@ namespace PBL3_LastReal
 		
 		private System.Nullable<int> _ID_Price;
 		
-		private string _Path;
-		
-		private System.Nullable<bool> _Chose;
-		
 		private EntityRef<Price> _Price;
 		
     #region Extensibility Method Definitions
@@ -1686,10 +1682,6 @@ namespace PBL3_LastReal
     partial void OnQuantityChanged();
     partial void OnID_PriceChanging(System.Nullable<int> value);
     partial void OnID_PriceChanged();
-    partial void OnPathChanging(string value);
-    partial void OnPathChanged();
-    partial void OnChoseChanging(System.Nullable<bool> value);
-    partial void OnChoseChanged();
     #endregion
 		
 		public Product()
@@ -1778,46 +1770,6 @@ namespace PBL3_LastReal
 					this._ID_Price = value;
 					this.SendPropertyChanged("ID_Price");
 					this.OnID_PriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Path", DbType="NVarChar(50)")]
-		public string Path
-		{
-			get
-			{
-				return this._Path;
-			}
-			set
-			{
-				if ((this._Path != value))
-				{
-					this.OnPathChanging(value);
-					this.SendPropertyChanging();
-					this._Path = value;
-					this.SendPropertyChanged("Path");
-					this.OnPathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chose", DbType="Bit")]
-		public System.Nullable<bool> Chose
-		{
-			get
-			{
-				return this._Chose;
-			}
-			set
-			{
-				if ((this._Chose != value))
-				{
-					this.OnChoseChanging(value);
-					this.SendPropertyChanging();
-					this._Chose = value;
-					this.SendPropertyChanged("Chose");
-					this.OnChoseChanged();
 				}
 			}
 		}

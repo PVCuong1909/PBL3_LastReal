@@ -23,16 +23,27 @@ namespace PBL3_LastReal.BLL
             }
             private set {} 
         }
+        public List<Account> GetAccounts() 
+        {
+            List<Account> accounts = new List<Account>();
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                accounts = db.Accounts.ToList();
+            }
+            return accounts;
+        }
         private string MD5Hash(string input)
         {
-            QuanLyNetDataContext db = new QuanLyNetDataContext();
             StringBuilder hash = new StringBuilder();
-            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
-            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
-
-            for (int i = 0; i < bytes.Length; i++)
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
-                hash.Append(bytes[i].ToString("x2"));
+                MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+                byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    hash.Append(bytes[i].ToString("x2"));
+                }
             }
             return hash.ToString();
         }
@@ -93,6 +104,64 @@ namespace PBL3_LastReal.BLL
                 db.Accounts.Where(p => p.ID_Account == ID_Account).First().Password = password;
                 db.SubmitChanges();
             }    
+        }
+        public int getNextID_Acc(string type)
+        {
+            int nextID = 0;
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                List<Account> accounts = new List<Account>();
+                accounts = db.Accounts.Where(p => p.ID_Account.Contains(type)).ToList();
+                string lastID = accounts[accounts.Count - 1].ID_Account;
+                nextID = Convert.ToInt32(lastID.Substring(6, lastID.Length - 6));
+                nextID++;
+            }
+            return nextID;
+        }
+        public Account GetAccountByUsername(string username)
+        {
+            Account acc = new Account();
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                acc = db.Accounts.Where(p => p.Username == username).First();
+            }
+            return acc;
+        }
+        public void addAccount(string id,string username, string passwordf, int type, int money, int idper)
+        {
+            Account acc = new Account
+            {
+                ID_Account = id,
+                Username = username,
+                Password = MD5Hash(passwordf),
+                Type = type,
+                Money = money,
+                ID_Person = idper
+            };
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                db.Accounts.InsertOnSubmit(acc);
+                db.SubmitChanges();
+            }
+        }
+        public void updateAccount(string username, string passwordf, int money)
+        {
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                Account acc = db.Accounts.Where(p => p.Username == username).First();
+                acc.Password = MD5Hash(passwordf);
+                acc.Money += money;
+                db.SubmitChanges();
+            }
+        }
+        public void delAccount(string username)
+        {
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                Account acc = db.Accounts.Where(p => p.Username == username).First();
+                db.Accounts.DeleteOnSubmit(acc);
+                db.SubmitChanges();
+            }
         }
     }
 }
