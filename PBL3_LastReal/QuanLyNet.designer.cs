@@ -20,10 +20,9 @@ namespace PBL3_LastReal
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-    using System.Drawing;
-    using System.IO;
-
-    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QL_QuanNetReal")]
+	
+	
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QL_QuanNet")]
 	public partial class QuanLyNetDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -49,6 +48,9 @@ namespace PBL3_LastReal
     partial void InsertPerson(Person instance);
     partial void UpdatePerson(Person instance);
     partial void DeletePerson(Person instance);
+    partial void InsertProduct(Product instance);
+    partial void UpdateProduct(Product instance);
+    partial void DeleteProduct(Product instance);
     partial void InsertPrice(Price instance);
     partial void UpdatePrice(Price instance);
     partial void DeletePrice(Price instance);
@@ -64,13 +66,10 @@ namespace PBL3_LastReal
     partial void InsertWorkShift(WorkShift instance);
     partial void UpdateWorkShift(WorkShift instance);
     partial void DeleteWorkShift(WorkShift instance);
-    partial void InsertProduct(Product instance);
-    partial void UpdateProduct(Product instance);
-    partial void DeleteProduct(Product instance);
     #endregion
 		
 		public QuanLyNetDataContext() : 
-				base(global::PBL3_LastReal.Properties.Settings.Default.QL_QuanNetConnectionString, mappingSource)
+				base(global::PBL3_LastReal.Properties.Settings.Default.QL_QuanNetConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -147,6 +146,14 @@ namespace PBL3_LastReal
 			}
 		}
 		
+		public System.Data.Linq.Table<Product> Products
+		{
+			get
+			{
+				return this.GetTable<Product>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Price> Prices
 		{
 			get
@@ -184,14 +191,6 @@ namespace PBL3_LastReal
 			get
 			{
 				return this.GetTable<WorkShift>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Product> Products
-		{
-			get
-			{
-				return this.GetTable<Product>();
 			}
 		}
 	}
@@ -283,7 +282,7 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(40)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(30)")]
 		public string Password
 		{
 			get
@@ -1211,7 +1210,7 @@ namespace PBL3_LastReal
 		
 		private string _Name;
 		
-		private string _DOB;
+		private System.Nullable<System.DateTime> _DOB;
 		
 		private string _CCCD;
 		
@@ -1237,7 +1236,7 @@ namespace PBL3_LastReal
     partial void OnTypeChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnDOBChanging(string value);
+    partial void OnDOBChanging(System.Nullable<System.DateTime> value);
     partial void OnDOBChanged();
     partial void OnCCCDChanging(string value);
     partial void OnCCCDChanged();
@@ -1316,8 +1315,8 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOB", DbType="VarChar(50)")]
-		public string DOB
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DOB", DbType="Date")]
+		public System.Nullable<System.DateTime> DOB
 		{
 			get
 			{
@@ -1517,6 +1516,181 @@ namespace PBL3_LastReal
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Product")]
+	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_Product;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _Quantity;
+		
+		private System.Nullable<int> _ID_Price;
+		
+		private EntityRef<Price> _Price;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_ProductChanging(int value);
+    partial void OnID_ProductChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnQuantityChanging(System.Nullable<int> value);
+    partial void OnQuantityChanged();
+    partial void OnID_PriceChanging(System.Nullable<int> value);
+    partial void OnID_PriceChanged();
+    #endregion
+		
+		public Product()
+		{
+			this._Price = default(EntityRef<Price>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Product", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_Product
+		{
+			get
+			{
+				return this._ID_Product;
+			}
+			set
+			{
+				if ((this._ID_Product != value))
+				{
+					this.OnID_ProductChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Product = value;
+					this.SendPropertyChanged("ID_Product");
+					this.OnID_ProductChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int")]
+		public System.Nullable<int> Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Price", DbType="Int")]
+		public System.Nullable<int> ID_Price
+		{
+			get
+			{
+				return this._ID_Price;
+			}
+			set
+			{
+				if ((this._ID_Price != value))
+				{
+					if (this._Price.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PriceChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Price = value;
+					this.SendPropertyChanged("ID_Price");
+					this.OnID_PriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Price_Product", Storage="_Price", ThisKey="ID_Price", OtherKey="ID_Price", IsForeignKey=true)]
+		public Price Price
+		{
+			get
+			{
+				return this._Price.Entity;
+			}
+			set
+			{
+				Price previousValue = this._Price.Entity;
+				if (((previousValue != value) 
+							|| (this._Price.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Price.Entity = null;
+						previousValue.Products.Remove(this);
+					}
+					this._Price.Entity = value;
+					if ((value != null))
+					{
+						value.Products.Add(this);
+						this._ID_Price = value.ID_Price;
+					}
+					else
+					{
+						this._ID_Price = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Price");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Price")]
 	public partial class Price : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1609,7 +1783,7 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Price_Product1", Storage="_Products", ThisKey="ID_Price", OtherKey="ID_Price")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Price_Product", Storage="_Products", ThisKey="ID_Price", OtherKey="ID_Price")]
 		public EntitySet<Product> Products
 		{
 			get
@@ -2319,316 +2493,6 @@ namespace PBL3_LastReal
 		{
 			this.SendPropertyChanging();
 			entity.WorkShift = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Product")]
-	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_Product;
-		
-		private string _Name;
-		
-		private System.Nullable<int> _Quantity;
-		
-		private System.Nullable<int> _ID_Price;
-		
-		private string _Path;
-		
-		private System.Nullable<bool> _Chose;
-		
-		private System.Nullable<int> _SLDaDat;
-		
-		private EntityRef<Price> _Price;
-		public int imp_price
-		{
-			get
-			{
-				if (this.ID_Price == 1)
-				{
-					return (int)this.Price.ImPrice;
-				}
-				else
-				{
-					return (int)this.Price.ImPrice;
-
-				}
-			}
-			set
-			{
-				this.imp_price = value;
-			}
-		}
-		public int price
-		{
-			get
-			{
-				if (this.ID_Price == 1)
-				{
-					return (int)this.Price.ExPrice;
-				}
-				else
-				{
-					return (int)this.Price.ExPrice;
-
-				}
-			}
-			set
-			{
-				this.price = value;
-			}
-		}
-		public Image pics
-		{
-			get
-			{
-				if (!string.IsNullOrEmpty(Path))
-				{
-					if (File.Exists(Path))
-					{
-						return Image.FromFile(Path);
-					}
-				}
-				return null;
-			}
-		}
-
-		#region Extensibility Method Definitions
-		partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_ProductChanging(int value);
-    partial void OnID_ProductChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnQuantityChanging(System.Nullable<int> value);
-    partial void OnQuantityChanged();
-    partial void OnID_PriceChanging(System.Nullable<int> value);
-    partial void OnID_PriceChanged();
-    partial void OnPathChanging(string value);
-    partial void OnPathChanged();
-    partial void OnChoseChanging(System.Nullable<bool> value);
-    partial void OnChoseChanged();
-    partial void OnSLDaDatChanging(System.Nullable<int> value);
-    partial void OnSLDaDatChanged();
-    #endregion
-		
-		public Product()
-		{
-			this._Price = default(EntityRef<Price>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Product", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_Product
-		{
-			get
-			{
-				return this._ID_Product;
-			}
-			set
-			{
-				if ((this._ID_Product != value))
-				{
-					this.OnID_ProductChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Product = value;
-					this.SendPropertyChanged("ID_Product");
-					this.OnID_ProductChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int")]
-		public System.Nullable<int> Quantity
-		{
-			get
-			{
-				return this._Quantity;
-			}
-			set
-			{
-				if ((this._Quantity != value))
-				{
-					this.OnQuantityChanging(value);
-					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Price", DbType="Int")]
-		public System.Nullable<int> ID_Price
-		{
-			get
-			{
-				return this._ID_Price;
-			}
-			set
-			{
-				if ((this._ID_Price != value))
-				{
-					if (this._Price.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_PriceChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Price = value;
-					this.SendPropertyChanged("ID_Price");
-					this.OnID_PriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Path", DbType="VarChar(100)")]
-		public string Path
-		{
-			get
-			{
-				return this._Path;
-			}
-			set
-			{
-				if ((this._Path != value))
-				{
-					this.OnPathChanging(value);
-					this.SendPropertyChanging();
-					this._Path = value;
-					this.SendPropertyChanged("Path");
-					this.OnPathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Chose", DbType="Bit")]
-		public System.Nullable<bool> Chose
-		{
-			get
-			{
-				return this._Chose;
-			}
-			set
-			{
-				if ((this._Chose != value))
-				{
-					this.OnChoseChanging(value);
-					this.SendPropertyChanging();
-					this._Chose = value;
-					this.SendPropertyChanged("Chose");
-					this.OnChoseChanged();
-				}
-			}
-		}
-		public bool check
-		{
-			get
-			{
-				return (bool)this.Chose;
-			}
-			set
-			{
-				this.check = value;
-			}
-		}
-
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SLDaDat", DbType="Int")]
-		public System.Nullable<int> SLDaDat
-		{
-			get
-			{
-				return this._SLDaDat;
-			}
-			set
-			{
-				if ((this._SLDaDat != value))
-				{
-					this.OnSLDaDatChanging(value);
-					this.SendPropertyChanging();
-					this._SLDaDat = value;
-					this.SendPropertyChanged("SLDaDat");
-					this.OnSLDaDatChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Price_Product1", Storage="_Price", ThisKey="ID_Price", OtherKey="ID_Price", IsForeignKey=true)]
-		public Price Price
-		{
-			get
-			{
-				return this._Price.Entity;
-			}
-			set
-			{
-				Price previousValue = this._Price.Entity;
-				if (((previousValue != value) 
-							|| (this._Price.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Price.Entity = null;
-						previousValue.Products.Remove(this);
-					}
-					this._Price.Entity = value;
-					if ((value != null))
-					{
-						value.Products.Add(this);
-						this._ID_Price = value.ID_Price;
-					}
-					else
-					{
-						this._ID_Price = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Price");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }

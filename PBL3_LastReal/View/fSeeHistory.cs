@@ -38,7 +38,7 @@ namespace PBL3_LastReal.View
                 tb_Username.Text = ManageHistory.Instance.getInformationAccHistory(id).Username;
                 tb_Money.Text = ManageHistory.Instance.getInformationAccHistory(id).Money.ToString();
                 tb_Name.Text = ManageHistory.Instance.getInformationPerHistory(id).Name;
-                tb_DOB.Text = ManageHistory.Instance.getInformationPerHistory(id).DOB;
+                tb_DOB.Text = ManageHistory.Instance.getInformationPerHistory(id).DOB.ToString();
                 tb_CCCD.Text = ManageHistory.Instance.getInformationPerHistory(id).CCCD;
                 tb_PhoneNum.Text = ManageHistory.Instance.getInformationPerHistory(id).PhoneNum;
             }

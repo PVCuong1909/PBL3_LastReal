@@ -36,12 +36,12 @@ namespace PBL3_LastReal.BLL
             }
             return hash.ToString();
         }
-        public bool checkLogIn(string usernamef, string passwordf)
+        public bool checkLogIn(string username, string passwordf)
         {
             bool check = false;
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
-                string username = MD5Hash(usernamef), password = MD5Hash(passwordf);
+                string password = MD5Hash(passwordf);
                 if (db.Accounts.Where(p => p.Username == username && p.Password == password).Count() > 0)
                     check = true;
             }
@@ -52,8 +52,7 @@ namespace PBL3_LastReal.BLL
             int type = -1;
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
-                string username = MD5Hash(usernamef);
-                type = (int)db.Accounts.Where(p => p.Username == username).First().Type;
+                type = (int)db.Accounts.Where(p => p.Username == usernamef).First().Type;
             }
             return type;
         }
@@ -62,8 +61,7 @@ namespace PBL3_LastReal.BLL
             int money = -1;
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
-                string username = MD5Hash(usernamef);
-                money = (int)db.Accounts.Where(p => p.Username == username).First().Money;
+                money = (int)db.Accounts.Where(p => p.Username == usernamef).First().Money;
             }
             return money;
         }
@@ -72,8 +70,7 @@ namespace PBL3_LastReal.BLL
             string id = "";
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
-                string username = MD5Hash(usernamef);
-                id = db.Accounts.Where(p => p.Username == username).First().ID_Account;
+                id = db.Accounts.Where(p => p.Username == usernamef).First().ID_Account;
             }
             return id;
         }

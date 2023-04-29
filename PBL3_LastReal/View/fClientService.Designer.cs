@@ -32,11 +32,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_SelectedMatHang = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btn_Select = new System.Windows.Forms.Button();
+            this.btn_Del = new System.Windows.Forms.Button();
+            this.btn_OK = new System.Windows.Forms.Button();
+            this.btn_Exit = new System.Windows.Forms.Button();
+            this.txt_Search = new System.Windows.Forms.TextBox();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txt_Summary = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ListThucDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SelectedMatHang)).BeginInit();
             this.SuspendLayout();
@@ -89,65 +91,83 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "DANH SÁCH CHỌN";
             // 
-            // button1
+            // btn_Select
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(144, 349);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 37);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Chọn";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Select.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_Select.ForeColor = System.Drawing.Color.White;
+            this.btn_Select.Location = new System.Drawing.Point(23, 349);
+            this.btn_Select.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Select.Name = "btn_Select";
+            this.btn_Select.Size = new System.Drawing.Size(60, 37);
+            this.btn_Select.TabIndex = 12;
+            this.btn_Select.Text = "Chọn";
+            this.btn_Select.UseVisualStyleBackColor = false;
+            this.btn_Select.Click += new System.EventHandler(this.btn_Select_Click);
             // 
-            // button2
+            // btn_Del
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(264, 349);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(60, 37);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Xóa";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_Del.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_Del.ForeColor = System.Drawing.Color.White;
+            this.btn_Del.Location = new System.Drawing.Point(106, 349);
+            this.btn_Del.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Del.Name = "btn_Del";
+            this.btn_Del.Size = new System.Drawing.Size(60, 37);
+            this.btn_Del.TabIndex = 13;
+            this.btn_Del.Text = "Xóa";
+            this.btn_Del.UseVisualStyleBackColor = false;
+            this.btn_Del.Click += new System.EventHandler(this.btn_Del_Click);
             // 
-            // button3
+            // btn_OK
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(394, 349);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(60, 37);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "OK";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_OK.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_OK.ForeColor = System.Drawing.Color.White;
+            this.btn_OK.Location = new System.Drawing.Point(199, 349);
+            this.btn_OK.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_OK.Name = "btn_OK";
+            this.btn_OK.Size = new System.Drawing.Size(60, 37);
+            this.btn_OK.TabIndex = 14;
+            this.btn_OK.Text = "OK";
+            this.btn_OK.UseVisualStyleBackColor = false;
+            this.btn_OK.Click += new System.EventHandler(this.btn_OK_Click);
             // 
-            // button4
+            // btn_Exit
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(534, 349);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(60, 37);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Thoát";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btn_Exit.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_Exit.ForeColor = System.Drawing.Color.White;
+            this.btn_Exit.Location = new System.Drawing.Point(290, 349);
+            this.btn_Exit.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Exit.Name = "btn_Exit";
+            this.btn_Exit.Size = new System.Drawing.Size(60, 37);
+            this.btn_Exit.TabIndex = 15;
+            this.btn_Exit.Text = "Thoát";
+            this.btn_Exit.UseVisualStyleBackColor = false;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
-            // textBox1
+            // txt_Search
             // 
-            this.textBox1.Location = new System.Drawing.Point(238, 23);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(136, 20);
-            this.textBox1.TabIndex = 16;
+            this.txt_Search.Location = new System.Drawing.Point(238, 23);
+            this.txt_Search.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_Search.Name = "txt_Search";
+            this.txt_Search.Size = new System.Drawing.Size(136, 20);
+            this.txt_Search.TabIndex = 16;
+            this.txt_Search.TextChanged += new System.EventHandler(this.txt_Search_TextChanged);
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(496, 349);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(75, 18);
+            this.guna2HtmlLabel1.TabIndex = 17;
+            this.guna2HtmlLabel1.Text = "Thành tiền";
+            // 
+            // txt_Summary
+            // 
+            this.txt_Summary.Location = new System.Drawing.Point(577, 347);
+            this.txt_Summary.Name = "txt_Summary";
+            this.txt_Summary.Size = new System.Drawing.Size(128, 20);
+            this.txt_Summary.TabIndex = 18;
             // 
             // fClientService
             // 
@@ -156,11 +176,13 @@
             this.BackgroundImage = global::PBL3_LastReal.Properties.Resources._6660efc642a59dfbc4b4;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(742, 412);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txt_Summary);
+            this.Controls.Add(this.guna2HtmlLabel1);
+            this.Controls.Add(this.txt_Search);
+            this.Controls.Add(this.btn_Exit);
+            this.Controls.Add(this.btn_OK);
+            this.Controls.Add(this.btn_Del);
+            this.Controls.Add(this.btn_Select);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgv_SelectedMatHang);
             this.Controls.Add(this.label1);
@@ -183,10 +205,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgv_SelectedMatHang;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btn_Select;
+        private System.Windows.Forms.Button btn_Del;
+        private System.Windows.Forms.Button btn_OK;
+        private System.Windows.Forms.Button btn_Exit;
+        private System.Windows.Forms.TextBox txt_Search;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private System.Windows.Forms.TextBox txt_Summary;
     }
 }
