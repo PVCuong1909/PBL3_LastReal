@@ -372,7 +372,7 @@
             this.Controls.Add(this.tb_search);
             this.Controls.Add(this.btn_search);
             this.Name = "UC_May";
-            this.Size = new System.Drawing.Size(1160, 543);
+            this.Size = new System.Drawing.Size(880, 455);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -35,12 +35,14 @@ namespace PBL3_LastReal.View
             if (dgv.SelectedRows.Count == 1)
             {
                 string id = dgv.SelectedRows[0].Cells[0].Value.ToString();
-                tb_Username.Text = ManageHistory.Instance.getInformationAccHistory(id).Username;
-                tb_Money.Text = ManageHistory.Instance.getInformationAccHistory(id).Money.ToString();
-                tb_Name.Text = ManageHistory.Instance.getInformationPerHistory(id).Name;
-                tb_DOB.Text = ManageHistory.Instance.getInformationPerHistory(id).DOB;
-                tb_CCCD.Text = ManageHistory.Instance.getInformationPerHistory(id).CCCD;
-                tb_PhoneNum.Text = ManageHistory.Instance.getInformationPerHistory(id).PhoneNum;
+                Account acc = ManageHistory.Instance.getInformationAccHistory(id);
+                tb_Username.Text = acc.Username;
+                tb_Money.Text = acc.Money.ToString();
+                Person per = ManageHistory.Instance.getInformationPerHistory(id);
+                tb_Name.Text = per.Name;
+                tb_DOB.Text = per.DOB;
+                tb_CCCD.Text = per.CCCD;
+                tb_PhoneNum.Text = per.PhoneNum;
             }
         }
     }

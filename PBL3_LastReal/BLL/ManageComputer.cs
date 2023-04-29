@@ -187,7 +187,7 @@ namespace PBL3_LastReal.BLL
             }
             foreach (Computer com in list)
             {
-                if(com.ID_Computer.ToString().Contains(txt) || com.Price.ToString().Contains(txt) || com.State.ToString().Contains(txt) || com.Type.ToString().Contains(txt))
+                if(com.ID_Computer.ToString().Contains(txt))
                 {
                     list1.Add(com);
                 }    
@@ -204,7 +204,7 @@ namespace PBL3_LastReal.BLL
             }
             foreach (Computer com in list)
             {
-                if (com.ID_Computer.ToString().Contains(txt) || com.Price.ToString().Contains(txt) || com.State.ToString().Contains(txt) || com.Type.ToString().Contains(txt))
+                if (com.ID_Computer.ToString().Contains(txt))
                 {
                     list1.Add(com);
                 }

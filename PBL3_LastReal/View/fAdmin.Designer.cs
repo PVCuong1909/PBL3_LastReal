@@ -34,12 +34,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_Ca = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_DoanhThu = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_NhanVien = new Guna.UI2.WinForms.Guna2Button();
             this.btn_DichVu = new Guna.UI2.WinForms.Guna2Button();
             this.btn_May = new Guna.UI2.WinForms.Guna2Button();
             this.btn_TaiKhoan = new Guna.UI2.WinForms.Guna2Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.PanelControl = new System.Windows.Forms.Panel();
             this.btn_dx = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
@@ -117,8 +117,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.guna2Button5);
-            this.panel2.Controls.Add(this.guna2Button4);
+            this.panel2.Controls.Add(this.btn_Ca);
+            this.panel2.Controls.Add(this.btn_DoanhThu);
+            this.panel2.Controls.Add(this.btn_NhanVien);
             this.panel2.Controls.Add(this.btn_DichVu);
             this.panel2.Controls.Add(this.btn_May);
             this.panel2.Controls.Add(this.btn_TaiKhoan);
@@ -128,45 +129,68 @@
             this.panel2.Size = new System.Drawing.Size(219, 543);
             this.panel2.TabIndex = 1;
             // 
-            // guna2Button5
+            // btn_Ca
             // 
-            this.guna2Button5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2Button5.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.guna2Button5.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.guna2Button5.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button5.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button5.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button5.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button5.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.guna2Button5.Location = new System.Drawing.Point(0, 387);
-            this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.Size = new System.Drawing.Size(216, 90);
-            this.guna2Button5.TabIndex = 6;
-            this.guna2Button5.Text = "Quản lý doanh thu";
+            this.btn_Ca.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Ca.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btn_Ca.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_Ca.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btn_Ca.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Ca.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Ca.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Ca.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Ca.FillColor = System.Drawing.Color.Transparent;
+            this.btn_Ca.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Ca.ForeColor = System.Drawing.Color.Black;
+            this.btn_Ca.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_Ca.Location = new System.Drawing.Point(0, 448);
+            this.btn_Ca.Name = "btn_Ca";
+            this.btn_Ca.Size = new System.Drawing.Size(216, 86);
+            this.btn_Ca.TabIndex = 7;
+            this.btn_Ca.Text = "Quản lý ca";
+            this.btn_Ca.Click += new System.EventHandler(this.btn_Ca_Click);
             // 
-            // guna2Button4
+            // btn_DoanhThu
             // 
-            this.guna2Button4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2Button4.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.guna2Button4.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.guna2Button4.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.guna2Button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button4.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button4.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button4.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button4.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.guna2Button4.Location = new System.Drawing.Point(0, 291);
-            this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(216, 90);
-            this.guna2Button4.TabIndex = 5;
-            this.guna2Button4.Text = "Quản lý nhân viên";
+            this.btn_DoanhThu.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_DoanhThu.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btn_DoanhThu.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_DoanhThu.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btn_DoanhThu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_DoanhThu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_DoanhThu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_DoanhThu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_DoanhThu.FillColor = System.Drawing.Color.Transparent;
+            this.btn_DoanhThu.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_DoanhThu.ForeColor = System.Drawing.Color.Black;
+            this.btn_DoanhThu.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_DoanhThu.Location = new System.Drawing.Point(0, 359);
+            this.btn_DoanhThu.Name = "btn_DoanhThu";
+            this.btn_DoanhThu.Size = new System.Drawing.Size(216, 83);
+            this.btn_DoanhThu.TabIndex = 6;
+            this.btn_DoanhThu.Text = "Quản lý doanh thu";
+            this.btn_DoanhThu.Click += new System.EventHandler(this.btn_DoanhThu_Click);
+            // 
+            // btn_NhanVien
+            // 
+            this.btn_NhanVien.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_NhanVien.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btn_NhanVien.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_NhanVien.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btn_NhanVien.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_NhanVien.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_NhanVien.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_NhanVien.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_NhanVien.FillColor = System.Drawing.Color.Transparent;
+            this.btn_NhanVien.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_NhanVien.ForeColor = System.Drawing.Color.Black;
+            this.btn_NhanVien.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_NhanVien.Location = new System.Drawing.Point(0, 270);
+            this.btn_NhanVien.Name = "btn_NhanVien";
+            this.btn_NhanVien.Size = new System.Drawing.Size(216, 83);
+            this.btn_NhanVien.TabIndex = 5;
+            this.btn_NhanVien.Text = "Quản lý nhân viên";
+            this.btn_NhanVien.Click += new System.EventHandler(this.btn_NhanVien_Click);
             // 
             // btn_DichVu
             // 
@@ -182,9 +206,9 @@
             this.btn_DichVu.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DichVu.ForeColor = System.Drawing.Color.Black;
             this.btn_DichVu.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btn_DichVu.Location = new System.Drawing.Point(0, 195);
+            this.btn_DichVu.Location = new System.Drawing.Point(0, 181);
             this.btn_DichVu.Name = "btn_DichVu";
-            this.btn_DichVu.Size = new System.Drawing.Size(216, 90);
+            this.btn_DichVu.Size = new System.Drawing.Size(216, 83);
             this.btn_DichVu.TabIndex = 4;
             this.btn_DichVu.Text = "Quản lý dịch vụ";
             this.btn_DichVu.Click += new System.EventHandler(this.btn_DichVu_Click);
@@ -203,9 +227,9 @@
             this.btn_May.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_May.ForeColor = System.Drawing.Color.Black;
             this.btn_May.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btn_May.Location = new System.Drawing.Point(0, 99);
+            this.btn_May.Location = new System.Drawing.Point(0, 92);
             this.btn_May.Name = "btn_May";
-            this.btn_May.Size = new System.Drawing.Size(216, 90);
+            this.btn_May.Size = new System.Drawing.Size(216, 83);
             this.btn_May.TabIndex = 3;
             this.btn_May.Text = "Quản lý máy";
             this.btn_May.Click += new System.EventHandler(this.btn_May_Click);
@@ -228,7 +252,7 @@
             this.btn_TaiKhoan.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_TaiKhoan.Location = new System.Drawing.Point(0, 3);
             this.btn_TaiKhoan.Name = "btn_TaiKhoan";
-            this.btn_TaiKhoan.Size = new System.Drawing.Size(216, 90);
+            this.btn_TaiKhoan.Size = new System.Drawing.Size(216, 83);
             this.btn_TaiKhoan.TabIndex = 2;
             this.btn_TaiKhoan.Text = "Quản lý tài khoản";
             this.btn_TaiKhoan.Click += new System.EventHandler(this.btn_TaiKhoan_Click);
@@ -286,14 +310,14 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Guna.UI2.WinForms.Guna2Button btn_TaiKhoan;
-        private Guna.UI2.WinForms.Guna2Button guna2Button5;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
+        private Guna.UI2.WinForms.Guna2Button btn_DoanhThu;
+        private Guna.UI2.WinForms.Guna2Button btn_NhanVien;
         private Guna.UI2.WinForms.Guna2Button btn_DichVu;
         private Guna.UI2.WinForms.Guna2Button btn_May;
         private System.Windows.Forms.Panel PanelControl;
         private Guna.UI2.WinForms.Guna2Button btn_DangXuat;
         private Guna.UI2.WinForms.Guna2Button btn_dx;
+        private Guna.UI2.WinForms.Guna2Button btn_Ca;
     }
 }

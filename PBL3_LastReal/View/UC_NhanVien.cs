@@ -10,30 +10,23 @@ using System.Windows.Forms;
 
 namespace PBL3_LastReal.View
 {
-    public partial class UC_TaiKhoan : UserControl
+    public partial class UC_NhanVien : UserControl
     {
-        public UC_TaiKhoan()
+        public UC_NhanVien()
         {
             InitializeComponent();
         }
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            fAddEditAccount f = new fAddEditAccount();
+            fAddEditStaff f = new fAddEditStaff();
             f.ShowDialog();
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            fAddEditAccount f = new fAddEditAccount();
+            fAddEditStaff f = new fAddEditStaff();
             f.ShowDialog();
         }
-
-        private void btn_Password_Click(object sender, EventArgs e)
-        {
-            fAdminPassword f = new fAdminPassword();
-            f.ShowDialog();
-        }
-
     }
 }

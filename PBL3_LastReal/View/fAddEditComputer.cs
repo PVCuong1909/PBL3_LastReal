@@ -32,6 +32,7 @@ namespace PBL3_LastReal.View
             if(s !=null)
             {
                 tb_ID.Text = s.ID_Computer.ToString();
+                tb_ID.Enabled = false;
                 tb_price.Text = s.Price.ToString();
                 tb_type.Text = s.Type.ToString();
                 if (s.State == 0)
@@ -60,16 +61,20 @@ namespace PBL3_LastReal.View
             }
             else
             {
-                if(ManageComputer.Instance.checkIDMay(ID_Computer) == true)
+                if(ManageComputer.Instance.checkIDMay(ID_Computer) == true && tb_ID.Enabled == false)
                 {
                     ManageComputer.Instance.updateComputer(ID_Computer, Price, Type, State);
                     MessageBox.Show("Cập nhật thông tin máy thành công!");
                 }
-                else
+                else if(ManageComputer.Instance.checkIDMay(ID_Computer) == false)
                 {
                     ManageComputer.Instance.addComputer(ID_Computer, Price, Type, State);
                     MessageBox.Show("Thêm máy thành công!");
                 }
+                else
+                {
+                    MessageBox.Show("Mã máy trùng trong danh sách!");
+                } 
                 UpdateDGV();
                 this.Dispose();
             }

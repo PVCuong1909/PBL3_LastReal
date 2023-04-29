@@ -48,5 +48,23 @@ namespace PBL3_LastReal.View
         {
             this.Dispose();
         }
+
+        private void btn_NhanVien_Click(object sender, EventArgs e)
+        {
+            UC_NhanVien uc = new UC_NhanVien();
+            addUserControl(uc);
+        }
+
+        private void btn_DoanhThu_Click(object sender, EventArgs e)
+        {
+            UC_DoanhThu uc = new UC_DoanhThu();
+            addUserControl(uc);
+        }
+
+        private void btn_Ca_Click(object sender, EventArgs e)
+        {
+            UC_Ca uc = new UC_Ca();
+            addUserControl(uc);
+        }
     }
 }

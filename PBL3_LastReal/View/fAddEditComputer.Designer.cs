@@ -117,6 +117,7 @@
             // 
             this.btn_OK.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_OK.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_OK.ForeColor = System.Drawing.Color.White;
             this.btn_OK.Location = new System.Drawing.Point(190, 269);
             this.btn_OK.Name = "btn_OK";
             this.btn_OK.Size = new System.Drawing.Size(80, 35);
@@ -129,6 +130,7 @@
             // 
             this.btn_Huy.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_Huy.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Huy.ForeColor = System.Drawing.Color.White;
             this.btn_Huy.Location = new System.Drawing.Point(39, 269);
             this.btn_Huy.Name = "btn_Huy";
             this.btn_Huy.Size = new System.Drawing.Size(80, 35);
