@@ -33,5 +33,16 @@ namespace PBL3_LastReal.Properties {
                 return ((string)(this["QL_QuanNetConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=admin-pc\\admin;Initial Catalog=QL_QuanNet;User ID=sa;Password=Qh@6103" +
+            "0803")]
+        public string QL_QuanNetConnectionString1 {
+            get {
+                return ((string)(this["QL_QuanNetConnectionString1"]));
+            }
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace PBL3_LastReal.View
         }
         private void GUI()
         {
-            dgv.DataSource = ManageHistory.Instance.seeHistoryByIdCom(ID_Com).Select(p => new {p.ID_Account, p.TimeBegin, p.TimeEnd}).ToList();
+            dgv.DataSource = ManageHistory.Instance.seeHistoryByIdCom(ID_Com).Select(p => new { p.ID_Account, p.TimeBegin, p.TimeEnd }).ToList();
         }
 
         private void btn_Out_Click(object sender, EventArgs e)
@@ -35,14 +35,12 @@ namespace PBL3_LastReal.View
             if (dgv.SelectedRows.Count == 1)
             {
                 string id = dgv.SelectedRows[0].Cells[0].Value.ToString();
-                Account acc = ManageHistory.Instance.getInformationAccHistory(id);
-                tb_Username.Text = acc.Username;
-                tb_Money.Text = acc.Money.ToString();
-                Person per = ManageHistory.Instance.getInformationPerHistory(id);
-                tb_Name.Text = per.Name;
-                tb_DOB.Text = per.DOB;
-                tb_CCCD.Text = per.CCCD;
-                tb_PhoneNum.Text = per.PhoneNum;
+                tb_Username.Text = ManageHistory.Instance.getInformationAccHistory(id).Username;
+                tb_Money.Text = ManageHistory.Instance.getInformationAccHistory(id).Money.ToString();
+                tb_Name.Text = ManageHistory.Instance.getInformationPerHistory(id).Name;
+                tb_DOB.Text = ManageHistory.Instance.getInformationPerHistory(id).DOB;
+                tb_CCCD.Text = ManageHistory.Instance.getInformationPerHistory(id).CCCD;
+                tb_PhoneNum.Text = ManageHistory.Instance.getInformationPerHistory(id).PhoneNum;
             }
         }
     }

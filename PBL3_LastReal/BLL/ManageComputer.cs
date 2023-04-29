@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.WebSockets;
+using System.Windows.Forms;
 
 namespace PBL3_LastReal.BLL
 {
@@ -69,9 +70,9 @@ namespace PBL3_LastReal.BLL
             {
                 int price = (int)db.Computers.Where(p => p.ID_Computer == id_com).First().Price;
                 int money = (int)db.Accounts.Where(p => p.ID_Account == id_acc).First().Money;
-                float remainTime = money / price;
+                float remainTime =(float) money / price;
                 int hour = (int)remainTime;
-                int minute = (int)(remainTime - hour)*60;
+                int minute = Convert.ToInt32((remainTime - hour) * 60);
                 time = hour.ToString() + " : " + minute.ToString();
             }
             return time;

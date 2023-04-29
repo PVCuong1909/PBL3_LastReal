@@ -54,8 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\ManageAccount.cs" />
+    <Compile Include="BLL\ManageBill.cs" />
     <Compile Include="BLL\ManageComputer.cs" />
     <Compile Include="BLL\ManageHistory.cs" />
+    <Compile Include="BLL\ManagerService.cs" />
+    <Compile Include="DTO\Service.cs" />
     <Compile Include="QuanLyNet.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -227,6 +230,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="QuanLyNet.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>QuanLyNet.designer.cs</LastGenOutput>
@@ -235,11 +243,6 @@
     <None Include="QuanLyNet.dbml.layout">
       <DependentUpon>QuanLyNet.dbml</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\13b17612f771282f7160.jpg" />
   </ItemGroup>
   <ItemGroup>

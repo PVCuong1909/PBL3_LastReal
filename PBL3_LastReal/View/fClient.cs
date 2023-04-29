@@ -31,6 +31,10 @@ namespace PBL3_LastReal.View
             tb_RemainTime.Text = ManageComputer.Instance.getRemainTime(id_Computer, id_Account);
             tb_TimeCost.Text = ManageComputer.Instance.getPrice(id_Computer).ToString() + "/h";
         }
+        private void setSummary(string summary) 
+        {
+            tb_ServiceCost.Text = summary;
+        }
         private void btn_DangXuat_Click(object sender, EventArgs e)
         {
             //ManageHistory.Instance.addHistory(id_Computer, id_Account, timeBegin, DateTime.Now);
@@ -47,6 +51,7 @@ namespace PBL3_LastReal.View
         private void btn_DichVu_Click(object sender, EventArgs e)
         {
             fClientService f = new fClientService();
+            f.UpdateClientForm += new fClientService.UpdateClientFormHandler(setSummary);
             f.ShowDialog();
         }
     }

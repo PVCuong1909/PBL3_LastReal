@@ -2,139 +2,139 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 17.125" name="QuanLyNet">
   <DataContextMoniker Name="/QuanLyNetDataContext" />
   <nestedChildShapes>
-    <classShape Id="d902877b-8b1c-437a-9656-6038f75c54cb" absoluteBounds="3.5, 9, 2, 1.9631982421874987">
+    <classShape Id="4b3efe06-4f66-491b-8b8d-e1af33ae5b2b" absoluteBounds="3.5, 9, 2, 1.9631982421874987">
       <DataClassMoniker Name="/QuanLyNetDataContext/Account" />
       <nestedChildShapes>
-        <elementListCompartment Id="3f41153f-9255-4d9e-b297-8fd18259f86e" absoluteBounds="3.515, 9.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d770f35a-49cb-41fa-9ef8-8eb589792175" absoluteBounds="3.515, 9.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c8b10179-7521-4752-8f6a-950991448b60" absoluteBounds="8.75, 3.75, 2, 1.5785953776041666">
+    <classShape Id="0f338f9c-0fb8-4bb0-9b87-4b5b3a43b34e" absoluteBounds="8.75, 3.75, 2, 1.5785953776041666">
       <DataClassMoniker Name="/QuanLyNetDataContext/Bill" />
       <nestedChildShapes>
-        <elementListCompartment Id="93af0ec0-1598-482a-a049-0125796ebee7" absoluteBounds="8.765, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3f4dc0f7-7561-49f5-a494-02b5b0ca009b" absoluteBounds="8.765, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="2d4f6c88-26ea-4d09-b75b-6d4d9b742cc4" absoluteBounds="3.5, 15.25, 2, 1.5785953776041666">
+    <classShape Id="49e5fa95-2eea-4744-9388-29fb0b76cec0" absoluteBounds="3.5, 15.25, 2, 1.5785953776041666">
       <DataClassMoniker Name="/QuanLyNetDataContext/Computer" />
       <nestedChildShapes>
-        <elementListCompartment Id="a6b17d08-df73-44f9-ac26-a49944540278" absoluteBounds="3.515, 15.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="11c508a2-0498-4221-b370-e0bdc3c8ace4" absoluteBounds="3.515, 15.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="256a32d9-2451-4b2d-a6a7-2b69fb37b5ae" absoluteBounds="6.5, 6.75, 2, 1.5785953776041675">
+    <classShape Id="5f987f27-082e-417b-a771-0cd1606b26ee" absoluteBounds="6.5, 6.75, 2, 1.5785953776041675">
       <DataClassMoniker Name="/QuanLyNetDataContext/DetailWorkShift" />
       <nestedChildShapes>
-        <elementListCompartment Id="fb82734e-0a5f-4ee7-aa9c-2d972c1ec412" absoluteBounds="6.515, 7.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f0352523-7a37-42a4-9d5e-ca82a7f845dd" absoluteBounds="6.515, 7.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c4543c17-1329-4427-b068-791852a8b868" absoluteBounds="6.25, 9.125, 2, 1.7708968098958344">
+    <classShape Id="e083a7e2-deac-47f6-83f0-41c381416ba5" absoluteBounds="6.25, 9.125, 2, 1.7708968098958344">
       <DataClassMoniker Name="/QuanLyNetDataContext/History" />
       <nestedChildShapes>
-        <elementListCompartment Id="ec2324e8-b800-4139-8a2f-dcbd201ec692" absoluteBounds="6.265, 9.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="aa2868cf-cc0b-46e4-b5f2-f728d845379f" absoluteBounds="6.265, 9.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="fd08daf8-6f07-4509-87fc-3e94b25cd8a7" absoluteBounds="0.75, 4.5, 2, 2.1554996744791666">
+    <classShape Id="2f8724be-3485-466a-98ee-995fb11dfd66" absoluteBounds="0.75, 4.5, 2, 2.1554996744791666">
       <DataClassMoniker Name="/QuanLyNetDataContext/Person" />
       <nestedChildShapes>
-        <elementListCompartment Id="bd39cf4d-a49b-4b15-a43b-d0e051367211" absoluteBounds="0.765, 4.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="49d8138a-9196-4728-ab4f-c54e23437da3" absoluteBounds="0.765, 4.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a34d4c4d-693e-47da-887a-d6df11181077" absoluteBounds="6.75, 1.25, 2, 1.3862939453125003">
-      <DataClassMoniker Name="/QuanLyNetDataContext/Price" />
-      <nestedChildShapes>
-        <elementListCompartment Id="8cdb5537-611e-496a-bda7-1d37b379a67e" absoluteBounds="6.765, 1.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="e3d91b5e-bb8a-4fae-8f3f-2fa822befa4a" absoluteBounds="9.5, 0.875, 2, 1.9631982421875003">
+    <classShape Id="9aceb933-2cc7-4a5e-97bc-49881f565d52" absoluteBounds="9.5, 0.875, 2, 1.5785953776041666">
       <DataClassMoniker Name="/QuanLyNetDataContext/Product" />
       <nestedChildShapes>
-        <elementListCompartment Id="b1bf6284-734c-44b1-b911-1273a32570ad" absoluteBounds="9.515, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b5828058-56ee-4966-97bf-d9a1eacfaa0b" absoluteBounds="9.515, 1.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="63985f40-f17f-460f-998b-bb8269bd5620" absoluteBounds="3.5, 2.375, 2, 1.3862939453125005">
+    <classShape Id="3441ad6e-76b7-4cc8-a75b-58d99281e25a" absoluteBounds="6.75, 1, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/QuanLyNetDataContext/Price" />
+      <nestedChildShapes>
+        <elementListCompartment Id="99c454ee-2e6e-4927-89b2-5a6c3a9de1ec" absoluteBounds="6.765, 1.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5839f50f-4e6e-4f3f-9485-a9f25112d4eb" absoluteBounds="3.5, 2.375, 2, 1.3862939453125005">
       <DataClassMoniker Name="/QuanLyNetDataContext/Salary" />
       <nestedChildShapes>
-        <elementListCompartment Id="959f8639-68ea-47fa-b3a5-0972074125fa" absoluteBounds="3.515, 2.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a394866c-bdb5-4427-a935-952059b71902" absoluteBounds="3.515, 2.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1873d890-7787-4bd8-970e-4cf9073b5b51" absoluteBounds="6.25, 4.5, 2, 1.3862939453125005">
+    <classShape Id="adb2c6a6-2e48-4839-b93e-6d4dccddbc9f" absoluteBounds="6.25, 4.5, 2, 1.3862939453125005">
       <DataClassMoniker Name="/QuanLyNetDataContext/Ticket" />
       <nestedChildShapes>
-        <elementListCompartment Id="98aa4460-145d-4a6d-8d39-fa0c2bc7aa20" absoluteBounds="6.265, 4.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="76b540c6-9313-4baf-8b9e-808369244064" absoluteBounds="6.265, 4.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b919912e-31f5-4a64-9662-ad0b89d22ff2" absoluteBounds="3.5, 4.5, 2, 1.3862939453125005">
+    <classShape Id="df2f06e5-dece-41e8-9513-6f1f44441ebe" absoluteBounds="3.5, 4.5, 2, 1.3862939453125005">
       <DataClassMoniker Name="/QuanLyNetDataContext/Vehicle" />
       <nestedChildShapes>
-        <elementListCompartment Id="9e66371a-5631-4839-a7bb-ab403a3a22cf" absoluteBounds="3.515, 4.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1cead551-6bbc-4752-a7d3-722ae5c32c5c" absoluteBounds="3.515, 4.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="6534d4ba-62a8-4d54-b03b-188736970121" absoluteBounds="3.75, 12.625, 2, 1.7708968098958344">
+    <classShape Id="bc8f1552-61e0-4d5d-a0e4-f15222c87d5a" absoluteBounds="3.75, 12.625, 2, 1.7708968098958344">
       <DataClassMoniker Name="/QuanLyNetDataContext/WorkShift" />
       <nestedChildShapes>
-        <elementListCompartment Id="1c90997f-e601-4495-8830-d533201ccfba" absoluteBounds="3.765, 13.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7e202e93-7200-4933-ba91-4801511d0c6d" absoluteBounds="3.765, 13.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(5.5 : 10.0104484049479); (5.57291666666667 : 10.0104484049479 : JumpStart); (5.73958333333333 : 10.0104484049479 : JumpEnd); (6.25 : 10.0104484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QuanLyNetDataContext/Account/Account_History" />
       <nodes>
-        <classShapeMoniker Id="d902877b-8b1c-437a-9656-6038f75c54cb" />
-        <classShapeMoniker Id="c4543c17-1329-4427-b068-791852a8b868" />
+        <classShapeMoniker Id="4b3efe06-4f66-491b-8b8d-e1af33ae5b2b" />
+        <classShapeMoniker Id="e083a7e2-deac-47f6-83f0-41c381416ba5" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 16.0392976888021); (7.25 : 16.0392976888021); (7.25 : 10.8958968098958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QuanLyNetDataContext/Computer/Computer_History" />
       <nodes>
-        <classShapeMoniker Id="2d4f6c88-26ea-4d09-b75b-6d4d9b742cc4" />
-        <classShapeMoniker Id="c4543c17-1329-4427-b068-791852a8b868" />
+        <classShapeMoniker Id="49e5fa95-2eea-4744-9388-29fb0b76cec0" />
+        <classShapeMoniker Id="e083a7e2-deac-47f6-83f0-41c381416ba5" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(1.75 : 6.65549967447917); (1.75 : 9.98159912109375); (3.5 : 9.98159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QuanLyNetDataContext/Person/Person_Account" />
       <nodes>
-        <classShapeMoniker Id="fd08daf8-6f07-4509-87fc-3e94b25cd8a7" />
-        <classShapeMoniker Id="d902877b-8b1c-437a-9656-6038f75c54cb" />
+        <classShapeMoniker Id="2f8724be-3485-466a-98ee-995fb11dfd66" />
+        <classShapeMoniker Id="4b3efe06-4f66-491b-8b8d-e1af33ae5b2b" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 6.30214680989583); (8.40625 : 6.30214680989583); (8.40625 : 6.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QuanLyNetDataContext/Person/Person_DetailWorkShift" />
       <nodes>
-        <classShapeMoniker Id="fd08daf8-6f07-4509-87fc-3e94b25cd8a7" />
-        <classShapeMoniker Id="256a32d9-2451-4b2d-a6a7-2b69fb37b5ae" />
+        <classShapeMoniker Id="2f8724be-3485-466a-98ee-995fb11dfd66" />
+        <classShapeMoniker Id="5f987f27-082e-417b-a771-0cd1606b26ee" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.75 : 1.94314697265625); (9.5 : 1.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.75 : 1.69314697265625); (9.5 : 1.69314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QuanLyNetDataContext/Price/Price_Product" />
       <nodes>
-        <classShapeMoniker Id="a34d4c4d-693e-47da-887a-d6df11181077" />
-        <classShapeMoniker Id="e3d91b5e-bb8a-4fae-8f3f-2fa822befa4a" />
+        <classShapeMoniker Id="3441ad6e-76b7-4cc8-a75b-58d99281e25a" />
+        <classShapeMoniker Id="9aceb933-2cc7-4a5e-97bc-49881f565d52" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(1.75 : 4.5); (1.75 : 3.06814697265625); (3.5 : 3.06814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QuanLyNetDataContext/Person/Person_Salary" />
       <nodes>
-        <classShapeMoniker Id="fd08daf8-6f07-4509-87fc-3e94b25cd8a7" />
-        <classShapeMoniker Id="63985f40-f17f-460f-998b-bb8269bd5620" />
+        <classShapeMoniker Id="2f8724be-3485-466a-98ee-995fb11dfd66" />
+        <classShapeMoniker Id="5839f50f-4e6e-4f3f-9485-a9f25112d4eb" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 5.19314697265625); (6.25 : 5.19314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QuanLyNetDataContext/Vehicle/Vehicle_Ticket" />
       <nodes>
-        <classShapeMoniker Id="b919912e-31f5-4a64-9662-ad0b89d22ff2" />
-        <classShapeMoniker Id="1873d890-7787-4bd8-970e-4cf9073b5b51" />
+        <classShapeMoniker Id="df2f06e5-dece-41e8-9513-6f1f44441ebe" />
+        <classShapeMoniker Id="adb2c6a6-2e48-4839-b93e-6d4dccddbc9f" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 5.19314697265625); (3.5 : 5.19314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QuanLyNetDataContext/Person/Person_Vehicle" />
       <nodes>
-        <classShapeMoniker Id="fd08daf8-6f07-4509-87fc-3e94b25cd8a7" />
-        <classShapeMoniker Id="b919912e-31f5-4a64-9662-ad0b89d22ff2" />
+        <classShapeMoniker Id="2f8724be-3485-466a-98ee-995fb11dfd66" />
+        <classShapeMoniker Id="df2f06e5-dece-41e8-9513-6f1f44441ebe" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.65625 : 12.625); (5.65625 : 7.53929768880208); (6.5 : 7.53929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QuanLyNetDataContext/WorkShift/WorkShift_DetailWorkShift" />
       <nodes>
-        <classShapeMoniker Id="6534d4ba-62a8-4d54-b03b-188736970121" />
-        <classShapeMoniker Id="256a32d9-2451-4b2d-a6a7-2b69fb37b5ae" />
+        <classShapeMoniker Id="bc8f1552-61e0-4d5d-a0e4-f15222c87d5a" />
+        <classShapeMoniker Id="5f987f27-082e-417b-a771-0cd1606b26ee" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
