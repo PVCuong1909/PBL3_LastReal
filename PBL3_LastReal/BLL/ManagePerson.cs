@@ -22,7 +22,7 @@ namespace PBL3_LastReal.BLL
             }
             private set { }
         }
-        public Person GetPerson(int id) 
+        public Person GetPerson(int id)
         {
             Person per = new Person();
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
@@ -69,7 +69,7 @@ namespace PBL3_LastReal.BLL
                 db.SubmitChanges();
             }
         }
-        public void delPerson(int id) 
+        public void delPerson(int id)
         {
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {

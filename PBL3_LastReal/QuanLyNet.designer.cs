@@ -20,9 +20,10 @@ namespace PBL3_LastReal
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QL_QuanNet")]
+    using System.Drawing;
+    using System.IO;
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QL_QuanNetReal")]
 	public partial class QuanLyNetDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -36,12 +37,15 @@ namespace PBL3_LastReal
     partial void InsertBill(Bill instance);
     partial void UpdateBill(Bill instance);
     partial void DeleteBill(Bill instance);
-    partial void InsertDetailWorkShift(DetailWorkShift instance);
-    partial void UpdateDetailWorkShift(DetailWorkShift instance);
-    partial void DeleteDetailWorkShift(DetailWorkShift instance);
+    partial void InsertBill2(Bill2 instance);
+    partial void UpdateBill2(Bill2 instance);
+    partial void DeleteBill2(Bill2 instance);
     partial void InsertComputer(Computer instance);
     partial void UpdateComputer(Computer instance);
     partial void DeleteComputer(Computer instance);
+    partial void InsertDetailWorkShift(DetailWorkShift instance);
+    partial void UpdateDetailWorkShift(DetailWorkShift instance);
+    partial void DeleteDetailWorkShift(DetailWorkShift instance);
     partial void InsertHistory(History instance);
     partial void UpdateHistory(History instance);
     partial void DeleteHistory(History instance);
@@ -69,7 +73,7 @@ namespace PBL3_LastReal
     #endregion
 		
 		public QuanLyNetDataContext() : 
-				base(global::PBL3_LastReal.Properties.Settings.Default.QL_QuanNetConnectionString1, mappingSource)
+				base(global::PBL3_LastReal.Properties.Settings.Default.QL_QuanNetConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -114,11 +118,11 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		public System.Data.Linq.Table<DetailWorkShift> DetailWorkShifts
+		public System.Data.Linq.Table<Bill2> Bill2s
 		{
 			get
 			{
-				return this.GetTable<DetailWorkShift>();
+				return this.GetTable<Bill2>();
 			}
 		}
 		
@@ -127,6 +131,14 @@ namespace PBL3_LastReal
 			get
 			{
 				return this.GetTable<Computer>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DetailWorkShift> DetailWorkShifts
+		{
+			get
+			{
+				return this.GetTable<DetailWorkShift>();
 			}
 		}
 		
@@ -213,6 +225,8 @@ namespace PBL3_LastReal
 		
 		private System.Nullable<int> _ID_Person;
 		
+		private EntitySet<Bill2> _Bill2s;
+		
 		private EntitySet<History> _Histories;
 		
 		private EntityRef<Person> _Person;
@@ -237,12 +251,13 @@ namespace PBL3_LastReal
 		
 		public Account()
 		{
+			this._Bill2s = new EntitySet<Bill2>(new Action<Bill2>(this.attach_Bill2s), new Action<Bill2>(this.detach_Bill2s));
 			this._Histories = new EntitySet<History>(new Action<History>(this.attach_Histories), new Action<History>(this.detach_Histories));
 			this._Person = default(EntityRef<Person>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Account", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Account", DbType="VarChar(40) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string ID_Account
 		{
 			get
@@ -262,7 +277,7 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(30)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(40)")]
 		public string Username
 		{
 			get
@@ -366,6 +381,19 @@ namespace PBL3_LastReal
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_Bill2", Storage="_Bill2s", ThisKey="ID_Account", OtherKey="IdAccount")]
+		public EntitySet<Bill2> Bill2s
+		{
+			get
+			{
+				return this._Bill2s;
+			}
+			set
+			{
+				this._Bill2s.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_History", Storage="_Histories", ThisKey="ID_Account", OtherKey="ID_Account")]
 		public EntitySet<History> Histories
 		{
@@ -431,6 +459,18 @@ namespace PBL3_LastReal
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Bill2s(Bill2 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Account = this;
+		}
+		
+		private void detach_Bill2s(Bill2 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Account = null;
 		}
 		
 		private void attach_Histories(History entity)
@@ -577,6 +617,430 @@ namespace PBL3_LastReal
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Bill2")]
+	public partial class Bill2 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdBill;
+		
+		private System.Nullable<int> _IdSanPham;
+		
+		private string _TenSanPham;
+		
+		private string _IdAccount;
+		
+		private System.Nullable<System.DateTime> _TimeDatHang;
+		
+		private System.Nullable<int> _SoLuongDat;
+		
+		private EntityRef<Account> _Account;
+		
+		private EntityRef<Product> _Product;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdBillChanging(int value);
+    partial void OnIdBillChanged();
+    partial void OnIdSanPhamChanging(System.Nullable<int> value);
+    partial void OnIdSanPhamChanged();
+    partial void OnTenSanPhamChanging(string value);
+    partial void OnTenSanPhamChanged();
+    partial void OnIdAccountChanging(string value);
+    partial void OnIdAccountChanged();
+    partial void OnTimeDatHangChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimeDatHangChanged();
+    partial void OnSoLuongDatChanging(System.Nullable<int> value);
+    partial void OnSoLuongDatChanged();
+    #endregion
+		
+		public Bill2()
+		{
+			this._Account = default(EntityRef<Account>);
+			this._Product = default(EntityRef<Product>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdBill", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IdBill
+		{
+			get
+			{
+				return this._IdBill;
+			}
+			set
+			{
+				if ((this._IdBill != value))
+				{
+					this.OnIdBillChanging(value);
+					this.SendPropertyChanging();
+					this._IdBill = value;
+					this.SendPropertyChanged("IdBill");
+					this.OnIdBillChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSanPham", DbType="Int")]
+		public System.Nullable<int> IdSanPham
+		{
+			get
+			{
+				return this._IdSanPham;
+			}
+			set
+			{
+				if ((this._IdSanPham != value))
+				{
+					if (this._Product.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdSanPhamChanging(value);
+					this.SendPropertyChanging();
+					this._IdSanPham = value;
+					this.SendPropertyChanged("IdSanPham");
+					this.OnIdSanPhamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenSanPham", DbType="NVarChar(50)")]
+		public string TenSanPham
+		{
+			get
+			{
+				return this._TenSanPham;
+			}
+			set
+			{
+				if ((this._TenSanPham != value))
+				{
+					this.OnTenSanPhamChanging(value);
+					this.SendPropertyChanging();
+					this._TenSanPham = value;
+					this.SendPropertyChanged("TenSanPham");
+					this.OnTenSanPhamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdAccount", DbType="VarChar(40)")]
+		public string IdAccount
+		{
+			get
+			{
+				return this._IdAccount;
+			}
+			set
+			{
+				if ((this._IdAccount != value))
+				{
+					if (this._Account.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdAccountChanging(value);
+					this.SendPropertyChanging();
+					this._IdAccount = value;
+					this.SendPropertyChanged("IdAccount");
+					this.OnIdAccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeDatHang", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TimeDatHang
+		{
+			get
+			{
+				return this._TimeDatHang;
+			}
+			set
+			{
+				if ((this._TimeDatHang != value))
+				{
+					this.OnTimeDatHangChanging(value);
+					this.SendPropertyChanging();
+					this._TimeDatHang = value;
+					this.SendPropertyChanged("TimeDatHang");
+					this.OnTimeDatHangChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuongDat", DbType="Int")]
+		public System.Nullable<int> SoLuongDat
+		{
+			get
+			{
+				return this._SoLuongDat;
+			}
+			set
+			{
+				if ((this._SoLuongDat != value))
+				{
+					this.OnSoLuongDatChanging(value);
+					this.SendPropertyChanging();
+					this._SoLuongDat = value;
+					this.SendPropertyChanged("SoLuongDat");
+					this.OnSoLuongDatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_Bill2", Storage="_Account", ThisKey="IdAccount", OtherKey="ID_Account", IsForeignKey=true)]
+		public Account Account
+		{
+			get
+			{
+				return this._Account.Entity;
+			}
+			set
+			{
+				Account previousValue = this._Account.Entity;
+				if (((previousValue != value) 
+							|| (this._Account.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Account.Entity = null;
+						previousValue.Bill2s.Remove(this);
+					}
+					this._Account.Entity = value;
+					if ((value != null))
+					{
+						value.Bill2s.Add(this);
+						this._IdAccount = value.ID_Account;
+					}
+					else
+					{
+						this._IdAccount = default(string);
+					}
+					this.SendPropertyChanged("Account");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_Bill2", Storage="_Product", ThisKey="IdSanPham", OtherKey="ID_Product", IsForeignKey=true)]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						this._IdSanPham = value.ID_Product;
+					}
+					else
+					{
+						this._IdSanPham = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Product");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Computer")]
+	public partial class Computer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_Computer;
+		
+		private System.Nullable<int> _Price;
+		
+		private System.Nullable<int> _Type;
+		
+		private System.Nullable<int> _State;
+		
+		private EntitySet<History> _Histories;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_ComputerChanging(int value);
+    partial void OnID_ComputerChanged();
+    partial void OnPriceChanging(System.Nullable<int> value);
+    partial void OnPriceChanged();
+    partial void OnTypeChanging(System.Nullable<int> value);
+    partial void OnTypeChanged();
+    partial void OnStateChanging(System.Nullable<int> value);
+    partial void OnStateChanged();
+    #endregion
+		
+		public Computer()
+		{
+			this._Histories = new EntitySet<History>(new Action<History>(this.attach_Histories), new Action<History>(this.detach_Histories));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Computer", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_Computer
+		{
+			get
+			{
+				return this._ID_Computer;
+			}
+			set
+			{
+				if ((this._ID_Computer != value))
+				{
+					this.OnID_ComputerChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Computer = value;
+					this.SendPropertyChanged("ID_Computer");
+					this.OnID_ComputerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
+		public System.Nullable<int> Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
+		public System.Nullable<int> Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="Int")]
+		public System.Nullable<int> State
+		{
+			get
+			{
+				return this._State;
+			}
+			set
+			{
+				if ((this._State != value))
+				{
+					this.OnStateChanging(value);
+					this.SendPropertyChanging();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Computer_History", Storage="_Histories", ThisKey="ID_Computer", OtherKey="ID_Computer")]
+		public EntitySet<History> Histories
+		{
+			get
+			{
+				return this._Histories;
+			}
+			set
+			{
+				this._Histories.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Histories(History entity)
+		{
+			this.SendPropertyChanging();
+			entity.Computer = this;
+		}
+		
+		private void detach_Histories(History entity)
+		{
+			this.SendPropertyChanging();
+			entity.Computer = null;
 		}
 	}
 	
@@ -796,168 +1260,6 @@ namespace PBL3_LastReal
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Computer")]
-	public partial class Computer : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_Computer;
-		
-		private System.Nullable<int> _Price;
-		
-		private System.Nullable<int> _Type;
-		
-		private System.Nullable<int> _State;
-		
-		private EntitySet<History> _Histories;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_ComputerChanging(int value);
-    partial void OnID_ComputerChanged();
-    partial void OnPriceChanging(System.Nullable<int> value);
-    partial void OnPriceChanged();
-    partial void OnTypeChanging(System.Nullable<int> value);
-    partial void OnTypeChanged();
-    partial void OnStateChanging(System.Nullable<int> value);
-    partial void OnStateChanged();
-    #endregion
-		
-		public Computer()
-		{
-			this._Histories = new EntitySet<History>(new Action<History>(this.attach_Histories), new Action<History>(this.detach_Histories));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Computer", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_Computer
-		{
-			get
-			{
-				return this._ID_Computer;
-			}
-			set
-			{
-				if ((this._ID_Computer != value))
-				{
-					this.OnID_ComputerChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Computer = value;
-					this.SendPropertyChanged("ID_Computer");
-					this.OnID_ComputerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Int")]
-		public System.Nullable<int> Price
-		{
-			get
-			{
-				return this._Price;
-			}
-			set
-			{
-				if ((this._Price != value))
-				{
-					this.OnPriceChanging(value);
-					this.SendPropertyChanging();
-					this._Price = value;
-					this.SendPropertyChanged("Price");
-					this.OnPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
-		public System.Nullable<int> Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="Int")]
-		public System.Nullable<int> State
-		{
-			get
-			{
-				return this._State;
-			}
-			set
-			{
-				if ((this._State != value))
-				{
-					this.OnStateChanging(value);
-					this.SendPropertyChanging();
-					this._State = value;
-					this.SendPropertyChanged("State");
-					this.OnStateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Computer_History", Storage="_Histories", ThisKey="ID_Computer", OtherKey="ID_Computer")]
-		public EntitySet<History> Histories
-		{
-			get
-			{
-				return this._Histories;
-			}
-			set
-			{
-				this._Histories.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Histories(History entity)
-		{
-			this.SendPropertyChanging();
-			entity.Computer = this;
-		}
-		
-		private void detach_Histories(History entity)
-		{
-			this.SendPropertyChanging();
-			entity.Computer = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.History")]
 	public partial class History : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1021,7 +1323,7 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Account", DbType="VarChar(30)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Account", DbType="VarChar(40)")]
 		public string ID_Account
 		{
 			get
@@ -1663,15 +1965,30 @@ namespace PBL3_LastReal
 		private int _ID_Product;
 		
 		private string _Name;
-		
+		private string _Path;
+
 		private System.Nullable<int> _Quantity;
 		
 		private System.Nullable<int> _ID_Price;
 		
-		private EntityRef<Price> _Price;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
+        private EntityRef<Price> _Price;
+		public Image pics
+		{
+			get
+			{
+				if (!string.IsNullOrEmpty(Path))
+				{
+					if (File.Exists(Path))
+					{
+						return Image.FromFile(Path);
+					}
+				}
+				return null;
+			}
+		}
+		#region Extensibility Method Definitions
+		partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnID_ProductChanging(int value);
@@ -1682,6 +1999,12 @@ namespace PBL3_LastReal
     partial void OnQuantityChanged();
     partial void OnID_PriceChanging(System.Nullable<int> value);
     partial void OnID_PriceChanged();
+    partial void OnPathChanging(string value);
+    partial void OnPathChanged();
+    partial void OnChoseChanging(System.Nullable<bool> value);
+    partial void OnChoseChanged();
+    partial void OnSLDaDatChanging(System.Nullable<int> value);
+    partial void OnSLDaDatChanged();
     #endregion
 		
 		public Product()
@@ -1773,7 +2096,29 @@ namespace PBL3_LastReal
 				}
 			}
 		}
-		
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Path", DbType = "VarChar(100)")]
+		public string Path
+		{
+			get
+			{
+				return this._Path;
+			}
+			set
+			{
+				if ((this._Path != value))
+				{
+					this.OnPathChanging(value);
+					this.SendPropertyChanging();
+					this._Path = value;
+					this.SendPropertyChanged("Path");
+					this.OnPathChanged();
+				}
+			}
+		}
+
+
+
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Price_Product", Storage="_Price", ThisKey="ID_Price", OtherKey="ID_Price", IsForeignKey=true)]
 		public Price Price
 		{
@@ -1826,6 +2171,18 @@ namespace PBL3_LastReal
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Bill2s(Bill2 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_Bill2s(Bill2 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
 		}
 	}
 	

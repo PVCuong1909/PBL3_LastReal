@@ -56,8 +56,9 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1379, 100);
+            this.panel1.Size = new System.Drawing.Size(1034, 81);
             this.panel1.TabIndex = 0;
             // 
             // btn_DangXuat
@@ -73,10 +74,11 @@
             this.btn_DangXuat.FillColor = System.Drawing.Color.Transparent;
             this.btn_DangXuat.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_DangXuat.ForeColor = System.Drawing.Color.White;
-            this.btn_DangXuat.Location = new System.Drawing.Point(1267, 20);
+            this.btn_DangXuat.Location = new System.Drawing.Point(950, 16);
+            this.btn_DangXuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_DangXuat.Name = "btn_DangXuat";
             this.btn_DangXuat.PressedColor = System.Drawing.Color.Transparent;
-            this.btn_DangXuat.Size = new System.Drawing.Size(60, 60);
+            this.btn_DangXuat.Size = new System.Drawing.Size(45, 49);
             this.btn_DangXuat.TabIndex = 3;
             this.btn_DangXuat.Click += new System.EventHandler(this.btn_DangXuat_Click);
             // 
@@ -85,9 +87,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1121, 35);
+            this.label2.Location = new System.Drawing.Point(841, 28);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 29);
+            this.label2.Size = new System.Drawing.Size(104, 24);
             this.label2.TabIndex = 2;
             this.label2.Text = "Đăng xuất";
             // 
@@ -96,9 +99,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(126, 35);
+            this.label1.Location = new System.Drawing.Point(94, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(213, 29);
+            this.label1.Size = new System.Drawing.Size(173, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Quản lý quán Net";
             // 
@@ -107,9 +111,10 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(15)))), ((int)(((byte)(64)))));
             this.pictureBox1.BackgroundImage = global::PBL3_LastReal.Properties.Resources.icons8_admin_settings_male_90;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(50, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(38, 16);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox1.Size = new System.Drawing.Size(45, 49);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -124,9 +129,10 @@
             this.panel2.Controls.Add(this.btn_May);
             this.panel2.Controls.Add(this.btn_TaiKhoan);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Location = new System.Drawing.Point(0, 81);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(219, 543);
+            this.panel2.Size = new System.Drawing.Size(164, 441);
             this.panel2.TabIndex = 1;
             // 
             // btn_Ca
@@ -143,9 +149,10 @@
             this.btn_Ca.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Ca.ForeColor = System.Drawing.Color.Black;
             this.btn_Ca.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btn_Ca.Location = new System.Drawing.Point(0, 448);
+            this.btn_Ca.Location = new System.Drawing.Point(0, 364);
+            this.btn_Ca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Ca.Name = "btn_Ca";
-            this.btn_Ca.Size = new System.Drawing.Size(216, 86);
+            this.btn_Ca.Size = new System.Drawing.Size(162, 70);
             this.btn_Ca.TabIndex = 7;
             this.btn_Ca.Text = "Quản lý ca";
             this.btn_Ca.Click += new System.EventHandler(this.btn_Ca_Click);
@@ -164,9 +171,10 @@
             this.btn_DoanhThu.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DoanhThu.ForeColor = System.Drawing.Color.Black;
             this.btn_DoanhThu.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btn_DoanhThu.Location = new System.Drawing.Point(0, 359);
+            this.btn_DoanhThu.Location = new System.Drawing.Point(0, 292);
+            this.btn_DoanhThu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_DoanhThu.Name = "btn_DoanhThu";
-            this.btn_DoanhThu.Size = new System.Drawing.Size(216, 83);
+            this.btn_DoanhThu.Size = new System.Drawing.Size(162, 67);
             this.btn_DoanhThu.TabIndex = 6;
             this.btn_DoanhThu.Text = "Quản lý doanh thu";
             this.btn_DoanhThu.Click += new System.EventHandler(this.btn_DoanhThu_Click);
@@ -185,9 +193,10 @@
             this.btn_NhanVien.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_NhanVien.ForeColor = System.Drawing.Color.Black;
             this.btn_NhanVien.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btn_NhanVien.Location = new System.Drawing.Point(0, 270);
+            this.btn_NhanVien.Location = new System.Drawing.Point(0, 219);
+            this.btn_NhanVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_NhanVien.Name = "btn_NhanVien";
-            this.btn_NhanVien.Size = new System.Drawing.Size(216, 83);
+            this.btn_NhanVien.Size = new System.Drawing.Size(162, 67);
             this.btn_NhanVien.TabIndex = 5;
             this.btn_NhanVien.Text = "Quản lý nhân viên";
             this.btn_NhanVien.Click += new System.EventHandler(this.btn_NhanVien_Click);
@@ -206,9 +215,10 @@
             this.btn_DichVu.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DichVu.ForeColor = System.Drawing.Color.Black;
             this.btn_DichVu.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btn_DichVu.Location = new System.Drawing.Point(0, 181);
+            this.btn_DichVu.Location = new System.Drawing.Point(0, 147);
+            this.btn_DichVu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_DichVu.Name = "btn_DichVu";
-            this.btn_DichVu.Size = new System.Drawing.Size(216, 83);
+            this.btn_DichVu.Size = new System.Drawing.Size(162, 67);
             this.btn_DichVu.TabIndex = 4;
             this.btn_DichVu.Text = "Quản lý dịch vụ";
             this.btn_DichVu.Click += new System.EventHandler(this.btn_DichVu_Click);
@@ -227,9 +237,10 @@
             this.btn_May.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_May.ForeColor = System.Drawing.Color.Black;
             this.btn_May.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btn_May.Location = new System.Drawing.Point(0, 92);
+            this.btn_May.Location = new System.Drawing.Point(0, 75);
+            this.btn_May.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_May.Name = "btn_May";
-            this.btn_May.Size = new System.Drawing.Size(216, 83);
+            this.btn_May.Size = new System.Drawing.Size(162, 67);
             this.btn_May.TabIndex = 3;
             this.btn_May.Text = "Quản lý máy";
             this.btn_May.Click += new System.EventHandler(this.btn_May_Click);
@@ -250,9 +261,10 @@
             this.btn_TaiKhoan.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_TaiKhoan.ForeColor = System.Drawing.Color.Black;
             this.btn_TaiKhoan.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btn_TaiKhoan.Location = new System.Drawing.Point(0, 3);
+            this.btn_TaiKhoan.Location = new System.Drawing.Point(0, 2);
+            this.btn_TaiKhoan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_TaiKhoan.Name = "btn_TaiKhoan";
-            this.btn_TaiKhoan.Size = new System.Drawing.Size(216, 83);
+            this.btn_TaiKhoan.Size = new System.Drawing.Size(162, 67);
             this.btn_TaiKhoan.TabIndex = 2;
             this.btn_TaiKhoan.Text = "Quản lý tài khoản";
             this.btn_TaiKhoan.Click += new System.EventHandler(this.btn_TaiKhoan_Click);
@@ -260,9 +272,10 @@
             // PanelControl
             // 
             this.PanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelControl.Location = new System.Drawing.Point(219, 100);
+            this.PanelControl.Location = new System.Drawing.Point(164, 81);
+            this.PanelControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PanelControl.Name = "PanelControl";
-            this.PanelControl.Size = new System.Drawing.Size(1160, 543);
+            this.PanelControl.Size = new System.Drawing.Size(870, 441);
             this.PanelControl.TabIndex = 2;
             // 
             // btn_dx
@@ -285,13 +298,14 @@
             // 
             // fAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1379, 643);
+            this.ClientSize = new System.Drawing.Size(1034, 522);
             this.Controls.Add(this.PanelControl);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "fAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fAdmin";

@@ -23,7 +23,7 @@ namespace PBL3_LastReal.View
         {
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
-                dgv.DataSource = db.Accounts.Where(p => p.Type == 1).Select(p => new 
+                dgv.DataSource = db.Accounts.Where(p => p.Type == 1).Select(p => new
                 {
                     p.Username,
                     p.Money,
@@ -41,7 +41,7 @@ namespace PBL3_LastReal.View
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            if(dgv.SelectedRows.Count == 1)
+            if (dgv.SelectedRows.Count == 1)
             {
                 string username = dgv.SelectedRows[0].Cells["Username"].Value.ToString();
                 fAddEditAccount f = new fAddEditAccount(username);
@@ -51,7 +51,7 @@ namespace PBL3_LastReal.View
             else
             {
                 MessageBox.Show("Không thể sửa quá nhiều tài khoản cùng lúc");
-            }    
+            }
         }
 
         private void btn_Password_Click(object sender, EventArgs e)
@@ -74,7 +74,7 @@ namespace PBL3_LastReal.View
             {
                 dgv.DataSource = db.Accounts.
                     Where(p => p.Type == 1 && (p.Username.Contains(tb_search.Text) || p.Person.Name.Contains(tb_search.Text))).
-                    Select(p => new 
+                    Select(p => new
                     {
                         p.Username,
                         p.Money,
@@ -101,7 +101,7 @@ namespace PBL3_LastReal.View
 
         private void btn_Del_Click(object sender, EventArgs e)
         {
-            if(dgv.SelectedRows.Count == 1)
+            if (dgv.SelectedRows.Count == 1)
             {
                 string username = dgv.SelectedRows[0].Cells["Username"].Value.ToString();
                 int idPer = ManagePerson.Instance.getIDPersonByUsername(username);

@@ -71,41 +71,35 @@
     <Compile Include="View\fAddEditAccount.Designer.cs">
       <DependentUpon>fAddEditAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\fAddEditStaff.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\fAddEditStaff.Designer.cs">
-      <DependentUpon>fAddEditStaff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\fAdminPassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\fAdminPassword.Designer.cs">
-      <DependentUpon>fAdminPassword.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\UC_Ca.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\UC_Ca.Designer.cs">
-      <DependentUpon>UC_Ca.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\UC_DoanhThu.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\UC_DoanhThu.Designer.cs">
-      <DependentUpon>UC_DoanhThu.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\fAddEditComputer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\fAddEditComputer.Designer.cs">
       <DependentUpon>fAddEditComputer.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\fAddEditService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fAddEditService.Designer.cs">
+      <DependentUpon>fAddEditService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\fAddEditStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fAddEditStaff.Designer.cs">
+      <DependentUpon>fAddEditStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\fAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\fAdmin.Designer.cs">
       <DependentUpon>fAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\fAdminPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fAdminPassword.Designer.cs">
+      <DependentUpon>fAdminPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="View\fChooseComputer.cs">
       <SubType>Form</SubType>
@@ -145,11 +139,23 @@
     <Compile Include="View\fSeeHistory.Designer.cs">
       <DependentUpon>fSeeHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UC_Ca.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC_Ca.Designer.cs">
+      <DependentUpon>UC_Ca.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UC_DichVu.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\UC_DichVu.Designer.cs">
       <DependentUpon>UC_DichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC_DoanhThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UC_DoanhThu.Designer.cs">
+      <DependentUpon>UC_DoanhThu.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UC_May.cs">
       <SubType>UserControl</SubType>
@@ -182,20 +188,11 @@
     <EmbeddedResource Include="View\fAddEditAccount.resx">
       <DependentUpon>fAddEditAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\fAddEditStaff.resx">
-      <DependentUpon>fAddEditStaff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\fAdminPassword.resx">
-      <DependentUpon>fAdminPassword.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\UC_Ca.resx">
-      <DependentUpon>UC_Ca.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\UC_DoanhThu.resx">
-      <DependentUpon>UC_DoanhThu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\fAddEditComputer.resx">
       <DependentUpon>fAddEditComputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fAddEditService.resx">
+      <DependentUpon>fAddEditService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\fAdmin.resx">
       <DependentUpon>fAdmin.cs</DependentUpon>

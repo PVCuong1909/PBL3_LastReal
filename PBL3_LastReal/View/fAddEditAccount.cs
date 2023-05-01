@@ -19,7 +19,7 @@ namespace PBL3_LastReal.View
         public fAddEditAccount(string usernamef)
         {
             InitializeComponent();
-            if(usernamef != null)
+            if (usernamef != null)
             {
                 GUI(usernamef);
                 usernameform = usernamef;
@@ -46,7 +46,7 @@ namespace PBL3_LastReal.View
 
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            if(usernameform == null)
+            if (usernameform == null)
             {
                 Person per = new Person
                 {
@@ -73,10 +73,10 @@ namespace PBL3_LastReal.View
                 string name = tb_Name.Text;
                 DateTime DOB = Convert.ToDateTime(tb_DOB.Text);
                 string CCCD = tb_CCCD.Text;
-                string phoneNum = tb_PhoneNum.Text; 
+                string phoneNum = tb_PhoneNum.Text;
                 ManagePerson.Instance.updatePerson(id_per, name, DOB, CCCD, phoneNum);
                 MessageBox.Show("Cập nhật thông tin thành công");
-            }    
+            }
             this.Close();
         }
     }

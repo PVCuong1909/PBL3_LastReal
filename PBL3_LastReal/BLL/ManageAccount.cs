@@ -15,15 +15,15 @@ namespace PBL3_LastReal.BLL
         {
             get
             {
-                if(instance == null)
+                if (instance == null)
                 {
                     instance = new ManageAccount();
                 }
                 return instance;
             }
-            private set {} 
+            private set { }
         }
-        public List<Account> GetAccounts() 
+        public List<Account> GetAccounts()
         {
             List<Account> accounts = new List<Account>();
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
@@ -58,7 +58,7 @@ namespace PBL3_LastReal.BLL
             }
             return check;
         }
-        public int getType(string usernamef) 
+        public int getType(string usernamef)
         {
             int type = -1;
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
@@ -67,7 +67,7 @@ namespace PBL3_LastReal.BLL
             }
             return type;
         }
-        public int getMoneyRemain(string usernamef) 
+        public int getMoneyRemain(string usernamef)
         {
             int money = -1;
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
@@ -76,7 +76,7 @@ namespace PBL3_LastReal.BLL
             }
             return money;
         }
-        public string getID(string usernamef) 
+        public string getID(string usernamef)
         {
             string id = "";
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
@@ -88,22 +88,22 @@ namespace PBL3_LastReal.BLL
         public bool checkPassword(string ID_Account, string Password)
         {
             bool check = false;
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
                 string password = MD5Hash(Password);
-                if(db.Accounts.Where(p => p.ID_Account == ID_Account && p.Password == password).Count() == 1)
+                if (db.Accounts.Where(p => p.ID_Account == ID_Account && p.Password == password).Count() == 1)
                     check = true;
             }
             return check;
         }
         public void changePassword(string ID_Account, string newPassword)
         {
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
                 string password = MD5Hash(newPassword);
                 db.Accounts.Where(p => p.ID_Account == ID_Account).First().Password = password;
                 db.SubmitChanges();
-            }    
+            }
         }
         public int getNextID_Acc(string type)
         {
@@ -127,7 +127,7 @@ namespace PBL3_LastReal.BLL
             }
             return acc;
         }
-        public void addAccount(string id,string username, string passwordf, int type, int money, int idper)
+        public void addAccount(string id, string username, string passwordf, int type, int money, int idper)
         {
             Account acc = new Account
             {

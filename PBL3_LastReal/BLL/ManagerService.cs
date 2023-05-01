@@ -59,77 +59,84 @@ namespace PBL3_LastReal.BLL
             return products;
         }
 
-        //public void UpdateSelectState(QuanLyNetDataContext db, Action<QuanLyNetDataContext> InitDGV, int pos)
-        //{
+        public int GetProductIdByName(string name)
+        {
+             int id = 0; 
+             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                id = (int) db.Products.Where(p => p.Name == name).FirstOrDefault().ID_Product;
+            }
 
-        //    //var q1 = db.Products.Where(p => p.ID_Product == pos + 1).FirstOrDefault();
-        //    //q1.SLDaDat++;
+            return id;
+        }
+        public Product GetProduct(int id)
+        {
+            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            Product product = new Product();
 
-        //    //if (q1.Chose == false)
-        //    //{
-        //    //    q1.Chose = true;
-        //    //    db.SubmitChanges();
-        //    //    //InitDGV(db);
-        //    //}
+                product = db.Products.Where(p => p.ID_Product == id).FirstOrDefault();
+                return product;
+        }
+        public int GetIdPrice(int IPrice,int Eprice)
+        {
+            int id = 0;
+            using (QuanLyNetDataContext db =new QuanLyNetDataContext())
+            {
+                 var query = db.Products.Where(p => p.Price.ImPrice == IPrice && p.Price.ExPrice == Eprice).FirstOrDefault();
+                id = (int)query.ID_Price;
+            }
+            return id; 
 
-        //    //else
-        //    //{
+        }
 
-        //    //    q1.Chose = false;
-        //    //    db.SubmitChanges();
-        //    //    //InitDGV(db);
-        //    //}
-        //}
-        //public void RemoveSelectState(QuanLyNetDataContext db, int index)
-        //{
-        //    //var query = db.Products.Where(p => p.ID_Product == index + 1).FirstOrDefault();
-        //    //if (query.Chose == true)
-        //    //{
-        //    //    query.SLDaDat = 0;
-        //    //    query.Chose = false;
-        //    //    db.SubmitChanges();
-        //    //}
-        //}
-        ////public IQueryable UpdateSelectedItem(QuanLyNetDataContext db, int index)
-        ////{
-        //////    var query2 = db.Products.Where(p => p.ID_Product == index + 1).FirstOrDefault();
-        //////    db.SubmitChanges();
-        //////    var query = db.Products.Where(p => p.Chose == true).Select(p => new { p.SLDaDat, p.pics, p.Name, p.price });
-        //////    return query;
-        ////}
+        public void addProduct(Product product )
+        {
+             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                db.Products.InsertOnSubmit(product);
+                db.SubmitChanges();
+            }
+        }
 
+        public void UpdateSanPham(params string[] infor)
+        {
+             using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                Product product = db.Products.Where(p => p.ID_Product == Convert.ToInt32(infor[0])).FirstOrDefault();
+                product.Name = infor[1];
+                product.Quantity =Convert.ToInt32(infor[2]);
+                product.ID_Price = Convert.ToInt32(infor[3]);
+                product.Path = infor[4];
+                db.SubmitChanges();
+            }
+        }
 
-        //public void Reset()
-        //{
-        //    //QuanLyNetDataContext db = new QuanLyNetDataContext();
-        //    //var query = db.Products.Where(p => p.Chose == true).ToList();
-        //    //for (int j = 0; j < query.Count; j++)
-        //    //{
-        //    //    query[j].SLDaDat = 0;
-        //    //    db.SubmitChanges();
-        //    //}
-        //    //foreach (Product i in db.Products)
-        //    //{
-        //    //    if (i.Chose == true)
-        //    //    {
-        //    //        i.Chose = false;
+        public void DeleteProduct(int Id)
+        {
+             using(QuanLyNetDataContext db =new QuanLyNetDataContext())
+            {
+                Product product = db.Products.Where(p => p.ID_Product == Id ).FirstOrDefault();
+                db.Products.DeleteOnSubmit(product);
+                db.SubmitChanges();
+            }
+        }
+     
+        public IQueryable SearchProduct(string name )
+        {
+            QuanLyNetDataContext db = new QuanLyNetDataContext();
+                var query = db.Products.
+                    Where(p => p.Name.Contains(name)).
+                    Select(p => new
+                    {
+                        p.pics,
+                        p.Name,
+                        p.Quantity,
+                        p.Price.ImPrice,
+                        p.Price.ExPrice
+                    });
 
-        //    //        db.SubmitChanges();
-        //    //    }
-        //    //}
-
-        //}
-        //public void UpdateItemQuantity(QuanLyNetDataContext db)
-        //{
-        //    //var query = db.Products.Where(p => p.Chose == true).ToList();
-        //    //for (int i = 0; i < query.Count; i++)
-        //    //{
-        //    //    query[i].Quantity -= query[i].SLDaDat;
-        //    //}
-        //    //db.SubmitChanges();
-
-        //}
-      
+                return query;
+        }
 
 
     }
