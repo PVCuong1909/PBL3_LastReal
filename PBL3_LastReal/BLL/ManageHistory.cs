@@ -23,7 +23,6 @@ namespace PBL3_LastReal.BLL
             }
             private set { }
         }
-        //public void addHistory(int id_com, string id_acc, DateTime timeBegin, DateTime timeEnd)
         public void addHistoryClickOK(int id_com, string id_acc, DateTime timeBegin)
         {
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())

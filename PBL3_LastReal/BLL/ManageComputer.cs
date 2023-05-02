@@ -144,7 +144,7 @@ namespace PBL3_LastReal.BLL
         public bool checkIDMay(string ID_com) 
         {
             bool check = false;
-            foreach(string i in getAllID().ToArray()) 
+            foreach(string i in getAllID()) 
             {
                 if (i == ID_com)
                     check = true;

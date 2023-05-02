@@ -55,6 +55,7 @@
             this.tb_name = new System.Windows.Forms.TextBox();
             this.cb_using = new System.Windows.Forms.CheckBox();
             this.cb_free = new System.Windows.Forms.CheckBox();
+            this.btn_recharge = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,7 +149,7 @@
             // 
             this.btn_add.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(70, 388);
+            this.btn_add.Location = new System.Drawing.Point(31, 388);
             this.btn_add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(115, 46);
@@ -161,7 +162,7 @@
             // 
             this.btn_update.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_update.ForeColor = System.Drawing.Color.White;
-            this.btn_update.Location = new System.Drawing.Point(270, 388);
+            this.btn_update.Location = new System.Drawing.Point(200, 388);
             this.btn_update.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(115, 46);
@@ -174,7 +175,7 @@
             // 
             this.btn_SeeHistory.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_SeeHistory.ForeColor = System.Drawing.Color.White;
-            this.btn_SeeHistory.Location = new System.Drawing.Point(670, 388);
+            this.btn_SeeHistory.Location = new System.Drawing.Point(555, 388);
             this.btn_SeeHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_SeeHistory.Name = "btn_SeeHistory";
             this.btn_SeeHistory.Size = new System.Drawing.Size(112, 46);
@@ -187,7 +188,7 @@
             // 
             this.btn_delete.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_delete.ForeColor = System.Drawing.Color.White;
-            this.btn_delete.Location = new System.Drawing.Point(470, 388);
+            this.btn_delete.Location = new System.Drawing.Point(375, 388);
             this.btn_delete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(112, 46);
@@ -339,11 +340,25 @@
             this.cb_free.Text = "Máy trống";
             this.cb_free.UseVisualStyleBackColor = false;
             // 
+            // btn_recharge
+            // 
+            this.btn_recharge.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_recharge.ForeColor = System.Drawing.Color.White;
+            this.btn_recharge.Location = new System.Drawing.Point(725, 388);
+            this.btn_recharge.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_recharge.Name = "btn_recharge";
+            this.btn_recharge.Size = new System.Drawing.Size(112, 46);
+            this.btn_recharge.TabIndex = 41;
+            this.btn_recharge.Text = "Nạp tiền";
+            this.btn_recharge.UseVisualStyleBackColor = false;
+            this.btn_recharge.Click += new System.EventHandler(this.btn_recharge_Click);
+            // 
             // UC_May
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::PBL3_LastReal.Properties.Resources._6660efc642a59dfbc4b4;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.btn_recharge);
             this.Controls.Add(this.cb_free);
             this.Controls.Add(this.cb_using);
             this.Controls.Add(this.tb_name);
@@ -407,5 +422,6 @@
         private System.Windows.Forms.TextBox tb_name;
         private System.Windows.Forms.CheckBox cb_using;
         private System.Windows.Forms.CheckBox cb_free;
+        private System.Windows.Forms.Button btn_recharge;
     }
 }

@@ -163,5 +163,21 @@ namespace PBL3_LastReal.BLL
                 db.SubmitChanges();
             }
         }
+        public void rechargeByUsername(string username, int money)
+        {
+            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                db.Accounts.Where(p => p.Username == username).First().Money += money;
+                db.SubmitChanges();
+            }
+        }
+        public void editRechargeMoney(string username, int money)
+        {
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                db.Accounts.Where(p => p.Username == username).First().Money = money;
+                db.SubmitChanges();
+            }
+        }
     }
 }

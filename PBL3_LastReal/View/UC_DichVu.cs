@@ -78,5 +78,6 @@ namespace PBL3_LastReal.View
         {
             dgv.DataSource = ManageService.Instance.SearchProduct(textBox1.Text);
         }
+
     }
 }

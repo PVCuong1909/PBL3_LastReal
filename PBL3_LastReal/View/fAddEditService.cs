@@ -23,7 +23,7 @@ namespace PBL3_LastReal.View
                 GUI(ProductName);
                 ProductNameform = ProductName;
             }
-            tb_MaSP.ReadOnly = true;
+            tb_Path.ReadOnly = true;
 
         }
         public void GUI(string name)
@@ -31,8 +31,8 @@ namespace PBL3_LastReal.View
             string ProductName = name;
             int Idsp = ManageService.Instance.GetProductIdByName(ProductName);
             Product product = ManageService.Instance.GetProduct(Idsp);
-            tb_MaSP.Text = Idsp.ToString();
-            tb_MaSP.ReadOnly = true;
+            tb_Path.Text = Idsp.ToString();
+            tb_Path.ReadOnly = true;
             tb_TenSP.Text = ProductName;
             tb_SL.Text = product.Quantity.ToString();
             tb_GiaNhap.Text = product.Price.ImPrice.ToString();
@@ -59,7 +59,7 @@ namespace PBL3_LastReal.View
             }
             else
             {
-                int id =Convert.ToInt32(tb_MaSP.Text);
+                int id =Convert.ToInt32(tb_Path.Text);
                 string name = tb_TenSP.Text;
                 int GiaNhap = Convert.ToInt32(tb_GiaNhap.Text);
                 int GiaBan = Convert.ToInt32(tb_GiaBan.Text);

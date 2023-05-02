@@ -59,6 +59,7 @@
     <Compile Include="BLL\ManageHistory.cs" />
     <Compile Include="BLL\ManagePerson.cs" />
     <Compile Include="BLL\ManagerService.cs" />
+    <Compile Include="BLL\ManageSalary.cs" />
     <Compile Include="DTO\Service.cs" />
     <Compile Include="QuanLyNet.designer.cs">
       <AutoGen>True</AutoGen>
@@ -133,6 +134,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\fRecharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fRecharge.Designer.cs">
+      <DependentUpon>fRecharge.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\fSeeHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +201,9 @@
     <EmbeddedResource Include="View\fAddEditService.resx">
       <DependentUpon>fAddEditService.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\fAddEditStaff.resx">
+      <DependentUpon>fAddEditStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\fAdmin.resx">
       <DependentUpon>fAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fRecharge.resx">
+      <DependentUpon>fRecharge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\fSeeHistory.resx">
       <DependentUpon>fSeeHistory.cs</DependentUpon>

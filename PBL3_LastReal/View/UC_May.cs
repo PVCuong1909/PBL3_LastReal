@@ -162,5 +162,20 @@ namespace PBL3_LastReal.View
                 }
             }
         }
+
+        private void btn_recharge_Click(object sender, EventArgs e)
+        {
+            if (dgv.SelectedRows.Count == 1)
+            {
+                string id = dgv.SelectedRows[0].Cells[0].Value.ToString();
+                string user = ManageHistory.Instance.getHistotyByIDAndTimeBeginAcc(id).Username.ToString();
+                fRecharge f = new fRecharge(user);
+                f.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Chọn 1 tài khoản cần nạp tiền!");
+            }
+        }
     }
 }

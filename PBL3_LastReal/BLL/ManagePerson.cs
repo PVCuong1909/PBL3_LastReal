@@ -78,5 +78,36 @@ namespace PBL3_LastReal.BLL
                 db.SubmitChanges();
             }
         }
+        public List<Person> getPersonsByType() 
+        {
+            List<Person> list = new List<Person>();
+            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                list = db.Persons.Where(p => p.Type == 2).ToList();
+            }    
+            return list;
+        }
+        public List<string> GetAllID()
+        {
+            List<string> list = new List<string>();
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                foreach (Person com in db.Persons)
+                {
+                    list.Add(com.ID_Person.ToString());
+                }
+            }
+            return list;
+        }
+        public bool checkIDPer(int id) 
+        {
+            bool check = false;
+            foreach(string i in GetAllID())
+            {
+                if(i == id.ToString())
+                    check = true;
+            }    
+            return check;
+        }
     }
 }

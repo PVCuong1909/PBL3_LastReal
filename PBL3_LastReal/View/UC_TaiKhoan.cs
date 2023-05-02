@@ -96,7 +96,17 @@ namespace PBL3_LastReal.View
 
         private void btn_Recharge_Click(object sender, EventArgs e)
         {
-
+            if(dgv.SelectedRows.Count == 1)
+            {
+                string user = dgv.SelectedRows[0].Cells[0].Value.ToString();
+                fRecharge f = new fRecharge(user);
+                f.UpdateDGV += new fRecharge.UpdateDGVHandler(GUI);
+                f.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Chọn 1 tài khoản cần nạp tiền!");
+            }
         }
 
         private void btn_Del_Click(object sender, EventArgs e)
