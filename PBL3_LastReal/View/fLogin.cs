@@ -18,6 +18,11 @@ namespace PBL3_LastReal
         public fLogin()
         {
             InitializeComponent();
+            ManageProfit.Instance.EndDay2();
+            ManageProfit.Instance.checkNewDay();
+
+
+
         }
 
         private void btn_Login_Click(object sender, EventArgs e)

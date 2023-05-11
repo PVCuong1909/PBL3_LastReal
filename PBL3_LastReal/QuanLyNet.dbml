@@ -1,23 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_QuanNet" Class="QuanLyNetDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-ILLMULD\PVCSERVER;Initial Catalog=QL_QuanNet;Integrated Security=True" SettingsObjectName="PBL3_LastReal.Properties.Settings" SettingsPropertyName="QL_QuanNetConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Account" Member="Accounts">
-    <Type Name="Account">
-      <Column Name="ID_Account" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Username" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
-      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Money" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ID_Person" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Account_History" Member="Histories" ThisKey="ID_Account" OtherKey="ID_Account" Type="History" />
-      <Association Name="Person_Account" Member="Person" ThisKey="ID_Person" OtherKey="ID_Person" Type="Person" IsForeignKey="true" />
-    </Type>
-  </Table>
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_QuanNetReal" Class="QuanLyNetDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI\SQLEXPRESS;Initial Catalog=QL_QuanNetReal;Integrated Security=True" SettingsObjectName="PBL3_LastReal.Properties.Settings" SettingsPropertyName="QL_QuanNetConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Bill" Member="Bills">
     <Type Name="Bill">
       <Column Name="ID_Bill" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Money" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Computer" Member="Computers">
@@ -32,8 +20,8 @@
   <Table Name="dbo.DetailWorkShift" Member="DetailWorkShifts">
     <Type Name="DetailWorkShift">
       <Column Name="ID_Detail" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Person" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ID_WorkShift" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ID_Person" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="State" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Person_DetailWorkShift" Member="Person" ThisKey="ID_Person" OtherKey="ID_Person" Type="Person" IsForeignKey="true" />
       <Association Name="WorkShift_DetailWorkShift" Member="WorkShift" ThisKey="ID_WorkShift" OtherKey="ID_WorkShift" Type="WorkShift" IsForeignKey="true" />
@@ -42,12 +30,12 @@
   <Table Name="dbo.History" Member="Histories">
     <Type Name="History">
       <Column Name="ID_History" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ID_Account" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ID_Account" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
       <Column Name="ID_Computer" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TimeBegin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="TimeEnd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Account_History" Member="Account" ThisKey="ID_Account" OtherKey="ID_Account" Type="Account" IsForeignKey="true" />
       <Association Name="Computer_History" Member="Computer" ThisKey="ID_Computer" OtherKey="ID_Computer" Type="Computer" IsForeignKey="true" />
+      <Association Name="Account_History" Member="Account" ThisKey="ID_Account" OtherKey="ID_Account" Type="Account" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Person" Member="Persons">
@@ -56,13 +44,13 @@
       <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
       <Column Name="DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="CCCD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PhoneNum" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CCCD" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PhoneNum" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="Works" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Person_Account" Member="Accounts" ThisKey="ID_Person" OtherKey="ID_Person" Type="Account" />
       <Association Name="Person_DetailWorkShift" Member="DetailWorkShifts" ThisKey="ID_Person" OtherKey="ID_Person" Type="DetailWorkShift" />
       <Association Name="Person_Salary" Member="Salaries" ThisKey="ID_Person" OtherKey="ID_Person" Type="Salary" />
       <Association Name="Person_Vehicle" Member="Vehicles" ThisKey="ID_Person" OtherKey="ID_Person" Type="Vehicle" />
+      <Association Name="Person_Account" Member="Accounts" ThisKey="ID_Person" OtherKey="ID_Person" Type="Account" />
     </Type>
   </Table>
   <Table Name="dbo.Price" Member="Prices">
@@ -79,8 +67,7 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ID_Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="pics" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Path" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Path" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Association Name="Price_Product" Member="Price" ThisKey="ID_Price" OtherKey="ID_Price" Type="Price" IsForeignKey="true" />
     </Type>
   </Table>
@@ -117,6 +104,28 @@
       <Column Name="TimeEnd" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
       <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="WorkShift_DetailWorkShift" Member="DetailWorkShifts" ThisKey="ID_WorkShift" OtherKey="ID_WorkShift" Type="DetailWorkShift" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="ID_Account" Type="System.String" DbType="VarChar(40) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Money" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Person" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MoneyLeft" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Account_History" Member="Histories" ThisKey="ID_Account" OtherKey="ID_Account" Type="History" />
+      <Association Name="Person_Account" Member="Person" ThisKey="ID_Person" OtherKey="ID_Person" Type="Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bill_Thang" Member="Bill_Thangs">
+    <Type Name="Bill_Thang">
+      <Column Name="Id_Bill2" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TienMay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DichVu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LuongNhanVien" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

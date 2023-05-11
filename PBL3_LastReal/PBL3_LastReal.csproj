@@ -42,6 +42,7 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,6 +59,7 @@
     <Compile Include="BLL\ManageComputer.cs" />
     <Compile Include="BLL\ManageHistory.cs" />
     <Compile Include="BLL\ManagePerson.cs" />
+    <Compile Include="BLL\ManageProfit.cs" />
     <Compile Include="BLL\ManagerService.cs" />
     <Compile Include="BLL\ManageSalary.cs" />
     <Compile Include="DTO\Service.cs" />
@@ -201,9 +203,6 @@
     <EmbeddedResource Include="View\fAddEditService.resx">
       <DependentUpon>fAddEditService.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\fAddEditStaff.resx">
-      <DependentUpon>fAddEditStaff.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\fAdmin.resx">
       <DependentUpon>fAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,14 +221,17 @@
     <EmbeddedResource Include="View\fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\fRecharge.resx">
-      <DependentUpon>fRecharge.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\fSeeHistory.resx">
       <DependentUpon>fSeeHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\UC_Ca.resx">
+      <DependentUpon>UC_Ca.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UC_DichVu.resx">
       <DependentUpon>UC_DichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC_DoanhThu.resx">
+      <DependentUpon>UC_DoanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC_May.resx">
       <DependentUpon>UC_May.cs</DependentUpon>

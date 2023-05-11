@@ -20,9 +20,10 @@ namespace PBL3_LastReal
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QL_QuanNet")]
+    using System.Drawing;
+    using System.IO;
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QL_QuanNetReal")]
 	public partial class QuanLyNetDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,9 +31,6 @@ namespace PBL3_LastReal
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAccount(Account instance);
-    partial void UpdateAccount(Account instance);
-    partial void DeleteAccount(Account instance);
     partial void InsertBill(Bill instance);
     partial void UpdateBill(Bill instance);
     partial void DeleteBill(Bill instance);
@@ -66,6 +64,12 @@ namespace PBL3_LastReal
     partial void InsertWorkShift(WorkShift instance);
     partial void UpdateWorkShift(WorkShift instance);
     partial void DeleteWorkShift(WorkShift instance);
+    partial void InsertAccount(Account instance);
+    partial void UpdateAccount(Account instance);
+    partial void DeleteAccount(Account instance);
+    partial void InsertBill_Thang(Bill_Thang instance);
+    partial void UpdateBill_Thang(Bill_Thang instance);
+    partial void DeleteBill_Thang(Bill_Thang instance);
     #endregion
 		
 		public QuanLyNetDataContext() : 
@@ -96,14 +100,6 @@ namespace PBL3_LastReal
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Account> Accounts
-		{
-			get
-			{
-				return this.GetTable<Account>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Bill> Bills
@@ -193,256 +189,21 @@ namespace PBL3_LastReal
 				return this.GetTable<WorkShift>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Account")]
-	public partial class Account : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _ID_Account;
-		
-		private string _Username;
-		
-		private string _Password;
-		
-		private System.Nullable<int> _Type;
-		
-		private System.Nullable<int> _Money;
-		
-		private System.Nullable<int> _ID_Person;
-		
-		private EntitySet<History> _Histories;
-		
-		private EntityRef<Person> _Person;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_AccountChanging(string value);
-    partial void OnID_AccountChanged();
-    partial void OnUsernameChanging(string value);
-    partial void OnUsernameChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnTypeChanging(System.Nullable<int> value);
-    partial void OnTypeChanged();
-    partial void OnMoneyChanging(System.Nullable<int> value);
-    partial void OnMoneyChanged();
-    partial void OnID_PersonChanging(System.Nullable<int> value);
-    partial void OnID_PersonChanged();
-    #endregion
-		
-		public Account()
-		{
-			this._Histories = new EntitySet<History>(new Action<History>(this.attach_Histories), new Action<History>(this.detach_Histories));
-			this._Person = default(EntityRef<Person>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Account", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID_Account
+		public System.Data.Linq.Table<Account> Accounts
 		{
 			get
 			{
-				return this._ID_Account;
-			}
-			set
-			{
-				if ((this._ID_Account != value))
-				{
-					this.OnID_AccountChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Account = value;
-					this.SendPropertyChanged("ID_Account");
-					this.OnID_AccountChanged();
-				}
+				return this.GetTable<Account>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(40)")]
-		public string Username
+		public System.Data.Linq.Table<Bill_Thang> Bill_Thangs
 		{
 			get
 			{
-				return this._Username;
+				return this.GetTable<Bill_Thang>();
 			}
-			set
-			{
-				if ((this._Username != value))
-				{
-					this.OnUsernameChanging(value);
-					this.SendPropertyChanging();
-					this._Username = value;
-					this.SendPropertyChanged("Username");
-					this.OnUsernameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(40)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
-		public System.Nullable<int> Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Money", DbType="Int")]
-		public System.Nullable<int> Money
-		{
-			get
-			{
-				return this._Money;
-			}
-			set
-			{
-				if ((this._Money != value))
-				{
-					this.OnMoneyChanging(value);
-					this.SendPropertyChanging();
-					this._Money = value;
-					this.SendPropertyChanged("Money");
-					this.OnMoneyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Person", DbType="Int")]
-		public System.Nullable<int> ID_Person
-		{
-			get
-			{
-				return this._ID_Person;
-			}
-			set
-			{
-				if ((this._ID_Person != value))
-				{
-					if (this._Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_PersonChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Person = value;
-					this.SendPropertyChanged("ID_Person");
-					this.OnID_PersonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_History", Storage="_Histories", ThisKey="ID_Account", OtherKey="ID_Account")]
-		public EntitySet<History> Histories
-		{
-			get
-			{
-				return this._Histories;
-			}
-			set
-			{
-				this._Histories.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Account", Storage="_Person", ThisKey="ID_Person", OtherKey="ID_Person", IsForeignKey=true)]
-		public Person Person
-		{
-			get
-			{
-				return this._Person.Entity;
-			}
-			set
-			{
-				Person previousValue = this._Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Person.Entity = null;
-						previousValue.Accounts.Remove(this);
-					}
-					this._Person.Entity = value;
-					if ((value != null))
-					{
-						value.Accounts.Add(this);
-						this._ID_Person = value.ID_Person;
-					}
-					else
-					{
-						this._ID_Person = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Person");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Histories(History entity)
-		{
-			this.SendPropertyChanging();
-			entity.Account = this;
-		}
-		
-		private void detach_Histories(History entity)
-		{
-			this.SendPropertyChanging();
-			entity.Account = null;
 		}
 	}
 	
@@ -539,7 +300,7 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime")]
 		public System.Nullable<System.DateTime> Date
 		{
 			get
@@ -750,9 +511,9 @@ namespace PBL3_LastReal
 		
 		private int _ID_Detail;
 		
-		private System.Nullable<int> _ID_WorkShift;
+		private int _ID_Person;
 		
-		private System.Nullable<int> _ID_Person;
+		private System.Nullable<int> _ID_WorkShift;
 		
 		private System.Nullable<int> _State;
 		
@@ -766,10 +527,10 @@ namespace PBL3_LastReal
     partial void OnCreated();
     partial void OnID_DetailChanging(int value);
     partial void OnID_DetailChanged();
+    partial void OnID_PersonChanging(int value);
+    partial void OnID_PersonChanged();
     partial void OnID_WorkShiftChanging(System.Nullable<int> value);
     partial void OnID_WorkShiftChanged();
-    partial void OnID_PersonChanging(System.Nullable<int> value);
-    partial void OnID_PersonChanged();
     partial void OnStateChanging(System.Nullable<int> value);
     partial void OnStateChanged();
     #endregion
@@ -801,6 +562,30 @@ namespace PBL3_LastReal
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Person", DbType="Int NOT NULL")]
+		public int ID_Person
+		{
+			get
+			{
+				return this._ID_Person;
+			}
+			set
+			{
+				if ((this._ID_Person != value))
+				{
+					if (this._Person.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PersonChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Person = value;
+					this.SendPropertyChanged("ID_Person");
+					this.OnID_PersonChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_WorkShift", DbType="Int")]
 		public System.Nullable<int> ID_WorkShift
 		{
@@ -821,30 +606,6 @@ namespace PBL3_LastReal
 					this._ID_WorkShift = value;
 					this.SendPropertyChanged("ID_WorkShift");
 					this.OnID_WorkShiftChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Person", DbType="Int")]
-		public System.Nullable<int> ID_Person
-		{
-			get
-			{
-				return this._ID_Person;
-			}
-			set
-			{
-				if ((this._ID_Person != value))
-				{
-					if (this._Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_PersonChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Person = value;
-					this.SendPropertyChanged("ID_Person");
-					this.OnID_PersonChanged();
 				}
 			}
 		}
@@ -896,7 +657,7 @@ namespace PBL3_LastReal
 					}
 					else
 					{
-						this._ID_Person = default(Nullable<int>);
+						this._ID_Person = default(int);
 					}
 					this.SendPropertyChanged("Person");
 				}
@@ -974,9 +735,9 @@ namespace PBL3_LastReal
 		
 		private System.Nullable<System.DateTime> _TimeEnd;
 		
-		private EntityRef<Account> _Account;
-		
 		private EntityRef<Computer> _Computer;
+		
+		private EntityRef<Account> _Account;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -996,8 +757,8 @@ namespace PBL3_LastReal
 		
 		public History()
 		{
-			this._Account = default(EntityRef<Account>);
 			this._Computer = default(EntityRef<Computer>);
+			this._Account = default(EntityRef<Account>);
 			OnCreated();
 		}
 		
@@ -1021,7 +782,7 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Account", DbType="VarChar(30)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Account", DbType="VarChar(40)")]
 		public string ID_Account
 		{
 			get
@@ -1109,40 +870,6 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_History", Storage="_Account", ThisKey="ID_Account", OtherKey="ID_Account", IsForeignKey=true)]
-		public Account Account
-		{
-			get
-			{
-				return this._Account.Entity;
-			}
-			set
-			{
-				Account previousValue = this._Account.Entity;
-				if (((previousValue != value) 
-							|| (this._Account.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Account.Entity = null;
-						previousValue.Histories.Remove(this);
-					}
-					this._Account.Entity = value;
-					if ((value != null))
-					{
-						value.Histories.Add(this);
-						this._ID_Account = value.ID_Account;
-					}
-					else
-					{
-						this._ID_Account = default(string);
-					}
-					this.SendPropertyChanged("Account");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Computer_History", Storage="_Computer", ThisKey="ID_Computer", OtherKey="ID_Computer", IsForeignKey=true)]
 		public Computer Computer
 		{
@@ -1173,6 +900,40 @@ namespace PBL3_LastReal
 						this._ID_Computer = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Computer");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_History", Storage="_Account", ThisKey="ID_Account", OtherKey="ID_Account", IsForeignKey=true)]
+		public Account Account
+		{
+			get
+			{
+				return this._Account.Entity;
+			}
+			set
+			{
+				Account previousValue = this._Account.Entity;
+				if (((previousValue != value) 
+							|| (this._Account.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Account.Entity = null;
+						previousValue.Histories.Remove(this);
+					}
+					this._Account.Entity = value;
+					if ((value != null))
+					{
+						value.Histories.Add(this);
+						this._ID_Account = value.ID_Account;
+					}
+					else
+					{
+						this._ID_Account = default(string);
+					}
+					this.SendPropertyChanged("Account");
 				}
 			}
 		}
@@ -1218,13 +979,13 @@ namespace PBL3_LastReal
 		
 		private System.Nullable<int> _Works;
 		
-		private EntitySet<Account> _Accounts;
-		
 		private EntitySet<DetailWorkShift> _DetailWorkShifts;
 		
 		private EntitySet<Salary> _Salaries;
 		
 		private EntitySet<Vehicle> _Vehicles;
+		
+		private EntitySet<Account> _Accounts;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1248,10 +1009,10 @@ namespace PBL3_LastReal
 		
 		public Person()
 		{
-			this._Accounts = new EntitySet<Account>(new Action<Account>(this.attach_Accounts), new Action<Account>(this.detach_Accounts));
 			this._DetailWorkShifts = new EntitySet<DetailWorkShift>(new Action<DetailWorkShift>(this.attach_DetailWorkShifts), new Action<DetailWorkShift>(this.detach_DetailWorkShifts));
 			this._Salaries = new EntitySet<Salary>(new Action<Salary>(this.attach_Salaries), new Action<Salary>(this.detach_Salaries));
 			this._Vehicles = new EntitySet<Vehicle>(new Action<Vehicle>(this.attach_Vehicles), new Action<Vehicle>(this.detach_Vehicles));
+			this._Accounts = new EntitySet<Account>(new Action<Account>(this.attach_Accounts), new Action<Account>(this.detach_Accounts));
 			OnCreated();
 		}
 		
@@ -1335,7 +1096,7 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CCCD", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CCCD", DbType="VarChar(30)")]
 		public string CCCD
 		{
 			get
@@ -1355,7 +1116,7 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNum", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNum", DbType="VarChar(30)")]
 		public string PhoneNum
 		{
 			get
@@ -1392,19 +1153,6 @@ namespace PBL3_LastReal
 					this.SendPropertyChanged("Works");
 					this.OnWorksChanged();
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Account", Storage="_Accounts", ThisKey="ID_Person", OtherKey="ID_Person")]
-		public EntitySet<Account> Accounts
-		{
-			get
-			{
-				return this._Accounts;
-			}
-			set
-			{
-				this._Accounts.Assign(value);
 			}
 		}
 		
@@ -1447,6 +1195,19 @@ namespace PBL3_LastReal
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Account", Storage="_Accounts", ThisKey="ID_Person", OtherKey="ID_Person")]
+		public EntitySet<Account> Accounts
+		{
+			get
+			{
+				return this._Accounts;
+			}
+			set
+			{
+				this._Accounts.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1465,18 +1226,6 @@ namespace PBL3_LastReal
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Accounts(Account entity)
-		{
-			this.SendPropertyChanging();
-			entity.Person = this;
-		}
-		
-		private void detach_Accounts(Account entity)
-		{
-			this.SendPropertyChanging();
-			entity.Person = null;
 		}
 		
 		private void attach_DetailWorkShifts(DetailWorkShift entity)
@@ -1510,6 +1259,18 @@ namespace PBL3_LastReal
 		}
 		
 		private void detach_Vehicles(Vehicle entity)
+		{
+			this.SendPropertyChanging();
+			entity.Person = null;
+		}
+		
+		private void attach_Accounts(Account entity)
+		{
+			this.SendPropertyChanging();
+			entity.Person = this;
+		}
+		
+		private void detach_Accounts(Account entity)
 		{
 			this.SendPropertyChanging();
 			entity.Person = null;
@@ -1668,14 +1429,26 @@ namespace PBL3_LastReal
 		
 		private System.Nullable<int> _ID_Price;
 		
-		private string _pics;
-		
 		private string _Path;
 		
 		private EntityRef<Price> _Price;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
+		public Image pics
+		{
+			get
+			{
+				if (!string.IsNullOrEmpty(Path))
+				{
+					if (File.Exists(Path))
+					{
+						return Image.FromFile(Path);
+					}
+				}
+				return null;
+			}
+		}
+
+		#region Extensibility Method Definitions
+		partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnID_ProductChanging(int value);
@@ -1686,8 +1459,6 @@ namespace PBL3_LastReal
     partial void OnQuantityChanged();
     partial void OnID_PriceChanging(System.Nullable<int> value);
     partial void OnID_PriceChanged();
-    partial void OnpicsChanging(string value);
-    partial void OnpicsChanged();
     partial void OnPathChanging(string value);
     partial void OnPathChanged();
     #endregion
@@ -1782,27 +1553,7 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pics", DbType="NVarChar(50)")]
-		public string pics
-		{
-			get
-			{
-				return this._pics;
-			}
-			set
-			{
-				if ((this._pics != value))
-				{
-					this.OnpicsChanging(value);
-					this.SendPropertyChanging();
-					this._pics = value;
-					this.SendPropertyChanged("pics");
-					this.OnpicsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Path", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Path", DbType="VarChar(100)")]
 		public string Path
 		{
 			get
@@ -2541,6 +2292,439 @@ namespace PBL3_LastReal
 		{
 			this.SendPropertyChanging();
 			entity.WorkShift = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Account")]
+	public partial class Account : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ID_Account;
+		
+		private string _Username;
+		
+		private string _Password;
+		
+		private System.Nullable<int> _Type;
+		
+		private System.Nullable<int> _Money;
+		
+		private System.Nullable<int> _ID_Person;
+		
+		private System.Nullable<int> _MoneyLeft;
+		
+		private EntitySet<History> _Histories;
+		
+		private EntityRef<Person> _Person;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_AccountChanging(string value);
+    partial void OnID_AccountChanged();
+    partial void OnUsernameChanging(string value);
+    partial void OnUsernameChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnTypeChanging(System.Nullable<int> value);
+    partial void OnTypeChanged();
+    partial void OnMoneyChanging(System.Nullable<int> value);
+    partial void OnMoneyChanged();
+    partial void OnID_PersonChanging(System.Nullable<int> value);
+    partial void OnID_PersonChanged();
+    partial void OnMoneyLeftChanging(System.Nullable<int> value);
+    partial void OnMoneyLeftChanged();
+    #endregion
+		
+		public Account()
+		{
+			this._Histories = new EntitySet<History>(new Action<History>(this.attach_Histories), new Action<History>(this.detach_Histories));
+			this._Person = default(EntityRef<Person>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Account", DbType="VarChar(40) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_Account
+		{
+			get
+			{
+				return this._ID_Account;
+			}
+			set
+			{
+				if ((this._ID_Account != value))
+				{
+					this.OnID_AccountChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Account = value;
+					this.SendPropertyChanged("ID_Account");
+					this.OnID_AccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(40)")]
+		public string Username
+		{
+			get
+			{
+				return this._Username;
+			}
+			set
+			{
+				if ((this._Username != value))
+				{
+					this.OnUsernameChanging(value);
+					this.SendPropertyChanging();
+					this._Username = value;
+					this.SendPropertyChanged("Username");
+					this.OnUsernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(40)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="Int")]
+		public System.Nullable<int> Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Money", DbType="Int")]
+		public System.Nullable<int> Money
+		{
+			get
+			{
+				return this._Money;
+			}
+			set
+			{
+				if ((this._Money != value))
+				{
+					this.OnMoneyChanging(value);
+					this.SendPropertyChanging();
+					this._Money = value;
+					this.SendPropertyChanged("Money");
+					this.OnMoneyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Person", DbType="Int")]
+		public System.Nullable<int> ID_Person
+		{
+			get
+			{
+				return this._ID_Person;
+			}
+			set
+			{
+				if ((this._ID_Person != value))
+				{
+					if (this._Person.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PersonChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Person = value;
+					this.SendPropertyChanged("ID_Person");
+					this.OnID_PersonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoneyLeft", DbType="Int")]
+		public System.Nullable<int> MoneyLeft
+		{
+			get
+			{
+				return this._MoneyLeft;
+			}
+			set
+			{
+				if ((this._MoneyLeft != value))
+				{
+					this.OnMoneyLeftChanging(value);
+					this.SendPropertyChanging();
+					this._MoneyLeft = value;
+					this.SendPropertyChanged("MoneyLeft");
+					this.OnMoneyLeftChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_History", Storage="_Histories", ThisKey="ID_Account", OtherKey="ID_Account")]
+		public EntitySet<History> Histories
+		{
+			get
+			{
+				return this._Histories;
+			}
+			set
+			{
+				this._Histories.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Account", Storage="_Person", ThisKey="ID_Person", OtherKey="ID_Person", IsForeignKey=true)]
+		public Person Person
+		{
+			get
+			{
+				return this._Person.Entity;
+			}
+			set
+			{
+				Person previousValue = this._Person.Entity;
+				if (((previousValue != value) 
+							|| (this._Person.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Person.Entity = null;
+						previousValue.Accounts.Remove(this);
+					}
+					this._Person.Entity = value;
+					if ((value != null))
+					{
+						value.Accounts.Add(this);
+						this._ID_Person = value.ID_Person;
+					}
+					else
+					{
+						this._ID_Person = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Person");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Histories(History entity)
+		{
+			this.SendPropertyChanging();
+			entity.Account = this;
+		}
+		
+		private void detach_Histories(History entity)
+		{
+			this.SendPropertyChanging();
+			entity.Account = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Bill_Thang")]
+	public partial class Bill_Thang : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id_Bill2;
+		
+		private System.Nullable<int> _TienMay;
+		
+		private System.Nullable<int> _DichVu;
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+		private int _LuongNhanVien;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnId_Bill2Changing(int value);
+    partial void OnId_Bill2Changed();
+    partial void OnTienMayChanging(System.Nullable<int> value);
+    partial void OnTienMayChanged();
+    partial void OnDichVuChanging(System.Nullable<int> value);
+    partial void OnDichVuChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
+    partial void OnLuongNhanVienChanging(int value);
+    partial void OnLuongNhanVienChanged();
+    #endregion
+		
+		public Bill_Thang()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Bill2", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id_Bill2
+		{
+			get
+			{
+				return this._Id_Bill2;
+			}
+			set
+			{
+				if ((this._Id_Bill2 != value))
+				{
+					this.OnId_Bill2Changing(value);
+					this.SendPropertyChanging();
+					this._Id_Bill2 = value;
+					this.SendPropertyChanged("Id_Bill2");
+					this.OnId_Bill2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TienMay", DbType="Int")]
+		public System.Nullable<int> TienMay
+		{
+			get
+			{
+				return this._TienMay;
+			}
+			set
+			{
+				if ((this._TienMay != value))
+				{
+					this.OnTienMayChanging(value);
+					this.SendPropertyChanging();
+					this._TienMay = value;
+					this.SendPropertyChanged("TienMay");
+					this.OnTienMayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DichVu", DbType="Int")]
+		public System.Nullable<int> DichVu
+		{
+			get
+			{
+				return this._DichVu;
+			}
+			set
+			{
+				if ((this._DichVu != value))
+				{
+					this.OnDichVuChanging(value);
+					this.SendPropertyChanging();
+					this._DichVu = value;
+					this.SendPropertyChanged("DichVu");
+					this.OnDichVuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LuongNhanVien", DbType="Int NOT NULL")]
+		public int LuongNhanVien
+		{
+			get
+			{
+				return this._LuongNhanVien;
+			}
+			set
+			{
+				if ((this._LuongNhanVien != value))
+				{
+					this.OnLuongNhanVienChanging(value);
+					this.SendPropertyChanging();
+					this._LuongNhanVien = value;
+					this.SendPropertyChanged("LuongNhanVien");
+					this.OnLuongNhanVienChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
