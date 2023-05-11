@@ -15,60 +15,46 @@ namespace PBL3_LastReal.View
     {
         public delegate void UpdateDGVHandler();
         public event UpdateDGVHandler UpdateDGV;
-        public fAddEditStaff(Salary s)
+        public fAddEditStaff()
         {
             InitializeComponent();
-            GUI(s);
+            setCBB();
         }
-        private void GUI(Salary s)
-        {
-            if(s != null) 
-            {
-                tb_id.Text = s.ID_Person.ToString();
-                tb_id.Enabled= false;
-                tb_name.Text = s.Person.Name;
-                tb_cccd.Text = s.Person.CCCD.ToString();
-                tb_dob.Text = s.Person.DOB.ToString();
-                tb_phone.Text = s.Person.PhoneNum.ToString();
-                tb_salary.Text = s.Salary1.ToString();
-            }
-        }
-
         private void btn_Huy_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
-
+        private void setCBB()
+        {
+            cbb_type.Items.Add("Nhân viên");
+            cbb_type.Items.Add("Thu ngân");
+            cbb_type.Items.Add("Bảo vệ");
+        }
         private void btn_ok_Click(object sender, EventArgs e)
         {
-            string id_per = tb_id.Text;
+            string type = cbb_type.Text;
             string name = tb_name.Text;
-            string dob = tb_dob.Text;
+            string dob = dt_dob.Text;
             string cccd = tb_cccd.Text;
             string phoneNum = tb_phone.Text;
             string salary = tb_salary.Text;
-            if(id_per == "" || name == "" || dob == "" || cccd == "" || phoneNum == "" || salary == "")
+            if(type == "" || name == "" || dob == "" || cccd == "" || phoneNum == "" || salary == "")
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
             }
             else
             {
-                if (ManagePerson.Instance.checkIDPer(Convert.ToInt32(id_per)) == true && tb_id.Enabled == false)
+                if(ManagePerson.Instance.checkCCCDPer(cccd) == false)
                 {
-                    ManageSalary.Instance.editSalaryAndPer(Convert.ToInt32(id_per), name, Convert.ToDateTime(dob), cccd, phoneNum, Convert.ToInt32(salary));
-                    MessageBox.Show("Cập nhật thông tin thành công!");
-                }
-                else if (ManagePerson.Instance.checkIDPer(Convert.ToInt32(id_per)) == false)
-                {
-                    ManageSalary.Instance.addSalaryAndPer(name, Convert.ToDateTime(dob), cccd, phoneNum, Convert.ToInt32(salary));
+                    ManageSalary.Instance.addSalaryAndPer(type, name, Convert.ToDateTime(dob), cccd, phoneNum, Convert.ToInt32(salary));
                     MessageBox.Show("Thêm thông tin nhân viên thành công");
+                    this.Dispose();
                 }
                 else
                 {
-                    MessageBox.Show("ID này đã có trong danh sách!");
+                    MessageBox.Show("CCCD này đã có người đăng ký!");
                 }
                 UpdateDGV();
-                this.Dispose();
             }    
         }
     }

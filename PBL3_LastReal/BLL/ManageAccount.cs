@@ -23,15 +23,6 @@ namespace PBL3_LastReal.BLL
             }
             private set { }
         }
-        public List<Account> GetAccounts()
-        {
-            List<Account> accounts = new List<Account>();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
-            {
-                accounts = db.Accounts.ToList();
-            }
-            return accounts;
-        }
         private string MD5Hash(string input)
         {
             StringBuilder hash = new StringBuilder();
