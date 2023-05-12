@@ -162,7 +162,7 @@ namespace PBL3_LastReal
                     {
                         points.Add(new DataPoint(dm.AddDays(i).ToOADate(), (double)query[count].DichVu));
                         points2.Add(new DataPoint(dm.AddDays(i).ToOADate(), (double)query[count].TienMay));
-                        points3.Add(new DataPoint(dm.AddDays(i).ToOADate(), query[count].LuongNhanVien));
+                        points3.Add(new DataPoint(dm.AddDays(i).ToOADate(), (double)query[count].LuongNhanVien));
                         count++;
                         if (count == query.Count)
                         {

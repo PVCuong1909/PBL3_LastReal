@@ -30,7 +30,8 @@ namespace PBL3_LastReal.BLL
         }
         public void addSalaryAndPer(string type, string name, DateTime dob, string cccd, string phonenum, int salary)
         {
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            int Type = 2;
+            if (type == "Bảo vệ")
             {
                 Type = 4;
             }
@@ -100,10 +101,17 @@ namespace PBL3_LastReal.BLL
                 db.Salaries.Where(p => p.ID_Person == id).First().Salary1 = salary;
                 db.Salaries.Where(p => p.ID_Person == id).First().Person.Name = name;
                 db.Salaries.Where(p => p.ID_Person == id).First().Person.DOB = dob;
-                db.Salaries.Where(p => p.ID_Person == id).First().Person.CCCD= cccd;
+                db.Salaries.Where(p => p.ID_Person == id).First().Person.Type= Type;
                 db.Salaries.Where(p => p.ID_Person == id).First().Person.PhoneNum= phonenum;
                 db.SubmitChanges();
             }
+        }
+        public List<Salary> getAllPerAndSal()
+        {
+            QuanLyNetDataContext db = new QuanLyNetDataContext();   
+            List<Salary> list = new List<Salary>();
+            list = db.Salaries.Select(p => p).ToList();
+            return list;
         }
     }
 }

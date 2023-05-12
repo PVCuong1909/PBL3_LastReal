@@ -66,5 +66,6 @@ namespace PBL3_LastReal.View
             UC_Ca uc = new UC_Ca();
             addUserControl(uc);
         }
+
     }
 }

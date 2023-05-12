@@ -129,5 +129,13 @@ namespace PBL3_LastReal.BLL
             }
             return per;
         }
+        public void resetWork(string cccd)
+        {
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                db.Persons.Where(p => p.CCCD == cccd).First().Works = 0;
+                db.SubmitChanges();
+            }
+        }
     }
 }

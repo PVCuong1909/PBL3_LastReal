@@ -70,6 +70,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyNet.dbml</DependentUpon>
     </Compile>
+    <Compile Include="View\fPaySalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fPaySalary.Designer.cs">
+      <DependentUpon>fPaySalary.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\uc_Day.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -232,6 +238,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\fPaySalary.resx">
+      <DependentUpon>fPaySalary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\uc_Day.resx">
       <DependentUpon>uc_Day.cs</DependentUpon>
     </EmbeddedResource>

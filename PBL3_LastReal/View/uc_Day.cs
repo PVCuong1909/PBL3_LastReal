@@ -33,7 +33,7 @@ namespace PBL3_LastReal.Resources
             }
             else if(day != now.Day && month == now.Month && year == now.Year || month != now.Month || year != now.Year)
             {
-                string date = day + "/" + month + "/" + year;
+                string date = year + "-" + month + "-" + day;
                 if(ManageWorkShift.Instance.GetWorkShifts(Convert.ToDateTime(date)).Count > 0)
                 {
                     this.BackColor = Color.OrangeRed;

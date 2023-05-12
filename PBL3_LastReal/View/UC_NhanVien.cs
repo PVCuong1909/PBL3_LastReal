@@ -70,7 +70,7 @@ namespace PBL3_LastReal.View
                     cbb_type.Text = "Thu ngân";
                 }   
                 tb_name.Text = per.Name;
-                dt_dob.Text = per.DOB.Value.ToString("dd/MM/yyyy");
+                dt_dob.Text = per.DOB.Value.ToString("yyyy/MM/dd");
                 tb_CCCD.Text = per.CCCD.ToString();
                 tb_phone.Text = per.PhoneNum.ToString();
                 string id = per.ID_Person.ToString();
@@ -129,6 +129,26 @@ namespace PBL3_LastReal.View
                     tb_phone.Enabled = false;
                     tb_salary.Enabled = false;
                     GUI();   
+            }
+        }
+
+        private void btn_paySal_Click(object sender, EventArgs e)
+        {
+            if (dgv.SelectedRows.Count == 1)
+            {
+                string cccd = dgv.SelectedRows[0].Cells[1].Value.ToString();
+                Person per = ManagePerson.Instance.GetPersonByCCCD(cccd);
+                fPaySalary f = new fPaySalary(per);
+                f.ShowDialog();
+
+            }
+            else if (dgv.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Không thể trả lương cho nhiều nhân viên cùng lúc!");
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn 1 thông tin nhân viên!");
             }
         }
     }
