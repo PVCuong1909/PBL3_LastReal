@@ -30,7 +30,7 @@ namespace PBL3_LastReal.View
             Account acc = ManageAccount.Instance.GetAccountByUsername(usernamef);
             Person per = ManagePerson.Instance.GetPerson((int)acc.ID_Person);
             tb_Name.Text = per.Name;
-            tb_DOB.Text = per.DOB.Value.ToString("dd/MM/yyyy");
+            dt_dob.Text = per.DOB.Value.ToString("dd/MM/yyyy");
             tb_CCCD.Text = per.CCCD;
             tb_PhoneNum.Text = per.PhoneNum;
             tb_Username.Text = usernamef;
@@ -51,7 +51,7 @@ namespace PBL3_LastReal.View
                 Person per = new Person
                 {
                     Name = tb_Name.Text,
-                    DOB = Convert.ToDateTime(tb_DOB.Text),
+                    DOB = Convert.ToDateTime(dt_dob.Text),
                     CCCD = tb_CCCD.Text,
                     PhoneNum = tb_PhoneNum.Text,
                     Type = 1
@@ -71,7 +71,7 @@ namespace PBL3_LastReal.View
             {
                 int id_per = ManagePerson.Instance.getIDPersonByUsername(usernameform);
                 string name = tb_Name.Text;
-                DateTime DOB = Convert.ToDateTime(tb_DOB.Text);
+                DateTime DOB = Convert.ToDateTime(dt_dob.Text);
                 string CCCD = tb_CCCD.Text;
                 string phoneNum = tb_PhoneNum.Text;
                 ManagePerson.Instance.updatePerson(id_per, name, DOB, CCCD, phoneNum);

@@ -19,7 +19,7 @@ namespace PBL3_LastReal.View
         public fRecharge(string user)
         {
             InitializeComponent();
-            User= user;
+            User = user;
             tb_user.Text = User;
             tb_money.Text = ManageAccount.Instance.GetAccountByUsername(User).Money.ToString();
         }
@@ -28,10 +28,10 @@ namespace PBL3_LastReal.View
         {
             this.Dispose();
         }
-
+        
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            if(tb_money.Enabled == false)
+            if (tb_money.Enabled == false)
             {
                 int newMoney = Convert.ToInt32(tb_newmoney.Text);
                 ManageAccount.Instance.rechargeByUsername(User, newMoney);
@@ -44,13 +44,13 @@ namespace PBL3_LastReal.View
                 MessageBox.Show("Cập nhật số tiền mới thành công!");
             }
             this.Dispose();
-            //UpdateDGV();
+            UpdateDGV();
         }
 
         private void btn_EditMoney_Click(object sender, EventArgs e)
         {
             tb_money.Enabled = true;
-            tb_newmoney.Enabled = false; 
+            tb_newmoney.Enabled = false;
         }
     }
 }

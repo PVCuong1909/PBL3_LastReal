@@ -83,31 +83,51 @@ namespace PBL3_LastReal.BLL
             List<Person> list = new List<Person>();
             using(QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
-                list = db.Persons.Where(p => p.Type == 2).ToList();
+                list = db.Persons.Where(p => p.Type > 1).ToList();
             }    
             return list;
         }
-        public List<string> GetAllID()
+        public List<string> GetAllCCCD()
         {
             List<string> list = new List<string>();
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
                 foreach (Person com in db.Persons)
                 {
-                    list.Add(com.ID_Person.ToString());
+                    list.Add(com.CCCD.ToString());
                 }
             }
             return list;
         }
-        public bool checkIDPer(int id) 
+        public void delPersonByCCCD(string CCCD)
+        {
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                Person per = db.Persons.Where(p => p.CCCD == CCCD).First();
+                Salary sal = db.Salaries.Where(p => p.ID_Person == per.ID_Person).First();
+                db.Persons.DeleteOnSubmit(per);
+                db.Salaries.DeleteOnSubmit(sal);
+                db.SubmitChanges();
+            }
+        }
+        public bool checkCCCDPer(string cccd)
         {
             bool check = false;
-            foreach(string i in GetAllID())
+            foreach(string i in GetAllCCCD())
             {
-                if(i == id.ToString())
+                if(i == cccd)
                     check = true;
             }    
             return check;
+        }
+        public Person GetPersonByCCCD(string cccd)
+        {
+            Person per = new Person();
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            {
+                per = db.Persons.Where(p => p.CCCD == cccd).First();
+            }
+            return per;
         }
     }
 }
