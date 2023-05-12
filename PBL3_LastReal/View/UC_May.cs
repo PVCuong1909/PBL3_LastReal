@@ -170,6 +170,7 @@ namespace PBL3_LastReal.View
                 string id = dgv.SelectedRows[0].Cells[0].Value.ToString();
                 string user = ManageHistory.Instance.getHistotyByIDAndTimeBeginAcc(id).Username.ToString();
                 fRecharge f = new fRecharge(user);
+                f.UpdateDGV += new fRecharge.UpdateDGVHandler(GUI);
                 f.ShowDialog();
             }
             else

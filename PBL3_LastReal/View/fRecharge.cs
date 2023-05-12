@@ -36,6 +36,7 @@ namespace PBL3_LastReal.View
                 int newMoney = Convert.ToInt32(tb_newmoney.Text);
                 ManageAccount.Instance.rechargeByUsername(User, newMoney);
                 MessageBox.Show("Nạp tiền thành công!");
+                ManageBill.Instance.addBill(newMoney, 1);
             }
             else
             {
@@ -44,7 +45,7 @@ namespace PBL3_LastReal.View
                 MessageBox.Show("Cập nhật số tiền mới thành công!");
             }
             this.Dispose();
-            //UpdateDGV();
+            UpdateDGV();
         }
 
         private void btn_EditMoney_Click(object sender, EventArgs e)

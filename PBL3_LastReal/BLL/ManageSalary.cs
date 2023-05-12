@@ -28,13 +28,22 @@ namespace PBL3_LastReal.BLL
             Salary sar = db.Salaries.Where(p => p.ID_Person == id).First();
             return sar;
         }
-        public void addSalaryAndPer(string name, DateTime dob, string cccd, string phonenum, int salary)
+        public void addSalaryAndPer(string type, string name, DateTime dob, string cccd, string phonenum, int salary)
         {
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            int Type = 2;
+            if (type == "Bảo vệ")
+            {
+                Type = 4;
+            }
+            else if (type == "Thu ngân")
+            {
+                Type = 3;
+            }
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
                 Person per = new Person
                 {
-                    Type = 2,
+                    Type = Type,
                     Name = name,
                     DOB = dob,
                     CCCD = cccd,
@@ -51,14 +60,23 @@ namespace PBL3_LastReal.BLL
                 db.SubmitChanges();
             }
         }
-        public void editSalaryAndPer(int id, string name, DateTime dob, string cccd, string phonenum, int salary)
+        public void editSalaryAndPer(int id, string type, string name, DateTime dob, string cccd, string phonenum, int salary)
         {
+            int Type = 2;
+            if(type == "Bảo vệ")
+            {
+                Type = 4;
+            }
+            else if(type == "Thu ngân")
+            {
+                Type = 3;
+            }    
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
                 db.Salaries.Where(p => p.ID_Person == id).First().Salary1 = salary;
                 db.Salaries.Where(p => p.ID_Person == id).First().Person.Name = name;
                 db.Salaries.Where(p => p.ID_Person == id).First().Person.DOB = dob;
-                db.Salaries.Where(p => p.ID_Person == id).First().Person.CCCD= cccd;
+                db.Salaries.Where(p => p.ID_Person == id).First().Person.Type= Type;
                 db.Salaries.Where(p => p.ID_Person == id).First().Person.PhoneNum= phonenum;
                 db.SubmitChanges();
             }
