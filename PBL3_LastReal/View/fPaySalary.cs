@@ -50,11 +50,18 @@ namespace PBL3_LastReal.View
 
         private void btn_pay_Click(object sender, EventArgs e)
         {
-            int work = Convert.ToInt32(tb_work.Text);
-            int salaryDay = Convert.ToInt32(tb_salary.Text);
-            int bonus = Convert.ToInt32(tb_bonus.Text);
-            int total = work * salaryDay + bonus;
-            tb_total.Text = total.ToString();
+            if(tb_bonus.Text == "")
+            {
+                MessageBox.Show("Nhập lương thưởng cho nhân viên!");
+            }
+            else
+            {
+                int work = Convert.ToInt32(tb_work.Text);
+                int salaryDay = Convert.ToInt32(tb_salary.Text);
+                int bonus = Convert.ToInt32(tb_bonus.Text);
+                int total = work * salaryDay + bonus;
+                tb_total.Text = total.ToString();
+            }
         }
 
         private void btn_OK_Click(object sender, EventArgs e)

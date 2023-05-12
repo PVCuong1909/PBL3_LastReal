@@ -36,7 +36,6 @@ namespace PBL3_LastReal.BLL
                 };
                 db.Bills.InsertOnSubmit(bill);
                 db.SubmitChanges();
-                int pos = 0;
                 var query2 = db.Bill_Thangs.Where(p => p.Id_Bill2 > 0).ToList();
                 for(int i = 0; i < query2.Count; i++)
                 {

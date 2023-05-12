@@ -47,7 +47,8 @@ namespace PBL3_LastReal.BLL
                     Name = name,
                     DOB = dob,
                     CCCD = cccd,
-                    PhoneNum = phonenum
+                    PhoneNum = phonenum,
+                    Works = 0
                 };
                 db.Persons.InsertOnSubmit(per);
                 db.SubmitChanges();
@@ -105,13 +106,6 @@ namespace PBL3_LastReal.BLL
                 db.Salaries.Where(p => p.ID_Person == id).First().Person.PhoneNum= phonenum;
                 db.SubmitChanges();
             }
-        }
-        public List<Salary> getAllPerAndSal()
-        {
-            QuanLyNetDataContext db = new QuanLyNetDataContext();   
-            List<Salary> list = new List<Salary>();
-            list = db.Salaries.Select(p => p).ToList();
-            return list;
         }
     }
 }

@@ -13,16 +13,44 @@ namespace PBL3_LastReal.View
 {
     public partial class fAddEditStaff : Form
     {
+        private int id_per;
         public delegate void UpdateDGVHandler();
         public event UpdateDGVHandler UpdateDGV;
-        public fAddEditStaff()
+        public fAddEditStaff(Person per)
         {
             InitializeComponent();
-            setCBB();
+            GUI(per);
         }
         private void btn_Huy_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+        private void GUI(Person per) 
+        {
+            if(per != null) 
+            {
+                tb_cccd.Text = per.CCCD;
+                tb_cccd.Enabled = false;
+                tb_name.Text = per.Name;
+                tb_phone.Text = per.PhoneNum;
+                if (per.Type == 2)
+                {
+                    cbb_type.Text = "Nhân viên";
+                }
+                else if (per.Type == 3)
+                {
+                    cbb_type.Text = "Thu ngân";
+                }
+                else if (per.Type == 4)
+                {
+                    cbb_type.Text = "Bảo vệ";
+                }
+                dt_dob.Value = per.DOB.Value;
+                id_per = per.ID_Person;
+                Salary sal = ManageSalary.Instance.getSalaryByID(id_per);
+                tb_salary.Text = sal.Salary1.ToString();
+            }
+            setCBB();
         }
         private void setCBB()
         {
@@ -44,15 +72,24 @@ namespace PBL3_LastReal.View
             }
             else
             {
-                if(ManagePerson.Instance.checkCCCDPer(cccd) == false)
+                if(tb_cccd.Enabled == false)
                 {
-                    ManageSalary.Instance.addSalaryAndPer(type, name, Convert.ToDateTime(dob), cccd, phoneNum, Convert.ToInt32(salary));
-                    MessageBox.Show("Thêm thông tin nhân viên thành công");
+                    ManageSalary.Instance.editSalaryAndPer(Convert.ToInt32(id_per), type, name, Convert.ToDateTime(dob), cccd, phoneNum, Convert.ToInt32(salary));
+                    MessageBox.Show("Cập nhật thông tin thành công");
                     this.Dispose();
                 }
                 else
                 {
-                    MessageBox.Show("CCCD này đã có người đăng ký!");
+                    if (ManagePerson.Instance.checkCCCDPer(cccd) == false)
+                    {
+                        ManageSalary.Instance.addSalaryAndPer(type, name, Convert.ToDateTime(dob), cccd, phoneNum, Convert.ToInt32(salary));
+                        MessageBox.Show("Thêm thông tin nhân viên thành công");
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show("CCCD này đã có người đăng ký!");
+                    }
                 }
                 UpdateDGV();
             }    

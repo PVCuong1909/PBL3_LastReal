@@ -163,7 +163,6 @@ namespace PBL3_LastReal.BLL
                 db.Accounts.Where(p => p.Username == username).First().Money += money;
                 db.Accounts.Where(p => p.Username == username).First().MoneyLeft += money;
                 db.SubmitChanges();
-                int pos = 0;
                 var query2 = db.Bill_Thangs.Where(p => p.Id_Bill2 >0 ).ToList();
                 for(int i =0;i<query2.Count;i++)
                 {
@@ -174,16 +173,7 @@ namespace PBL3_LastReal.BLL
                         break;
                     }
 
-                }
-                //if (ManageProfit.Instance.check((DateTime)query2[pos].Date) == true)
-                //{
-                //    query2[pos].TienMay += money;
-                //    db.SubmitChanges();
-                //}
-                //else
-                //{
-                //    pos++;
-                //}
+                }            
             }
         }
         public void editRechargeMoney(string username, int money)
