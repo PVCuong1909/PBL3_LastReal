@@ -37,7 +37,7 @@ namespace PBL3_LastReal.View
             tb_SL.Text = product.Quantity.ToString();
             tb_GiaNhap.Text = product.Price.ImPrice.ToString();
             tb_GiaBan.Text = product.Price.ExPrice.ToString();
-            tb_Path.Text = product.Path.ToString();
+            //tb_Path.Text = product.Path.ToString();
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace PBL3_LastReal.View
                     Name = tb_TenSP.Text,
                     Quantity = Convert.ToInt32(tb_SL.Text),
                     ID_Price = ManageService.Instance.GetIdPrice(GiaNhap, GiaBan),
-                    Path = tb_Path.Text
+                    //Path = tb_Path.Text
                 };
                 ManageService.Instance.addProduct(p);
                 updateGUI();

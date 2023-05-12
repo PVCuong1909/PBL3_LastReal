@@ -60,11 +60,19 @@
     <Compile Include="BLL\ManagePerson.cs" />
     <Compile Include="BLL\ManagerService.cs" />
     <Compile Include="BLL\ManageSalary.cs" />
+    <Compile Include="BLL\ManageWorkShift.cs" />
+    <Compile Include="BLL\ToolTime.cs" />
     <Compile Include="DTO\Service.cs" />
     <Compile Include="QuanLyNet.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyNet.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="View\uc_Day.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\uc_Day.Designer.cs">
+      <DependentUpon>uc_Day.cs</DependentUpon>
     </Compile>
     <Compile Include="View\fAddEditAccount.cs">
       <SubType>Form</SubType>
@@ -126,6 +134,12 @@
     <Compile Include="View\fClientService.Designer.cs">
       <DependentUpon>fClientService.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\fDetailWorkShift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fDetailWorkShift.Designer.cs">
+      <DependentUpon>fDetailWorkShift.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\fLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,11 +160,35 @@
     <Compile Include="View\fSeeHistory.Designer.cs">
       <DependentUpon>fSeeHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\fStaffFree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fStaffFree.Designer.cs">
+      <DependentUpon>fStaffFree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\fWorkShift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fWorkShift.Designer.cs">
+      <DependentUpon>fWorkShift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\uc_Blank.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\uc_Blank.Designer.cs">
+      <DependentUpon>uc_Blank.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UC_Ca.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\UC_Ca.Designer.cs">
       <DependentUpon>UC_Ca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\uc_DetailWorkShift.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\uc_DetailWorkShift.Designer.cs">
+      <DependentUpon>uc_DetailWorkShift.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UC_DichVu.cs">
       <SubType>UserControl</SubType>
@@ -192,6 +230,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\uc_Day.resx">
+      <DependentUpon>uc_Day.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\fAddEditAccount.resx">
       <DependentUpon>fAddEditAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +260,9 @@
     <EmbeddedResource Include="View\fClientService.resx">
       <DependentUpon>fClientService.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\fDetailWorkShift.resx">
+      <DependentUpon>fDetailWorkShift.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -227,6 +271,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\fSeeHistory.resx">
       <DependentUpon>fSeeHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fStaffFree.resx">
+      <DependentUpon>fStaffFree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fWorkShift.resx">
+      <DependentUpon>fWorkShift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\uc_Blank.resx">
+      <DependentUpon>uc_Blank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UC_Ca.resx">
+      <DependentUpon>UC_Ca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\uc_DetailWorkShift.resx">
+      <DependentUpon>uc_DetailWorkShift.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UC_DichVu.resx">
       <DependentUpon>UC_DichVu.cs</DependentUpon>

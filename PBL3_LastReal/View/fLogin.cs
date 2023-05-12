@@ -55,6 +55,11 @@ namespace PBL3_LastReal
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không hợp lệ");
             }      
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 

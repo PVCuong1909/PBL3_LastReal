@@ -24,7 +24,7 @@ namespace PBL3_LastReal.View
             {
                 dgv.DataSource = db.Products.Select(p => new
                 {
-                    p.pics,
+                    //p.pics,
                     p.Name,
                     p.Quantity,
                     p.Price.ImPrice,

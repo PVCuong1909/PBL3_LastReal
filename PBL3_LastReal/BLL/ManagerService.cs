@@ -106,7 +106,7 @@ namespace PBL3_LastReal.BLL
                 product.Name = infor[1];
                 product.Quantity =Convert.ToInt32(infor[2]);
                 product.ID_Price = Convert.ToInt32(infor[3]);
-                product.Path = infor[4];
+                //product.Path = infor[4];
                 db.SubmitChanges();
             }
         }
@@ -128,7 +128,7 @@ namespace PBL3_LastReal.BLL
                     Where(p => p.Name.Contains(name)).
                     Select(p => new
                     {
-                        p.pics,
+                        //p.pics,
                         p.Name,
                         p.Quantity,
                         p.Price.ImPrice,
