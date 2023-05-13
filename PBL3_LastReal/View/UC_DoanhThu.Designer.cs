@@ -101,7 +101,6 @@ namespace PBL3_LastReal
             this.chart1.Size = new System.Drawing.Size(1039, 271);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // btn_TongKet
             // 

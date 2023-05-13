@@ -54,7 +54,7 @@ namespace PBL3_LastReal.View
                     DOB = Convert.ToDateTime(dt_dob.Text),
                     CCCD = tb_CCCD.Text,
                     PhoneNum = tb_PhoneNum.Text,
-                    Type = 1
+                    //Type = 1
                 };
                 ManagePerson.Instance.addPerson(per);
                 string id_acc = "client" + ManageAccount.Instance.getNextID_Acc("client").ToString();

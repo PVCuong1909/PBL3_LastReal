@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PBL3_LastReal.BLL
 {
@@ -43,10 +44,8 @@ namespace PBL3_LastReal.BLL
         public int getIDPersonByCCCD(string cccd)
         {
             int id = 0;
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
-            {
-                id = db.Persons.Where(p => p.CCCD == cccd).First().ID_Person;
-            }
+            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            id = db.Persons.Where(p => p.CCCD == cccd).First().ID_Person;
             return id;
         }
         public void addPerson(Person per)
@@ -78,13 +77,11 @@ namespace PBL3_LastReal.BLL
                 db.SubmitChanges();
             }
         }
-        public List<Person> getPersonsByType() 
+        public List<Account> getPersonsByType()
         {
-            List<Person> list = new List<Person>();
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
-            {
-                list = db.Persons.Where(p => p.Type > 1).ToList();
-            }    
+            List<Account> list = new List<Account>();
+            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            list = db.Accounts.Where(p => p.Type > 1).ToList();
             return list;
         }
         public List<string> GetAllCCCD()
@@ -95,6 +92,7 @@ namespace PBL3_LastReal.BLL
                 foreach (Person com in db.Persons)
                 {
                     list.Add(com.CCCD.ToString());
+
                 }
             }
             return list;
@@ -105,6 +103,8 @@ namespace PBL3_LastReal.BLL
             {
                 Person per = db.Persons.Where(p => p.CCCD == CCCD).First();
                 Salary sal = db.Salaries.Where(p => p.ID_Person == per.ID_Person).First();
+                Account acc = db.Accounts.Where(p => p.ID_Person == per.ID_Person).First();
+                db.Accounts.DeleteOnSubmit(acc);
                 db.Persons.DeleteOnSubmit(per);
                 db.Salaries.DeleteOnSubmit(sal);
                 db.SubmitChanges();
@@ -113,11 +113,11 @@ namespace PBL3_LastReal.BLL
         public bool checkCCCDPer(string cccd)
         {
             bool check = false;
-            foreach(string i in GetAllCCCD())
+            foreach (string i in GetAllCCCD())
             {
-                if(i == cccd)
+                if (i == cccd)
                     check = true;
-            }    
+            }
             return check;
         }
         public Person GetPersonByCCCD(string cccd)

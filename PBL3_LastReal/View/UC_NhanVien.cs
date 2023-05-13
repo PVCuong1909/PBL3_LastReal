@@ -21,8 +21,7 @@ namespace PBL3_LastReal.View
         private void GUI()
         {
             setCBB();
-            dgv.DataSource = ManagePerson.Instance.getPersonsByType().Select(p => new {p.Name, p.CCCD,p.PhoneNum}).ToArray();
-
+            dgv.DataSource = ManagePerson.Instance.getPersonsByType().Select(p => new { p.Person.Name, p.Person.CCCD, p.Person.PhoneNum }).ToArray();
         }
         private void setCBB()
         {
@@ -38,13 +37,13 @@ namespace PBL3_LastReal.View
         }
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            if(dgv.SelectedRows.Count == 1)
+            if (dgv.SelectedRows.Count == 1)
             {
                 cbb_type.Enabled = true;
                 tb_name.Enabled = true;
                 dt_dob.Enabled = true;
                 tb_phone.Enabled = true;
-                tb_salary.Enabled = true; 
+                tb_salary.Enabled = true;
             }
             else
             {
@@ -53,22 +52,23 @@ namespace PBL3_LastReal.View
         }
         private void dgv_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if(dgv.SelectedRows.Count == 1)
+            if (dgv.SelectedRows.Count == 1)
             {
-                string cccd = dgv.SelectedRows[0].Cells[1].Value.ToString();
+                string cccd = dgv.SelectedRows[0].Cells["CCCD"].Value.ToString();
                 Person per = ManagePerson.Instance.GetPersonByCCCD(cccd);
-                if (per.Type == 2)
+                Account acc = ManageAccount.Instance.getAccountByID_per(per.ID_Person);
+                if (acc.Type == 2)
                 {
                     cbb_type.Text = "Nhân viên";
                 }
-                else if (per.Type == 4)
+                else if (acc.Type == 3)
                 {
                     cbb_type.Text = "Bảo vệ";
                 }
-                else if (per.Type == 3)
+                else if (acc.Type == 4)
                 {
                     cbb_type.Text = "Thu ngân";
-                }   
+                }
                 tb_name.Text = per.Name;
                 dt_dob.Text = per.DOB.Value.ToString("dd/MM/yyyy");
                 tb_CCCD.Text = per.CCCD.ToString();
@@ -76,23 +76,23 @@ namespace PBL3_LastReal.View
                 string id = per.ID_Person.ToString();
                 Salary sar = ManageSalary.Instance.getSalaryByID(Convert.ToInt32(id));
                 tb_salary.Text = sar.Salary1.ToString();
-            }    
+            }
         }
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
-                dgv.DataSource = db.Persons.Where(p => p.Type > 1 && p.Name.Contains(tb_search.Text)).
-                        Select(p => new { p.Name, p.DOB, p.CCCD, p.PhoneNum });
-            }    
+                dgv.DataSource = db.Accounts.Where(p => p.Type > 1 && p.Person.Name.Contains(tb_search.Text)).
+                        Select(p => new { p.Person.Name, p.Person.DOB, p.Person.CCCD, p.Person.PhoneNum });
+            }
         }
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            if(dgv.SelectedRows.Count > 0) 
+            if (dgv.SelectedRows.Count > 0)
             {
                 foreach (DataGridViewRow row in dgv.SelectedRows)
                 {
-                    string cccd = row.Cells[1].Value.ToString();
+                    string cccd = row.Cells["CCCD"].Value.ToString();
                     ManagePerson.Instance.delPersonByCCCD(cccd);
                 }
                 MessageBox.Show("Xóa thông tin thành công!");
@@ -105,7 +105,7 @@ namespace PBL3_LastReal.View
         }
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            string CCCD = dgv.SelectedRows[0].Cells[1].Value.ToString();                
+            string CCCD = dgv.SelectedRows[0].Cells[1].Value.ToString();
             Person per = ManagePerson.Instance.GetPersonByCCCD(CCCD);
             string id = per.ID_Person.ToString();
             string type = cbb_type.Text;
@@ -120,15 +120,15 @@ namespace PBL3_LastReal.View
             }
             else
             {
-                    ManageSalary.Instance.editSalaryAndPer(Convert.ToInt32(id), type, name, Convert.ToDateTime(dob), cccd, phone, Convert.ToInt32(salary));
-                    MessageBox.Show("Cập nhật thông tin thành công");
-                    cbb_type.Enabled = false;
-                    tb_name.Enabled = false;
-                    tb_CCCD.Enabled = false;
-                    dt_dob.Enabled = false;
-                    tb_phone.Enabled = false;
-                    tb_salary.Enabled = false;
-                    GUI();   
+                ManageSalary.Instance.editSalaryAndPer(Convert.ToInt32(id), type, name, Convert.ToDateTime(dob), cccd, phone, Convert.ToInt32(salary));
+                MessageBox.Show("Cập nhật thông tin thành công");
+                cbb_type.Enabled = false;
+                tb_name.Enabled = false;
+                tb_CCCD.Enabled = false;
+                dt_dob.Enabled = false;
+                tb_phone.Enabled = false;
+                tb_salary.Enabled = false;
+                GUI();
             }
         }
     }

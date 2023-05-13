@@ -63,7 +63,7 @@ namespace PBL3_LastReal.BLL
             int money = -1;
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
-                money = (int)db.Accounts.Where(p => p.Username == usernamef).First().MoneyLeft;
+                money = (int)db.Accounts.Where(p => p.Username == usernamef).First().Money;
             }
             return money;
         }
@@ -128,7 +128,6 @@ namespace PBL3_LastReal.BLL
                 Type = type,
                 Money = money,
                 ID_Person = idper,
-                MoneyLeft = money
             };
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
@@ -144,7 +143,6 @@ namespace PBL3_LastReal.BLL
                 acc.Password = MD5Hash(passwordf);
                 acc.Money += money;
                 db.SubmitChanges();
-             
             }
         }
         public void delAccount(string username)
@@ -161,29 +159,8 @@ namespace PBL3_LastReal.BLL
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
                 db.Accounts.Where(p => p.Username == username).First().Money += money;
-                db.Accounts.Where(p => p.Username == username).First().MoneyLeft += money;
                 db.SubmitChanges();
-                int pos = 0;
-                var query2 = db.Bill_Thangs.Where(p => p.Id_Bill2 >0 ).ToList();
-                for(int i =0;i<query2.Count;i++)
-                {
-                    if (ManageProfit.Instance.check((DateTime)query2[i].Date) == true)
-                    {
-                        query2[i].TienMay += money;
-                        db.SubmitChanges();
-                        break;
-                    }
-
-                }
-                //if (ManageProfit.Instance.check((DateTime)query2[pos].Date) == true)
-                //{
-                //    query2[pos].TienMay += money;
-                //    db.SubmitChanges();
-                //}
-                //else
-                //{
-                //    pos++;
-                //}
+                ManageBill.Instance.addBill(money, 0);
             }
         }
         public void editRechargeMoney(string username, int money)
@@ -193,6 +170,11 @@ namespace PBL3_LastReal.BLL
                 db.Accounts.Where(p => p.Username == username).First().Money = money;
                 db.SubmitChanges();
             }
+        }
+        public Account getAccountByID_per(int id_per)
+        {
+            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            return db.Accounts.Where(p => p.ID_Person == id_per).First();
         }
     }
 }

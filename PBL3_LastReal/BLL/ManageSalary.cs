@@ -28,80 +28,58 @@ namespace PBL3_LastReal.BLL
             Salary sar = db.Salaries.Where(p => p.ID_Person == id).First();
             return sar;
         }
+
         public void addSalaryAndPer(string type, string name, DateTime dob, string cccd, string phonenum, int salary)
         {
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            int Type = 2;
+            if (type == "Bảo vệ")
             {
-                Type = 4;
+                Type = 3;
             }
             else if (type == "Thu ngân")
             {
-                Type = 3;
+                Type = 4;
             }
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
                 Person per = new Person
                 {
-                    Type = Type,
                     Name = name,
                     DOB = dob,
                     CCCD = cccd,
-                    PhoneNum = phonenum
+                    PhoneNum = phonenum,
                 };
                 db.Persons.InsertOnSubmit(per);
                 db.SubmitChanges();
+                //db.Accounts.Where(p => p.ID_Person == ManagePerson.Instance.GetPersonByCCCD(per.CCCD).ID_Person).First().Type = Type;
                 Salary sal = new Salary
                 {
                     ID_Person = per.ID_Person,
                     Salary1 = salary,
                 };
-                var Bill = db.Bill_Thangs.Where(p => p.Id_Bill2 > 0).ToList();
-                for (int i = 0; i < Bill.Count; i++)
-                {
-                    if (ManageProfit.Instance.check((DateTime)Bill[i].Date) == true)
-                    {
-                        Bill[i].LuongNhanVien += (int)sal.Salary1;
-                            db.SubmitChanges();
-                    }
-                }
                 db.Salaries.InsertOnSubmit(sal);
                 db.SubmitChanges();
-
-               
             }
         }
         public void editSalaryAndPer(int id, string type, string name, DateTime dob, string cccd, string phonenum, int salary)
         {
             int Type = 2;
-            if(type == "Bảo vệ")
+            if (type == "Bảo vệ")
+            {
+                Type = 3;
+            }
+            else if (type == "Thu ngân")
             {
                 Type = 4;
             }
-            else if(type == "Thu ngân")
-            {
-                Type = 3;
-            }    
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
-                var Bill = db.Bill_Thangs.Where(p => p.Id_Bill2 > 0).ToList();
                 var query = db.Salaries.Where(p => p.ID_Person == id).FirstOrDefault();
-                for(int i =0; i < Bill.Count;i++)
-                {
-                    if (ManageProfit.Instance.check((DateTime)Bill[i].Date) == true)
-                    {
-                        Bill[i].LuongNhanVien -= (int) query.Salary1;
-                        query.Salary1 = salary;
-                        db.SubmitChanges();
-                        Bill[i].LuongNhanVien +=(int) query.Salary1;
-                        db.SubmitChanges();
-                    }
-                }
-
                 db.Salaries.Where(p => p.ID_Person == id).First().Salary1 = salary;
                 db.Salaries.Where(p => p.ID_Person == id).First().Person.Name = name;
                 db.Salaries.Where(p => p.ID_Person == id).First().Person.DOB = dob;
-                db.Salaries.Where(p => p.ID_Person == id).First().Person.CCCD= cccd;
-                db.Salaries.Where(p => p.ID_Person == id).First().Person.PhoneNum= phonenum;
+                db.Accounts.Where(p => p.ID_Person == id).First().Type = Type;
+                db.Salaries.Where(p => p.ID_Person == id).First().Person.PhoneNum = phonenum;
                 db.SubmitChanges();
             }
         }

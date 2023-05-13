@@ -48,41 +48,37 @@ namespace PBL3_LastReal.BLL
             {
                 ws = db.WorkShifts.Where(p => p.Date == date && p.TimeBegin == timeBegin && p.TimeEnd == timeEnd).First();
             }
-            return ws;  
+            return ws;
         }
-        public List<Person> getAllStaffs()
+        public List<Account> getAllStaffs(int type)
         {
-            List<Person> listper = new List<Person>();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
-            {
-                listper = db.Persons.Where(p => p.Type == 2).ToList();
-            }
+            List<Account> listper = new List<Account>();
+            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            listper = db.Accounts.Where(p => p.Type == type).ToList();
             return listper;
         }
-        public List<Person> GetStaffs(WorkShift ws)
+        public List<Account> GetStaffs(WorkShift ws)
         {
-            List<Person> listper = new List<Person>();
-            List<int> listid_per = new List<int>();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            List<Account> listper = new List<Account>();
+            List<string> listid_per = new List<string>();
+            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            foreach (DetailWorkShift record in db.DetailWorkShifts)
             {
-                foreach (DetailWorkShift record in db.DetailWorkShifts)
+                if (record.ID_WorkShift == ws.ID_WorkShift)
                 {
-                    if(record.ID_WorkShift == ws.ID_WorkShift)
-                    {
-                        listid_per.Add((int)record.ID_Person);
-                    }
+                    listid_per.Add((string)record.ID_Account);
                 }
-                foreach (int id in listid_per)
-                {
-                    listper.Add(db.Persons.Where(p => p.ID_Person == id).First());
-                }
+            }
+            foreach (string id in listid_per)
+            {
+                listper.Add(db.Accounts.Where(p => p.ID_Account == id).First());
             }
             return listper;
         }
         public bool checkValidTime(DateTime begin, DateTime end)
         {
             bool check = true;
-            if(begin.CompareTo(end) >= 0)
+            if (begin.CompareTo(end) >= 0)
             {
                 check = false;
             }
@@ -96,17 +92,24 @@ namespace PBL3_LastReal.BLL
                 db.SubmitChanges();
             }
         }
-        public void DeleteWorkShift(WorkShift ws) 
+        public void DeleteWorkShift(WorkShift ws)
         {
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
                 WorkShift delete = new WorkShift();
                 foreach (WorkShift item in db.WorkShifts)
                 {
-                    if(ws.ID_WorkShift == item.ID_WorkShift)
+                    if (ws.ID_WorkShift == item.ID_WorkShift)
                     {
                         delete = item;
                         break;
+                    }
+                }
+                foreach (DetailWorkShift item in db.DetailWorkShifts)
+                {
+                    if (item.ID_WorkShift == delete.ID_WorkShift)
+                    {
+                        this.RemoveDetailWorkShift(item.ID_Detail);
                     }
                 }
                 db.WorkShifts.DeleteOnSubmit(delete);
@@ -137,7 +140,7 @@ namespace PBL3_LastReal.BLL
             {
                 foreach (DetailWorkShift item in db.DetailWorkShifts)
                 {
-                    if(item.ID_Detail == id_detail)
+                    if (item.ID_Detail == id_detail)
                     {
                         db.DetailWorkShifts.DeleteOnSubmit(item);
                         db.SubmitChanges();
@@ -145,7 +148,7 @@ namespace PBL3_LastReal.BLL
                 }
             }
         }
-        public void SyncStaffs(WorkShift ws, List<Person> listper)
+        public void SyncStaffs(WorkShift ws, List<Account> listper)
         {
             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
@@ -156,12 +159,12 @@ namespace PBL3_LastReal.BLL
                 }
 
                 List<DetailWorkShift> listadd = new List<DetailWorkShift>();
-                foreach (Person per in listper)
+                foreach (Account per in listper)
                 {
-                    listadd.Add(new DetailWorkShift 
+                    listadd.Add(new DetailWorkShift
                     {
                         ID_WorkShift = ws.ID_WorkShift,
-                        ID_Person = per.ID_Person
+                        ID_Account = per.ID_Account
                     });
                 }
                 AddDetailWorkShift(listadd);
