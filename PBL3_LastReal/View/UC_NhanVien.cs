@@ -31,7 +31,7 @@ namespace PBL3_LastReal.View
         }
         private void btn_add_Click(object sender, EventArgs e)
         {
-            fAddEditStaff f = new fAddEditStaff();
+            fAddEditStaff f = new fAddEditStaff(null);
             f.UpdateDGV += new fAddEditStaff.UpdateDGVHandler(GUI);
             f.ShowDialog();
         }
@@ -43,7 +43,11 @@ namespace PBL3_LastReal.View
                 tb_name.Enabled = true;
                 dt_dob.Enabled = true;
                 tb_phone.Enabled = true;
-                tb_salary.Enabled = true;
+                tb_salary.Enabled = true; 
+            }
+            else if (dgv.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Chỉ được thay đổi thông tin một nhân viên!");
             }
             else
             {
@@ -70,9 +74,10 @@ namespace PBL3_LastReal.View
                     cbb_type.Text = "Thu ngân";
                 }
                 tb_name.Text = per.Name;
-                dt_dob.Text = per.DOB.Value.ToString("dd/MM/yyyy");
+                dt_dob.Text = per.DOB.Value.ToString("yyyy/MM/dd");
                 tb_CCCD.Text = per.CCCD.ToString();
                 tb_phone.Text = per.PhoneNum.ToString();
+                tb_work.Text = per.Works.ToString();
                 string id = per.ID_Person.ToString();
                 Salary sar = ManageSalary.Instance.getSalaryByID(Convert.ToInt32(id));
                 tb_salary.Text = sar.Salary1.ToString();
@@ -103,9 +108,10 @@ namespace PBL3_LastReal.View
                 MessageBox.Show("Chọn dòng cần được xóa!");
             }
         }
-        private void btn_OK_Click(object sender, EventArgs e)
+
+        private void btn_paySal_Click(object sender, EventArgs e)
         {
-            string CCCD = dgv.SelectedRows[0].Cells[1].Value.ToString();
+            string CCCD = dgv.SelectedRows[0].Cells[1].Value.ToString();                
             Person per = ManagePerson.Instance.GetPersonByCCCD(CCCD);
             string id = per.ID_Person.ToString();
             string type = cbb_type.Text;
@@ -116,19 +122,19 @@ namespace PBL3_LastReal.View
             string salary = tb_salary.Text;
             if (cbb_type.Text == "" || tb_name.Text == "" || tb_CCCD.Text == "" || dt_dob.Text == "" || tb_phone.Text == "" || tb_salary.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!");
+                MessageBox.Show("Không thể trả lương cho nhiều nhân viên cùng lúc!");
             }
             else
             {
-                ManageSalary.Instance.editSalaryAndPer(Convert.ToInt32(id), type, name, Convert.ToDateTime(dob), cccd, phone, Convert.ToInt32(salary));
-                MessageBox.Show("Cập nhật thông tin thành công");
-                cbb_type.Enabled = false;
-                tb_name.Enabled = false;
-                tb_CCCD.Enabled = false;
-                dt_dob.Enabled = false;
-                tb_phone.Enabled = false;
-                tb_salary.Enabled = false;
-                GUI();
+                    ManageSalary.Instance.editSalaryAndPer(Convert.ToInt32(id), type, name, Convert.ToDateTime(dob), cccd, phone, Convert.ToInt32(salary));
+                    MessageBox.Show("Cập nhật thông tin thành công");
+                    cbb_type.Enabled = false;
+                    tb_name.Enabled = false;
+                    tb_CCCD.Enabled = false;
+                    dt_dob.Enabled = false;
+                    tb_phone.Enabled = false;
+                    tb_salary.Enabled = false;
+                    GUI();   
             }
         }
     }

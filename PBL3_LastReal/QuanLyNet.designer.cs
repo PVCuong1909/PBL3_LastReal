@@ -20,9 +20,10 @@ namespace PBL3_LastReal
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QL_QuanNet")]
+    using System.Drawing;
+    using System.IO;
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QL_QuanNetReal")]
 	public partial class QuanLyNetDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -36,6 +37,9 @@ namespace PBL3_LastReal
     partial void InsertBill(Bill instance);
     partial void UpdateBill(Bill instance);
     partial void DeleteBill(Bill instance);
+    partial void InsertBill_Thang(Bill_Thang instance);
+    partial void UpdateBill_Thang(Bill_Thang instance);
+    partial void DeleteBill_Thang(Bill_Thang instance);
     partial void InsertComputer(Computer instance);
     partial void UpdateComputer(Computer instance);
     partial void DeleteComputer(Computer instance);
@@ -69,7 +73,7 @@ namespace PBL3_LastReal
     #endregion
 		
 		public QuanLyNetDataContext() : 
-				base(global::PBL3_LastReal.Properties.Settings.Default.QL_QuanNetConnectionString1, mappingSource)
+				base(global::PBL3_LastReal.Properties.Settings.Default.QL_QuanNetConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -114,51 +118,11 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		public System.Data.Linq.Table<Computer> Computers
+		public System.Data.Linq.Table<Ticket> Tickets
 		{
 			get
 			{
-				return this.GetTable<Computer>();
-			}
-		}
-		
-		public System.Data.Linq.Table<DetailWorkShift> DetailWorkShifts
-		{
-			get
-			{
-				return this.GetTable<DetailWorkShift>();
-			}
-		}
-		
-		public System.Data.Linq.Table<History> Histories
-		{
-			get
-			{
-				return this.GetTable<History>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Person> Persons
-		{
-			get
-			{
-				return this.GetTable<Person>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Price> Prices
-		{
-			get
-			{
-				return this.GetTable<Price>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Product> Products
-		{
-			get
-			{
-				return this.GetTable<Product>();
+				return this.GetTable<Ticket>();
 			}
 		}
 		
@@ -170,19 +134,67 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		public System.Data.Linq.Table<Ticket> Tickets
+		public System.Data.Linq.Table<Product> Products
 		{
 			get
 			{
-				return this.GetTable<Ticket>();
+				return this.GetTable<Product>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Vehicle> Vehicles
+		public System.Data.Linq.Table<Price> Prices
 		{
 			get
 			{
-				return this.GetTable<Vehicle>();
+				return this.GetTable<Price>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Price> Prices
+		{
+			get
+			{
+				return this.GetTable<Price>();
+			}
+		}
+		
+		public System.Data.Linq.Table<History> Histories
+		{
+			get
+			{
+				return this.GetTable<History>();
+			}
+		}
+		
+		public System.Data.Linq.Table<DetailWorkShift> DetailWorkShifts
+		{
+			get
+			{
+				return this.GetTable<DetailWorkShift>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Computer> Computers
+		{
+			get
+			{
+				return this.GetTable<Computer>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Bill> Bills
+		{
+			get
+			{
+				return this.GetTable<Bill>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Account> Accounts
+		{
+			get
+			{
+				return this.GetTable<Account>();
 			}
 		}
 		
@@ -213,10 +225,6 @@ namespace PBL3_LastReal
 		
 		private System.Nullable<int> _ID_Person;
 		
-		private System.Nullable<int> _Works;
-		
-		private EntitySet<DetailWorkShift> _DetailWorkShifts;
-		
 		private EntitySet<History> _Histories;
 		
 		private EntityRef<Person> _Person;
@@ -237,8 +245,6 @@ namespace PBL3_LastReal
     partial void OnMoneyChanged();
     partial void OnID_PersonChanging(System.Nullable<int> value);
     partial void OnID_PersonChanged();
-    partial void OnWorksChanging(System.Nullable<int> value);
-    partial void OnWorksChanged();
     #endregion
 		
 		public Account()
@@ -370,39 +376,6 @@ namespace PBL3_LastReal
 					this.SendPropertyChanged("ID_Person");
 					this.OnID_PersonChanged();
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Works", DbType="Int")]
-		public System.Nullable<int> Works
-		{
-			get
-			{
-				return this._Works;
-			}
-			set
-			{
-				if ((this._Works != value))
-				{
-					this.OnWorksChanging(value);
-					this.SendPropertyChanging();
-					this._Works = value;
-					this.SendPropertyChanged("Works");
-					this.OnWorksChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_DetailWorkShift", Storage="_DetailWorkShifts", ThisKey="ID_Account", OtherKey="ID_Account")]
-		public EntitySet<DetailWorkShift> DetailWorkShifts
-		{
-			get
-			{
-				return this._DetailWorkShifts;
-			}
-			set
-			{
-				this._DetailWorkShifts.Assign(value);
 			}
 		}
 		
@@ -582,31 +555,137 @@ namespace PBL3_LastReal
 			{
 				if ((this._Money != value))
 				{
-					this.OnMoneyChanging(value);
+					if (this._Person.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PersonChanging(value);
 					this.SendPropertyChanging();
-					this._Money = value;
-					this.SendPropertyChanged("Money");
-					this.OnMoneyChanged();
+					this._ID_Person = value;
+					this.SendPropertyChanged("ID_Person");
+					this.OnID_PersonChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
 		public System.Nullable<System.DateTime> Date
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Bill_Thang")]
+	public partial class Bill_Thang : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id_Bill2;
+		
+		private System.Nullable<int> _TienMay;
+		
+		private System.Nullable<int> _DichVu;
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+		private System.Nullable<int> _LuongNhanVien;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnId_Bill2Changing(int value);
+    partial void OnId_Bill2Changed();
+    partial void OnTienMayChanging(System.Nullable<int> value);
+    partial void OnTienMayChanged();
+    partial void OnDichVuChanging(System.Nullable<int> value);
+    partial void OnDichVuChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
+    partial void OnLuongNhanVienChanging(System.Nullable<int> value);
+    partial void OnLuongNhanVienChanged();
+    #endregion
+		
+		public Bill_Thang()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Bill2", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id_Bill2
 		{
 			get
 			{
-				return this._Date;
+				return this._Tickets;
 			}
 			set
 			{
-				if ((this._Date != value))
+				this._Tickets.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Vehicle", Storage="_Person", ThisKey="ID_Person", OtherKey="ID_Person", IsForeignKey=true)]
+		public Person Person
+		{
+			get
+			{
+				return this._Person.Entity;
+			}
+			set
+			{
+				Person previousValue = this._Person.Entity;
+				if (((previousValue != value) 
+							|| (this._Person.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnDateChanging(value);
 					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
+					if ((previousValue != null))
+					{
+						this._Person.Entity = null;
+						previousValue.Vehicles.Remove(this);
+					}
+					this._Person.Entity = value;
+					if ((value != null))
+					{
+						value.Vehicles.Add(this);
+						this._ID_Person = value.ID_Person;
+					}
+					else
+					{
+						this._ID_Person = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Person");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LuongNhanVien", DbType="Int")]
+		public System.Nullable<int> LuongNhanVien
+		{
+			get
+			{
+				return this._LuongNhanVien;
+			}
+			set
+			{
+				if ((this._LuongNhanVien != value))
+				{
+					this.OnLuongNhanVienChanging(value);
+					this.SendPropertyChanging();
+					this._LuongNhanVien = value;
+					this.SendPropertyChanged("LuongNhanVien");
+					this.OnLuongNhanVienChanged();
 				}
 			}
 		}
@@ -802,8 +881,6 @@ namespace PBL3_LastReal
 		
 		private int _ID_Detail;
 		
-		private string _ID_Account;
-		
 		private System.Nullable<int> _ID_WorkShift;
 		
 		private System.Nullable<int> _State;
@@ -818,8 +895,6 @@ namespace PBL3_LastReal
     partial void OnCreated();
     partial void OnID_DetailChanging(int value);
     partial void OnID_DetailChanged();
-    partial void OnID_AccountChanging(string value);
-    partial void OnID_AccountChanged();
     partial void OnID_WorkShiftChanging(System.Nullable<int> value);
     partial void OnID_WorkShiftChanged();
     partial void OnStateChanging(System.Nullable<int> value);
@@ -828,8 +903,7 @@ namespace PBL3_LastReal
 		
 		public DetailWorkShift()
 		{
-			this._Account = default(EntityRef<Account>);
-			this._WorkShift = default(EntityRef<WorkShift>);
+			this._Person = default(EntityRef<Person>);
 			OnCreated();
 		}
 		
@@ -853,26 +927,26 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Account", DbType="VarChar(40)")]
-		public string ID_Account
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_WorkShift", DbType="Int")]
+		public System.Nullable<int> ID_WorkShift
 		{
 			get
 			{
-				return this._ID_Account;
+				return this._ID_WorkShift;
 			}
 			set
 			{
-				if ((this._ID_Account != value))
+				if ((this._ID_WorkShift != value))
 				{
-					if (this._Account.HasLoadedOrAssignedValue)
+					if (this._WorkShift.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnID_AccountChanging(value);
+					this.OnID_WorkShiftChanging(value);
 					this.SendPropertyChanging();
-					this._ID_Account = value;
-					this.SendPropertyChanged("ID_Account");
-					this.OnID_AccountChanged();
+					this._ID_WorkShift = value;
+					this.SendPropertyChanged("ID_WorkShift");
+					this.OnID_WorkShiftChanged();
 				}
 			}
 		}
@@ -921,8 +995,8 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_DetailWorkShift", Storage="_Account", ThisKey="ID_Account", OtherKey="ID_Account", IsForeignKey=true)]
-		public Account Account
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Salary", Storage="_Person", ThisKey="ID_Person", OtherKey="ID_Person", IsForeignKey=true)]
+		public Person Person
 		{
 			get
 			{
@@ -937,14 +1011,14 @@ namespace PBL3_LastReal
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Account.Entity = null;
-						previousValue.DetailWorkShifts.Remove(this);
+						this._Person.Entity = null;
+						previousValue.Salaries.Remove(this);
 					}
 					this._Account.Entity = value;
 					if ((value != null))
 					{
-						value.DetailWorkShifts.Add(this);
-						this._ID_Account = value.ID_Account;
+						value.Salaries.Add(this);
+						this._ID_Person = value.ID_Person;
 					}
 					else
 					{
@@ -1422,16 +1496,42 @@ namespace PBL3_LastReal
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Vehicle", Storage="_Vehicles", ThisKey="ID_Person", OtherKey="ID_Person")]
-		public EntitySet<Vehicle> Vehicles
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_DetailWorkShift", Storage="_DetailWorkShifts", ThisKey="ID_Person", OtherKey="ID_Person")]
+		public EntitySet<DetailWorkShift> DetailWorkShifts
 		{
 			get
 			{
-				return this._Vehicles;
+				return this._DetailWorkShifts;
 			}
 			set
 			{
 				this._Vehicles.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Account", Storage="_Accounts", ThisKey="ID_Person", OtherKey="ID_Person")]
+		public EntitySet<Account> Accounts
+		{
+			get
+			{
+				return this._Accounts;
+			}
+			set
+			{
+				this._Accounts.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Person_Account", Storage="_Accounts", ThisKey="ID_Person", OtherKey="ID_Person")]
+		public EntitySet<Account> Accounts
+		{
+			get
+			{
+				return this._Accounts;
+			}
+			set
+			{
+				this._Accounts.Assign(value);
 			}
 		}
 		
@@ -1467,13 +1567,13 @@ namespace PBL3_LastReal
 			entity.Person = null;
 		}
 		
-		private void attach_Salaries(Salary entity)
+		private void attach_DetailWorkShifts(DetailWorkShift entity)
 		{
 			this.SendPropertyChanging();
 			entity.Person = this;
 		}
 		
-		private void detach_Salaries(Salary entity)
+		private void detach_DetailWorkShifts(DetailWorkShift entity)
 		{
 			this.SendPropertyChanging();
 			entity.Person = null;
@@ -1490,10 +1590,22 @@ namespace PBL3_LastReal
 			this.SendPropertyChanging();
 			entity.Person = null;
 		}
+		
+		private void attach_Accounts(Account entity)
+		{
+			this.SendPropertyChanging();
+			entity.Person = this;
+		}
+		
+		private void detach_Accounts(Account entity)
+		{
+			this.SendPropertyChanging();
+			entity.Person = null;
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Price")]
-	public partial class Price : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.History")]
+	public partial class History : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);

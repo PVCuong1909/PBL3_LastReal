@@ -47,7 +47,7 @@ namespace PBL3_LastReal.BLL
                     Name = name,
                     DOB = dob,
                     CCCD = cccd,
-                    PhoneNum = phonenum,
+                    PhoneNum = phonenum
                 };
                 db.Persons.InsertOnSubmit(per);
                 db.SubmitChanges();
@@ -78,8 +78,8 @@ namespace PBL3_LastReal.BLL
                 db.Salaries.Where(p => p.ID_Person == id).First().Salary1 = salary;
                 db.Salaries.Where(p => p.ID_Person == id).First().Person.Name = name;
                 db.Salaries.Where(p => p.ID_Person == id).First().Person.DOB = dob;
-                db.Accounts.Where(p => p.ID_Person == id).First().Type = Type;
-                db.Salaries.Where(p => p.ID_Person == id).First().Person.PhoneNum = phonenum;
+                db.Salaries.Where(p => p.ID_Person == id).First().Person.CCCD= cccd;
+                db.Salaries.Where(p => p.ID_Person == id).First().Person.PhoneNum= phonenum;
                 db.SubmitChanges();
             }
         }

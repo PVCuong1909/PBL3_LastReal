@@ -56,9 +56,9 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1034, 81);
+            this.panel1.Size = new System.Drawing.Size(1100, 81);
             this.panel1.TabIndex = 0;
             // 
             // btn_DangXuat
@@ -75,7 +75,7 @@
             this.btn_DangXuat.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_DangXuat.ForeColor = System.Drawing.Color.White;
             this.btn_DangXuat.Location = new System.Drawing.Point(950, 16);
-            this.btn_DangXuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_DangXuat.Margin = new System.Windows.Forms.Padding(2);
             this.btn_DangXuat.Name = "btn_DangXuat";
             this.btn_DangXuat.PressedColor = System.Drawing.Color.Transparent;
             this.btn_DangXuat.Size = new System.Drawing.Size(45, 49);
@@ -112,7 +112,7 @@
             this.pictureBox1.BackgroundImage = global::PBL3_LastReal.Properties.Resources.icons8_admin_settings_male_90;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(38, 16);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(45, 49);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -130,9 +130,9 @@
             this.panel2.Controls.Add(this.btn_TaiKhoan);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 81);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(164, 441);
+            this.panel2.Size = new System.Drawing.Size(164, 440);
             this.panel2.TabIndex = 1;
             // 
             // btn_Ca
@@ -150,7 +150,7 @@
             this.btn_Ca.ForeColor = System.Drawing.Color.Black;
             this.btn_Ca.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_Ca.Location = new System.Drawing.Point(0, 364);
-            this.btn_Ca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Ca.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Ca.Name = "btn_Ca";
             this.btn_Ca.Size = new System.Drawing.Size(162, 70);
             this.btn_Ca.TabIndex = 7;
@@ -172,7 +172,7 @@
             this.btn_DoanhThu.ForeColor = System.Drawing.Color.Black;
             this.btn_DoanhThu.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_DoanhThu.Location = new System.Drawing.Point(0, 292);
-            this.btn_DoanhThu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_DoanhThu.Margin = new System.Windows.Forms.Padding(2);
             this.btn_DoanhThu.Name = "btn_DoanhThu";
             this.btn_DoanhThu.Size = new System.Drawing.Size(162, 67);
             this.btn_DoanhThu.TabIndex = 6;
@@ -194,7 +194,7 @@
             this.btn_NhanVien.ForeColor = System.Drawing.Color.Black;
             this.btn_NhanVien.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_NhanVien.Location = new System.Drawing.Point(0, 219);
-            this.btn_NhanVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_NhanVien.Margin = new System.Windows.Forms.Padding(2);
             this.btn_NhanVien.Name = "btn_NhanVien";
             this.btn_NhanVien.Size = new System.Drawing.Size(162, 67);
             this.btn_NhanVien.TabIndex = 5;
@@ -216,7 +216,7 @@
             this.btn_DichVu.ForeColor = System.Drawing.Color.Black;
             this.btn_DichVu.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_DichVu.Location = new System.Drawing.Point(0, 147);
-            this.btn_DichVu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_DichVu.Margin = new System.Windows.Forms.Padding(2);
             this.btn_DichVu.Name = "btn_DichVu";
             this.btn_DichVu.Size = new System.Drawing.Size(162, 67);
             this.btn_DichVu.TabIndex = 4;
@@ -238,7 +238,7 @@
             this.btn_May.ForeColor = System.Drawing.Color.Black;
             this.btn_May.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_May.Location = new System.Drawing.Point(0, 75);
-            this.btn_May.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_May.Margin = new System.Windows.Forms.Padding(2);
             this.btn_May.Name = "btn_May";
             this.btn_May.Size = new System.Drawing.Size(162, 67);
             this.btn_May.TabIndex = 3;
@@ -262,7 +262,7 @@
             this.btn_TaiKhoan.ForeColor = System.Drawing.Color.Black;
             this.btn_TaiKhoan.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_TaiKhoan.Location = new System.Drawing.Point(0, 2);
-            this.btn_TaiKhoan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_TaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.btn_TaiKhoan.Name = "btn_TaiKhoan";
             this.btn_TaiKhoan.Size = new System.Drawing.Size(162, 67);
             this.btn_TaiKhoan.TabIndex = 2;
@@ -273,9 +273,9 @@
             // 
             this.PanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelControl.Location = new System.Drawing.Point(164, 81);
-            this.PanelControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelControl.Margin = new System.Windows.Forms.Padding(2);
             this.PanelControl.Name = "PanelControl";
-            this.PanelControl.Size = new System.Drawing.Size(870, 441);
+            this.PanelControl.Size = new System.Drawing.Size(936, 440);
             this.PanelControl.TabIndex = 2;
             // 
             // btn_dx
@@ -300,12 +300,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 550);
+            this.ClientSize = new System.Drawing.Size(1100, 521);
             this.Controls.Add(this.PanelControl);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fAdmin";

@@ -59,19 +59,21 @@ namespace PBL3_LastReal.BLL
         }
         public List<Account> GetStaffs(WorkShift ws)
         {
-            List<Account> listper = new List<Account>();
-            List<string> listid_per = new List<string>();
-            QuanLyNetDataContext db = new QuanLyNetDataContext();
-            foreach (DetailWorkShift record in db.DetailWorkShifts)
+            List<Person> listper = new List<Person>();
+            List<int> listid_per = new List<int>();
+            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
             {
-                if (record.ID_WorkShift == ws.ID_WorkShift)
+                foreach (DetailWorkShift record in db.DetailWorkShifts)
                 {
-                    listid_per.Add((string)record.ID_Account);
+                    if(record.ID_WorkShift == ws.ID_WorkShift)
+                    {
+                        listid_per.Add((int)record.ID_Person);
+                    }
                 }
-            }
-            foreach (string id in listid_per)
-            {
-                listper.Add(db.Accounts.Where(p => p.ID_Account == id).First());
+                foreach (int id in listid_per)
+                {
+                    listper.Add(db.Persons.Where(p => p.ID_Person == id).First());
+                }
             }
             return listper;
         }

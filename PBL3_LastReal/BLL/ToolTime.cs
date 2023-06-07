@@ -39,7 +39,7 @@ namespace PBL3_LastReal.BLL
         }
         public DateTime trueTime(int day, int month, int year)
         {
-            string date = day+"/"+month+"/"+year;
+            string date = year+"/"+month+"/"+day;
             return Convert.ToDateTime(date);
         }
     }

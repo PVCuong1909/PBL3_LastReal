@@ -110,25 +110,18 @@ namespace PBL3_LastReal
                 moneySalary = 0;
                 DateTime day = Convert.ToDateTime(DateTime.Now.Year.ToString() + "-" + monthNumber.ToString() + "-" + (i + 1).ToString());
 
-                foreach (Bill item in billsForRecharge)
-                {
-                    if (item.Date.Value.Date == day.Date)
+                    if (dm.AddDays(i).ToString("MM:dd") == (Convert.ToDateTime(query[count].Date).ToString("MM:dd")))
                     {
-                        moneyRecharge += (int)item.Money;
+                        points.Add(new DataPoint(dm.AddDays(i).ToOADate(), (double)query[count].DichVu));
+                        points2.Add(new DataPoint(dm.AddDays(i).ToOADate(), (double)query[count].TienMay));
+                        points3.Add(new DataPoint(dm.AddDays(i).ToOADate(), query[count].LuongNhanVien));
+                        count++;
+                        if (count == query.Count)
+                        {
+                            count--;
+                        }
                     }
-                }
-
-                foreach (Bill item in billsForService)
-                {
-                    if (item.Date.Value.Date == day.Date)
-                    {
-                        moneyService += (int)item.Money;
-                    }
-                }
-
-                foreach (Bill item in billsForSalary)
-                {
-                    if (item.Date.Value.Date == day.Date)
+                    else
                     {
                         moneySalary += (int)item.Money;
                     }
