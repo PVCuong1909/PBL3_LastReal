@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PBL3_LastReal.DTO;
 
 
 namespace PBL3_LastReal.BLL
@@ -26,23 +27,23 @@ namespace PBL3_LastReal.BLL
 
         public void UpdateDB(string name, int quantityNeeded)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 Product pro = db.Products.Where(p => p.Name == name).First();
                 pro.Quantity -= quantityNeeded;
-                db.SubmitChanges();
+                db.SaveChanges();
                 if(pro.Quantity == 0)
                 {
-                    db.Products.DeleteOnSubmit(pro);
+                    db.Products.Remove(pro);
                 }
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
 
         public int getQuantity(string name) 
         {
             int count = 0;
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 count = (int)db.Products.Where(p => p.Name == name).First().Quantity;
             }
@@ -52,7 +53,7 @@ namespace PBL3_LastReal.BLL
         public List<Product> GetProducts(string name) 
         {
             List<Product> products = new List<Product>();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 products = db.Products.Where(p => p.Name.Contains(name)).ToList();
             }
@@ -62,7 +63,7 @@ namespace PBL3_LastReal.BLL
         public int GetProductIdByName(string name)
         {
              int id = 0; 
-             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+             using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 id = (int) db.Products.Where(p => p.Name == name).FirstOrDefault().ID_Product;
             }
@@ -71,16 +72,22 @@ namespace PBL3_LastReal.BLL
         }
         public Product GetProduct(int id)
         {
-            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
             Product product = new Product();
-
-                product = db.Products.Where(p => p.ID_Product == id).FirstOrDefault();
-                return product;
+            product = db.Products.Where(p => p.ID_Product == id).FirstOrDefault();
+            return product;
+        }
+        public Product GetProduct(string name)
+        {
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
+            Product product = new Product();
+            product = db.Products.Where(p => p.Name == name).FirstOrDefault();
+            return product;
         }
         public int GetIdPrice(int IPrice,int Eprice)
         {
             int id = 0;
-            using (QuanLyNetDataContext db =new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                  var query = db.Products.Where(p => p.Price.ImPrice == IPrice && p.Price.ExPrice == Eprice).FirstOrDefault();
                 id = (int)query.ID_Price;
@@ -89,55 +96,46 @@ namespace PBL3_LastReal.BLL
 
         }
 
-        public void addProduct(Product product )
+        public void addProduct(Product product)
         {
-             using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                db.Products.InsertOnSubmit(product);
-                db.SubmitChanges();
+                db.Products.Add(product);
+                db.SaveChanges();
             }
         }
 
         public void UpdateSanPham(params string[] infor)
         {
-             using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            int inf = Convert.ToInt32(infor[0]);
+             using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                Product product = db.Products.Where(p => p.ID_Product == Convert.ToInt32(infor[0])).FirstOrDefault();
+                Product product = db.Products.Where(p => p.ID_Product == inf).FirstOrDefault();
                 product.Name = infor[1];
                 product.Quantity =Convert.ToInt32(infor[2]);
                 product.ID_Price = Convert.ToInt32(infor[3]);
                 //product.Path = infor[4];
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
 
         public void DeleteProduct(int Id)
         {
-             using(QuanLyNetDataContext db =new QuanLyNetDataContext())
+             using(QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 Product product = db.Products.Where(p => p.ID_Product == Id ).FirstOrDefault();
-                db.Products.DeleteOnSubmit(product);
-                db.SubmitChanges();
+                db.Products.Remove(product);
+                db.SaveChanges();
             }
         }
      
-        public IQueryable SearchProduct(string name )
+        public List<Product> SearchProduct(string name )
         {
-            QuanLyNetDataContext db = new QuanLyNetDataContext();
-                var query = db.Products.
-                    Where(p => p.Name.Contains(name)).
-                    Select(p => new
-                    {
-                        //p.pics,
-                        p.Name,
-                        p.Quantity,
-                        p.Price.ImPrice,
-                        p.Price.ExPrice
-                    });
-
-                return query;
+            List<Product> pro = new List<Product>();
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
+                pro= db.Products.
+                    Where(p => p.Name.Contains(name)).ToList();
+                return pro;
         }
-
-
     }
 }

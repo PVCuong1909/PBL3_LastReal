@@ -1,6 +1,6 @@
 ﻿namespace PBL3_LastReal.View
 {
-    partial class fClientService
+    partial class fService
     {
         /// <summary>
         /// Required designer variable.

@@ -33,14 +33,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.4, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.4\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -58,23 +67,109 @@
     <Compile Include="BLL\ManageBill.cs" />
     <Compile Include="BLL\ManageComputer.cs" />
     <Compile Include="BLL\ManageHistory.cs" />
+    <Compile Include="BLL\ManageOrder.cs" />
     <Compile Include="BLL\ManagePerson.cs" />
     <Compile Include="BLL\ManageProfit.cs" />
     <Compile Include="BLL\ManagerService.cs" />
     <Compile Include="BLL\ManageSalary.cs" />
     <Compile Include="BLL\ManageWorkShift.cs" />
     <Compile Include="BLL\ToolTime.cs" />
-    <Compile Include="DTO\Service.cs" />
-    <Compile Include="QuanLyNet.designer.cs">
+    <Compile Include="DTO\Account.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Bill.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Computer.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\DetailOrder.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\DetailWorkShift.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\History.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\OrderService.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Person.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Price.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Product.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\QuanLyNet.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyNet.dbml</DependentUpon>
+      <DependentUpon>QuanLyNet.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\QuanLyNet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\QuanLyNet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyNet.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Salary.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Service.cs" />
+    <Compile Include="DTO\sysdiagram.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Ticket.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Vehicle.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\WorkShift.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\fDetailOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fDetailOrder.Designer.cs">
+      <DependentUpon>fDetailOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\fDetailStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fDetailStaff.Designer.cs">
+      <DependentUpon>fDetailStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\fOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fOrder.Designer.cs">
+      <DependentUpon>fOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="View\fPaySalary.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\fPaySalary.Designer.cs">
       <DependentUpon>fPaySalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\fStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fStaff.Designer.cs">
+      <DependentUpon>fStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\uc_Comp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\uc_Comp.Designer.cs">
+      <DependentUpon>uc_Comp.cs</DependentUpon>
     </Compile>
     <Compile Include="View\uc_Day.cs">
       <SubType>UserControl</SubType>
@@ -130,17 +225,17 @@
     <Compile Include="View\fClient.Designer.cs">
       <DependentUpon>fClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\fClientPassword.cs">
+    <Compile Include="View\fPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\fClientPassword.Designer.cs">
-      <DependentUpon>fClientPassword.cs</DependentUpon>
+    <Compile Include="View\fPassword.Designer.cs">
+      <DependentUpon>fPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\fClientService.cs">
+    <Compile Include="View\fService.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\fClientService.Designer.cs">
-      <DependentUpon>fClientService.cs</DependentUpon>
+    <Compile Include="View\fService.Designer.cs">
+      <DependentUpon>fService.cs</DependentUpon>
     </Compile>
     <Compile Include="View\fDetailWorkShift.cs">
       <SubType>Form</SubType>
@@ -222,6 +317,12 @@
     <Compile Include="View\UC_NhanVien.Designer.cs">
       <DependentUpon>UC_NhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\uc_Order.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\uc_Order.Designer.cs">
+      <DependentUpon>uc_Order.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UC_TaiKhoan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -238,8 +339,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\fAddEditStaff.resx">
+      <DependentUpon>fAddEditStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fDetailOrder.resx">
+      <DependentUpon>fDetailOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fDetailStaff.resx">
+      <DependentUpon>fDetailStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fOrder.resx">
+      <DependentUpon>fOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\fPaySalary.resx">
       <DependentUpon>fPaySalary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fStaff.resx">
+      <DependentUpon>fStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\uc_Comp.resx">
+      <DependentUpon>uc_Comp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\uc_Day.resx">
       <DependentUpon>uc_Day.cs</DependentUpon>
@@ -262,11 +381,11 @@
     <EmbeddedResource Include="View\fClient.resx">
       <DependentUpon>fClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\fClientPassword.resx">
-      <DependentUpon>fClientPassword.cs</DependentUpon>
+    <EmbeddedResource Include="View\fPassword.resx">
+      <DependentUpon>fPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\fClientService.resx">
-      <DependentUpon>fClientService.cs</DependentUpon>
+    <EmbeddedResource Include="View\fService.resx">
+      <DependentUpon>fService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\fDetailWorkShift.resx">
       <DependentUpon>fDetailWorkShift.cs</DependentUpon>
@@ -289,9 +408,19 @@
     <EmbeddedResource Include="View\UC_NhanVien.resx">
       <DependentUpon>UC_NhanVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\uc_Order.resx">
+      <DependentUpon>uc_Order.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UC_TaiKhoan.resx">
       <DependentUpon>UC_TaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="DTO\QuanLyNet.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuanLyNet.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DTO\QuanLyNet.edmx.diagram">
+      <DependentUpon>QuanLyNet.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -307,14 +436,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="QuanLyNet.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>QuanLyNet.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QuanLyNet.dbml.layout">
-      <DependentUpon>QuanLyNet.dbml</DependentUpon>
-    </None>
     <None Include="Resources\13b17612f771282f7160.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +452,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-monitor-40.png" />
@@ -340,6 +462,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-sign-out-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gray.png" />
+    <None Include="Resources\Red.png" />
+    <None Include="Resources\Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DTO\QuanLyNet.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyNet.edmx</DependentUpon>
+      <LastGenOutput>QuanLyNet.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DTO\QuanLyNet.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyNet.edmx</DependentUpon>
+      <LastGenOutput>QuanLyNet.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

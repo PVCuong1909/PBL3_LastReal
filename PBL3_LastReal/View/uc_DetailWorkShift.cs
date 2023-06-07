@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3_LastReal.DTO;
+
 
 namespace PBL3_LastReal.View
 {
@@ -49,11 +51,8 @@ namespace PBL3_LastReal.View
             dgv_Person.Name = "dgv_Person";
             dgv_Person.Location = new Point(410, 120);
             dgv_Person.Size = new Size(390, 200);
-            dgv_Person.DataSource = ManageWorkShift.Instance.GetStaffs(instance);
+            dgv_Person.DataSource = ManageWorkShift.Instance.GetStaffs(instance).Select(p => new {p.Person.Name, p.Person.PhoneNum, p.Person.CCCD}).ToList();
             this.ParentForm.Controls.Add(dgv_Person);
-            dgv_Person.Columns.Remove("ID_Person");
-            dgv_Person.Columns.Remove("Type");
-            dgv_Person.Columns.Remove("Works");
         }
     }
 }

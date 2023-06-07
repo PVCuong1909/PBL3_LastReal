@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PBL3_LastReal.BLL;
+using PBL3_LastReal.DTO;
+
 namespace PBL3_LastReal.View
 {
     public partial class UC_DichVu : UserControl
@@ -20,7 +22,7 @@ namespace PBL3_LastReal.View
 
         private void GUI()
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 dgv.DataSource = db.Products.Select(p => new
                 {
@@ -71,12 +73,16 @@ namespace PBL3_LastReal.View
             ManageService.Instance.DeleteProduct(id);
             MessageBox.Show("Xoa Thanh Cong");
             GUI();
-          
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            dgv.DataSource = ManageService.Instance.SearchProduct(textBox1.Text);
+            dgv.DataSource = ManageService.Instance.SearchProduct(textBox1.Text).Select(p => new {
+                p.Name,
+                p.Quantity,
+                p.Price.ImPrice,
+                p.Price.ExPrice
+            }).ToList();
         }
 
     }

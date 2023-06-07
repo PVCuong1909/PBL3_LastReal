@@ -1,9 +1,11 @@
-﻿using PBL3_LastReal.View;
+﻿using PBL3_LastReal.BLL;
+using PBL3_LastReal.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PBL3_LastReal
 {
@@ -17,7 +19,7 @@ namespace PBL3_LastReal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fAdmin());
+            Application.Run(new fLogin());
         }
     }
 }

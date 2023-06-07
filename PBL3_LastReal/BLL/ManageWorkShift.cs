@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Management;
+using PBL3_LastReal.DTO;
+
 
 namespace PBL3_LastReal.BLL
 {
@@ -26,7 +28,7 @@ namespace PBL3_LastReal.BLL
         public List<WorkShift> GetWorkShifts(int type, DateTime date)
         {
             List<WorkShift> listws = new List<WorkShift>();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 listws = db.WorkShifts.Where(p => p.Type == type && p.Date == date).ToList();
             }
@@ -35,7 +37,7 @@ namespace PBL3_LastReal.BLL
         public List<WorkShift> GetWorkShifts(DateTime date)
         {
             List<WorkShift> listws = new List<WorkShift>();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 listws = db.WorkShifts.Where(p => p.Date == date).ToList();
             }
@@ -44,7 +46,7 @@ namespace PBL3_LastReal.BLL
         public WorkShift GetWorkShift(DateTime date, DateTime timeBegin, DateTime timeEnd)
         {
             WorkShift ws = new WorkShift();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 ws = db.WorkShifts.Where(p => p.Date == date && p.TimeBegin == timeBegin && p.TimeEnd == timeEnd).First();
             }
@@ -53,27 +55,25 @@ namespace PBL3_LastReal.BLL
         public List<Account> getAllStaffs(int type)
         {
             List<Account> listper = new List<Account>();
-            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
             listper = db.Accounts.Where(p => p.Type == type).ToList();
             return listper;
         }
         public List<Account> GetStaffs(WorkShift ws)
         {
-            List<Person> listper = new List<Person>();
-            List<int> listid_per = new List<int>();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            List<Account> listper = new List<Account>();
+            List<string> listid_per = new List<string>();
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
+            foreach (DetailWorkShift record in db.DetailWorkShifts)
             {
-                foreach (DetailWorkShift record in db.DetailWorkShifts)
+                if (record.ID_WorkShift == ws.ID_WorkShift)
                 {
-                    if(record.ID_WorkShift == ws.ID_WorkShift)
-                    {
-                        listid_per.Add((int)record.ID_Person);
-                    }
+                    listid_per.Add((string)record.ID_Account);
                 }
-                foreach (int id in listid_per)
-                {
-                    listper.Add(db.Persons.Where(p => p.ID_Person == id).First());
-                }
+            }
+            foreach (string id in listid_per)
+            {
+                listper.Add(db.Accounts.Where(p => p.ID_Account == id).First());
             }
             return listper;
         }
@@ -88,15 +88,15 @@ namespace PBL3_LastReal.BLL
         }
         public void AddWorkShift(WorkShift ws)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                db.WorkShifts.InsertOnSubmit(ws);
-                db.SubmitChanges();
+                db.WorkShifts.Add(ws);
+                db.SaveChanges();
             }
         }
         public void DeleteWorkShift(WorkShift ws)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 WorkShift delete = new WorkShift();
                 foreach (WorkShift item in db.WorkShifts)
@@ -114,45 +114,45 @@ namespace PBL3_LastReal.BLL
                         this.RemoveDetailWorkShift(item.ID_Detail);
                     }
                 }
-                db.WorkShifts.DeleteOnSubmit(delete);
-                db.SubmitChanges();
+                db.WorkShifts.Remove(delete);
+                db.SaveChanges();
             }
         }
         public void UpdateWorkShift(int id, DateTime timeBegin, DateTime timeEnd)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 WorkShift update = db.WorkShifts.Where(p => p.ID_WorkShift == id).First();
                 update.TimeBegin = timeBegin;
                 update.TimeEnd = timeEnd;
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
         private void AddDetailWorkShift(List<DetailWorkShift> listdetail)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                db.DetailWorkShifts.InsertAllOnSubmit(listdetail);
-                db.SubmitChanges();
+                db.DetailWorkShifts.AddRange(listdetail);
+                db.SaveChanges();
             }
         }
         private void RemoveDetailWorkShift(int id_detail)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 foreach (DetailWorkShift item in db.DetailWorkShifts)
                 {
                     if (item.ID_Detail == id_detail)
                     {
-                        db.DetailWorkShifts.DeleteOnSubmit(item);
-                        db.SubmitChanges();
+                        db.DetailWorkShifts.Remove(item);
+                        db.SaveChanges();
                     }
                 }
             }
         }
         public void SyncStaffs(WorkShift ws, List<Account> listper)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 List<DetailWorkShift> listdelete = db.DetailWorkShifts.Where(p => p.ID_WorkShift == ws.ID_WorkShift).ToList();
                 foreach (DetailWorkShift item in listdelete)

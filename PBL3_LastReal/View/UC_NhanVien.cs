@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3_LastReal.DTO;
+
 
 namespace PBL3_LastReal.View
 {
@@ -39,11 +41,11 @@ namespace PBL3_LastReal.View
         {
             if (dgv.SelectedRows.Count == 1)
             {
-                cbb_type.Enabled = true;
-                tb_name.Enabled = true;
-                dt_dob.Enabled = true;
-                tb_phone.Enabled = true;
-                tb_salary.Enabled = true; 
+                string cccd = dgv.SelectedRows[0].Cells[1].Value.ToString();
+                Person per = ManagePerson.Instance.GetPersonByCCCD(cccd);
+                fAddEditStaff f = new fAddEditStaff(per);
+                f.UpdateDGV += new fAddEditStaff.UpdateDGVHandler(GUI);
+                f.ShowDialog();
             }
             else if (dgv.SelectedRows.Count > 1)
             {
@@ -74,10 +76,9 @@ namespace PBL3_LastReal.View
                     cbb_type.Text = "Thu ngân";
                 }
                 tb_name.Text = per.Name;
-                dt_dob.Text = per.DOB.Value.ToString("yyyy/MM/dd");
+                dt_dob.Text = per.DOB.Value.ToString("dd/MM/yyyy");
                 tb_CCCD.Text = per.CCCD.ToString();
                 tb_phone.Text = per.PhoneNum.ToString();
-                tb_work.Text = per.Works.ToString();
                 string id = per.ID_Person.ToString();
                 Salary sar = ManageSalary.Instance.getSalaryByID(Convert.ToInt32(id));
                 tb_salary.Text = sar.Salary1.ToString();
@@ -85,10 +86,10 @@ namespace PBL3_LastReal.View
         }
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 dgv.DataSource = db.Accounts.Where(p => p.Type > 1 && p.Person.Name.Contains(tb_search.Text)).
-                        Select(p => new { p.Person.Name, p.Person.DOB, p.Person.CCCD, p.Person.PhoneNum });
+                        Select(p => new { p.Person.Name, p.Person.DOB, p.Person.CCCD, p.Person.PhoneNum }).ToList();
             }
         }
         private void btn_delete_Click(object sender, EventArgs e)
@@ -108,33 +109,23 @@ namespace PBL3_LastReal.View
                 MessageBox.Show("Chọn dòng cần được xóa!");
             }
         }
-
         private void btn_paySal_Click(object sender, EventArgs e)
         {
-            string CCCD = dgv.SelectedRows[0].Cells[1].Value.ToString();                
-            Person per = ManagePerson.Instance.GetPersonByCCCD(CCCD);
-            string id = per.ID_Person.ToString();
-            string type = cbb_type.Text;
-            string name = tb_name.Text;
-            string phone = tb_phone.Text;
-            string cccd = tb_CCCD.Text;
-            string dob = dt_dob.Text;
-            string salary = tb_salary.Text;
-            if (cbb_type.Text == "" || tb_name.Text == "" || tb_CCCD.Text == "" || dt_dob.Text == "" || tb_phone.Text == "" || tb_salary.Text == "")
+            if (dgv.SelectedRows.Count == 1)
+            {
+                string cccd = dgv.SelectedRows[0].Cells[1].Value.ToString();
+                Person per = ManagePerson.Instance.GetPersonByCCCD(cccd);
+                fPaySalary f = new fPaySalary(per);
+                f.ShowDialog();
+
+            }
+            else if (dgv.SelectedRows.Count > 1)
             {
                 MessageBox.Show("Không thể trả lương cho nhiều nhân viên cùng lúc!");
             }
             else
             {
-                    ManageSalary.Instance.editSalaryAndPer(Convert.ToInt32(id), type, name, Convert.ToDateTime(dob), cccd, phone, Convert.ToInt32(salary));
-                    MessageBox.Show("Cập nhật thông tin thành công");
-                    cbb_type.Enabled = false;
-                    tb_name.Enabled = false;
-                    tb_CCCD.Enabled = false;
-                    dt_dob.Enabled = false;
-                    tb_phone.Enabled = false;
-                    tb_salary.Enabled = false;
-                    GUI();   
+                MessageBox.Show("Vui lòng chọn 1 thông tin nhân viên!");
             }
         }
     }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3_LastReal.DTO;
+
 
 namespace PBL3_LastReal.BLL
 {
@@ -26,16 +28,16 @@ namespace PBL3_LastReal.BLL
         public Person GetPerson(int id)
         {
             Person per = new Person();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                per = db.Persons.Where(p => p.ID_Person == id).First();
+                per = db.People.Where(p => p.ID_Person == id).First();
             }
             return per;
         }
         public int getIDPersonByUsername(string username)
         {
             int id = 0;
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 id = (int)db.Accounts.Where(p => p.Username == username).First().ID_Person;
             }
@@ -44,52 +46,52 @@ namespace PBL3_LastReal.BLL
         public int getIDPersonByCCCD(string cccd)
         {
             int id = 0;
-            QuanLyNetDataContext db = new QuanLyNetDataContext();
-            id = db.Persons.Where(p => p.CCCD == cccd).First().ID_Person;
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
+            id = db.People.Where(p => p.CCCD == cccd).First().ID_Person;
             return id;
         }
         public void addPerson(Person per)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                db.Persons.InsertOnSubmit(per);
-                db.SubmitChanges();
+                db.People.Add(per);
+                db.SaveChanges();
             }
         }
         public void updatePerson(int id, string name, DateTime DOB, string CCCD, string phoneNum)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                Person per = db.Persons.Where(p => p.ID_Person == id).First();
+                Person per = db.People.Where(p => p.ID_Person == id).First();
                 per.Name = name;
                 per.DOB = DOB;
                 per.CCCD = CCCD;
                 per.PhoneNum = phoneNum;
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
         public void delPerson(int id)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                Person per = db.Persons.Where(p => p.ID_Person == id).First();
-                db.Persons.DeleteOnSubmit(per);
-                db.SubmitChanges();
+                Person per = db.People.Where(p => p.ID_Person == id).First();
+                db.People.Remove(per);
+                db.SaveChanges();
             }
         }
         public List<Account> getPersonsByType()
         {
             List<Account> list = new List<Account>();
-            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
             list = db.Accounts.Where(p => p.Type > 1).ToList();
             return list;
         }
         public List<string> GetAllCCCD()
         {
             List<string> list = new List<string>();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                foreach (Person com in db.Persons)
+                foreach (Person com in db.People)
                 {
                     list.Add(com.CCCD.ToString());
 
@@ -99,15 +101,15 @@ namespace PBL3_LastReal.BLL
         }
         public void delPersonByCCCD(string CCCD)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                Person per = db.Persons.Where(p => p.CCCD == CCCD).First();
+                Person per = db.People.Where(p => p.CCCD == CCCD).First();
                 Salary sal = db.Salaries.Where(p => p.ID_Person == per.ID_Person).First();
                 Account acc = db.Accounts.Where(p => p.ID_Person == per.ID_Person).First();
-                db.Accounts.DeleteOnSubmit(acc);
-                db.Persons.DeleteOnSubmit(per);
-                db.Salaries.DeleteOnSubmit(sal);
-                db.SubmitChanges();
+                db.Accounts.Remove(acc);
+                db.People.Remove(per);
+                db.Salaries.Remove(sal);
+                db.SaveChanges();
             }
         }
         public bool checkCCCDPer(string cccd)
@@ -123,18 +125,18 @@ namespace PBL3_LastReal.BLL
         public Person GetPersonByCCCD(string cccd)
         {
             Person per = new Person();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                per = db.Persons.Where(p => p.CCCD == cccd).First();
+                per = db.People.Where(p => p.CCCD == cccd).First();
             }
             return per;
         }
         public void resetWork(string cccd)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                db.Persons.Where(p => p.CCCD == cccd).First().Works = 0;
-                db.SubmitChanges();
+                db.Accounts.Where(p => p.Person.CCCD == cccd).First().Works = 0;
+                db.SaveChanges();
             }
         }
     }

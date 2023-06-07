@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using PBL3_LastReal.DTO;
 
 namespace PBL3_LastReal.BLL
 {
@@ -23,10 +24,10 @@ namespace PBL3_LastReal.BLL
             }
             private set { }
         }
-        private string MD5Hash(string input)
+        public string MD5Hash(string input)
         {
             StringBuilder hash = new StringBuilder();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
                 byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
@@ -41,7 +42,7 @@ namespace PBL3_LastReal.BLL
         public bool checkLogIn(string username, string passwordf)
         {
             bool check = false;
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 string password = MD5Hash(passwordf);
                 if (db.Accounts.Where(p => p.Username == username && p.Password == password).Count() > 0)
@@ -52,7 +53,7 @@ namespace PBL3_LastReal.BLL
         public int getType(string usernamef)
         {
             int type = -1;
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 type = (int)db.Accounts.Where(p => p.Username == usernamef).First().Type;
             }
@@ -61,7 +62,7 @@ namespace PBL3_LastReal.BLL
         public int getMoneyRemain(string usernamef)
         {
             int money = -1;
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 money = (int)db.Accounts.Where(p => p.Username == usernamef).First().Money;
             }
@@ -70,7 +71,7 @@ namespace PBL3_LastReal.BLL
         public string getID(string usernamef)
         {
             string id = "";
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 id = db.Accounts.Where(p => p.Username == usernamef).First().ID_Account;
             }
@@ -79,7 +80,7 @@ namespace PBL3_LastReal.BLL
         public bool checkPassword(string ID_Account, string Password)
         {
             bool check = false;
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 string password = MD5Hash(Password);
                 if (db.Accounts.Where(p => p.ID_Account == ID_Account && p.Password == password).Count() == 1)
@@ -89,30 +90,58 @@ namespace PBL3_LastReal.BLL
         }
         public void changePassword(string ID_Account, string newPassword)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 string password = MD5Hash(newPassword);
                 db.Accounts.Where(p => p.ID_Account == ID_Account).First().Password = password;
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
         public int getNextID_Acc(string type)
         {
             int nextID = 0;
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                List<Account> accounts = new List<Account>();
-                accounts = db.Accounts.Where(p => p.ID_Account.Contains(type)).ToList();
-                string lastID = accounts[accounts.Count - 1].ID_Account;
-                nextID = Convert.ToInt32(lastID.Substring(6, lastID.Length - 6));
-                nextID++;
+                if(type == "client")
+                {
+                    List<Account> accounts = new List<Account>();
+                    accounts = db.Accounts.Where(p => p.ID_Account.Contains(type)).ToList();
+                    string lastID = accounts[accounts.Count - 1].ID_Account;
+                    nextID = Convert.ToInt32(lastID.Substring(6, lastID.Length - 6));
+                    nextID++;
+                }  
+                else if(type == "staff")
+                {
+                    List<Account> accounts = new List<Account>();
+                    accounts = db.Accounts.Where(p => p.ID_Account.Contains(type)).ToList();
+                    string lastID = accounts[accounts.Count - 1].ID_Account;
+                    nextID = Convert.ToInt32(lastID.Substring(5, lastID.Length - 5));
+                    nextID++;
+                }
+                else if (type == "guard")
+                {
+                    List<Account> accounts = new List<Account>();
+                    accounts = db.Accounts.Where(p => p.ID_Account.Contains(type)).ToList();
+                    string lastID = accounts[accounts.Count - 1].ID_Account;
+                    nextID = Convert.ToInt32(lastID.Substring(5, lastID.Length - 5));
+                    nextID++;
+                }
+                else if (type == "cashier")
+                {
+                    List<Account> accounts = new List<Account>();
+                    accounts = db.Accounts.Where(p => p.ID_Account.Contains(type)).ToList();
+                    string lastID = accounts[accounts.Count - 1].ID_Account;
+                    nextID = Convert.ToInt32(lastID.Substring(7, lastID.Length - 7));
+                    nextID++;
+                }
+
             }
             return nextID;
         }
         public Account GetAccountByUsername(string username)
         {
             Account acc = new Account();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 acc = db.Accounts.Where(p => p.Username == username).First();
             }
@@ -129,71 +158,51 @@ namespace PBL3_LastReal.BLL
                 Money = money,
                 ID_Person = idper,
             };
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                db.Accounts.InsertOnSubmit(acc);
-                db.SubmitChanges();
+                db.Accounts.Add(acc);
+                db.SaveChanges();
             }
         }
         public void updateAccount(string username, string passwordf, int money)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 Account acc = db.Accounts.Where(p => p.Username == username).First();
                 acc.Password = MD5Hash(passwordf);
                 acc.Money += money;
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
         public void delAccount(string username)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 Account acc = db.Accounts.Where(p => p.Username == username).First();
-                db.Accounts.DeleteOnSubmit(acc);
-                db.SubmitChanges();
+                db.Accounts.Remove(acc);
+                db.SaveChanges();
             }
         }
         public void rechargeByUsername(string username, int money)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 db.Accounts.Where(p => p.Username == username).First().Money += money;
-                db.SubmitChanges();
-                int pos = 0;
-                var query2 = db.Bill_Thangs.Where(p => p.Id_Bill2 >0 ).ToList();
-                for(int i =0;i<query2.Count;i++)
-                {
-                    if (ManageProfit.Instance.check((DateTime)query2[i].Date) == true)
-                    {
-                        query2[i].TienMay += money;
-                        db.SubmitChanges();
-                        break;
-                    }
-
-                }
-                //if (ManageProfit.Instance.check((DateTime)query2[pos].Date) == true)
-                //{
-                //    query2[pos].TienMay += money;
-                //    db.SubmitChanges();
-                //}
-                //else
-                //{
-                //    pos++;
-                //}
+                db.SaveChanges();
+                ManageBill.Instance.addBill(money, 1, DateTime.Now);
             }
         }
         public void editRechargeMoney(string username, int money)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 db.Accounts.Where(p => p.Username == username).First().Money = money;
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
         public Account getAccountByID_per(int id_per)
         {
-            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
             return db.Accounts.Where(p => p.ID_Person == id_per).First();
         }
     }

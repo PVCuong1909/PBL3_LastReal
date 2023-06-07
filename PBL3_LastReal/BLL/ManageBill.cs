@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PBL3_LastReal.DTO;
+
 
 namespace PBL3_LastReal.BLL
 {
@@ -23,40 +25,26 @@ namespace PBL3_LastReal.BLL
             private set { }
         }
 
-        public void addBill(int money, int type)
+        public void addBill(int money, int type, DateTime time)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                db.Bills.InsertOnSubmit(new Bill
+                db.Bills.Add(new Bill
                 {
-                    Date = DateTime.Now,
+                    Date = time,
                     Money = money,
                     Type = type
                 });
-                db.SubmitChanges();
-                int pos = 0;
-                var query2 = db.Bill_Thangs.Where(p => p.Id_Bill2 > 0).ToList();
-                for(int i = 0; i < query2.Count; i++)
-                {
-                    if (ManageProfit.Instance.check((DateTime)query2[i].Date) == true)
-                    {
-                        query2[i].DichVu += bill.Money;
-                        db.SubmitChanges();
-                        break;
-
-                    }
-
-                }
-                //if (ManageProfit.Instance.check((DateTime)query2[pos].Date) == true)
-                //{
-                //    query2[pos].DichVu += bill.Money;
-                //    db.SubmitChanges();
-                //}
-                //else
-                //{
-                //    pos++;
-                //}
-
+                db.SaveChanges();
+            }
+        }
+        public void removeBill(DateTime time)
+        {
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
+            {
+                int id = db.Bills.Where(p => p.Date.Value.ToString() == time.ToString()).First().ID_Bill;
+                db.Bills.Remove(db.Bills.Where(p => p.ID_Bill == id).First());
+                db.SaveChanges();
             }
         }
     }

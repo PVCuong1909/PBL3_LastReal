@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3_LastReal.DTO;
+
 
 namespace PBL3_LastReal.View
 {

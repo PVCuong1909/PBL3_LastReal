@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace PBL3_LastReal.View
 {
-    public partial class fClientPassword : Form
+    public partial class fPassword : Form
     {
         private string ID_TK;
-        public fClientPassword(string id_Account)
+        public fPassword(string id_Account)
         {
             InitializeComponent();
             ID_TK = id_Account;

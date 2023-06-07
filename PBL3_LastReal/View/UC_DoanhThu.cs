@@ -75,7 +75,7 @@ namespace PBL3_LastReal
         }
         void setValues(string month, int type)
         {
-            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
             int monthNumber = 0;
             if (type == 0)
             {
@@ -92,7 +92,6 @@ namespace PBL3_LastReal
 
             DateTime dm = new DateTime(DateTime.Now.Year, monthNumber, 1);
 
-            int count = 0;
             List<Bill> query = ManageProfit.Instance.getBillsInMonth(dm);
 
             List<Bill> billsForRecharge = query.Where(p => p.Type == 0).ToList();
@@ -110,18 +109,25 @@ namespace PBL3_LastReal
                 moneySalary = 0;
                 DateTime day = Convert.ToDateTime(DateTime.Now.Year.ToString() + "-" + monthNumber.ToString() + "-" + (i + 1).ToString());
 
-                    if (dm.AddDays(i).ToString("MM:dd") == (Convert.ToDateTime(query[count].Date).ToString("MM:dd")))
+                foreach (Bill item in billsForRecharge)
+                {
+                    if (item.Date.Value.Date == day.Date)
                     {
-                        points.Add(new DataPoint(dm.AddDays(i).ToOADate(), (double)query[count].DichVu));
-                        points2.Add(new DataPoint(dm.AddDays(i).ToOADate(), (double)query[count].TienMay));
-                        points3.Add(new DataPoint(dm.AddDays(i).ToOADate(), query[count].LuongNhanVien));
-                        count++;
-                        if (count == query.Count)
-                        {
-                            count--;
-                        }
+                        moneyRecharge += (int)item.Money;
                     }
-                    else
+                }
+
+                foreach (Bill item in billsForService)
+                {
+                    if (item.Date.Value.Date == day.Date)
+                    {
+                        moneyService += (int)item.Money;
+                    }
+                }
+
+                foreach (Bill item in billsForSalary)
+                {
+                    if (item.Date.Value.Date == day.Date)
                     {
                         moneySalary += (int)item.Money;
                     }

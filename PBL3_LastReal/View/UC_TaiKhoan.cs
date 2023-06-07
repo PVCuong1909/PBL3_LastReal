@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3_LastReal.DTO;
+
 
 namespace PBL3_LastReal.View
 {
@@ -21,7 +23,7 @@ namespace PBL3_LastReal.View
 
         private void GUI()
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 dgv.DataSource = db.Accounts.Where(p => p.Type == 1).Select(p => new
                 {
@@ -70,7 +72,7 @@ namespace PBL3_LastReal.View
 
         private void tb_search_TextChanged(object sender, EventArgs e)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 dgv.DataSource = db.Accounts.
                     Where(p => p.Type == 1 && (p.Username.Contains(tb_search.Text) || p.Person.Name.Contains(tb_search.Text))).
@@ -79,7 +81,7 @@ namespace PBL3_LastReal.View
                         p.Username,
                         p.Money,
                         p.Person.Name
-                    });
+                    }).ToList();
             }
         }
 

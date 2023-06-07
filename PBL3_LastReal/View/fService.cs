@@ -13,16 +13,18 @@ using PBL3_LastReal.View;
 
 namespace PBL3_LastReal.View
 {
-    public partial class fClientService : Form
+    public partial class fService : Form
     {
-        public delegate void UpdateClientFormHandler(string summary);
-        public event UpdateClientFormHandler UpdateClientForm;
+        public delegate void UpdateSummaryHandler(string summary);
+        public event UpdateSummaryHandler Summary;
+        private int id_com;
         private DataTable dt_Bill;
         private static List<Service> services;
-        public fClientService()
+        public fService(int ID_Computer)
         {
             InitializeComponent();
             initListService();
+            id_com = ID_Computer;
             services = new List<Service>();
             dt_Bill = new DataTable();
             dt_Bill.Columns.AddRange(new DataColumn[] 
@@ -32,11 +34,10 @@ namespace PBL3_LastReal.View
                 new DataColumn{ColumnName = "Summary", DataType = typeof(int)},
             });
             dgv_SelectedMatHang.DataSource = dt_Bill;
-            //TaoMatHang();
         }
         private void initListService()
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 dgv_ListThucDon.DataSource = db.Products.Select(p => new
                 {
@@ -55,67 +56,12 @@ namespace PBL3_LastReal.View
             }
             txt_Summary.Text = summary.ToString();
         }
-     
-
-
-        //public void InitDGV(QuanLyNetDataContext db)
-        //{
-        //    //var query = db.Products.Select(p => new { p.pics, p.Name, p.price });
-        //    //dgv_ListThucDon.DataSource = query;
-        //    //dgv_ListThucDon.CurrentCell = null;
-        //}
-        //public void Initdgv2()
-        //{
-        //    //QuanLyNetDataContext db = new QuanLyNetDataContext();
-        //    //var query = db.Products.Select(p => new { p.SLDaDat, p.pics, p.Name, p.price });
-        //    //dgv_SelectedMatHang.DataSource = query;
-        //}
-        ////public void InitDGV2()
-        ////{
-        ////    QuanLyNetDataContext db = new QuanLyNetDataContext();
-        ////    dgv_SelectedMatHang.DataSource =ManageService.Instance.UpdateSelectedItem(db);
-        ////    dgv_SelectedMatHang.CurrentCell = null;
-        ////}
-        //public void TaoMatHang()
-        //{
-        //    QuanLyNetDataContext db = new QuanLyNetDataContext();
-        //    InitDGV(db);
-        //}
-        //private void dgv_ListThucDon_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    //using (QuanLyNetDataContext db = new QuanLyNetDataContext())
-        //    //{
-        //    //    if (dgv_ListThucDon.SelectedRows[0].Selected)
-        //    //    {
-        //    //        ManageService.Instance.UpdateSelectState(db, InitDGV, e.RowIndex);
-
-        //    //        dgv_SelectedMatHang.DataSource = ManageService.Instance.UpdateSelectedItem(db);
-        //    //        dgv_SelectedMatHang.CurrentCell = null;
-
-        //    //    }
-
-        //    //}
-
-        //}
-
         private void btn_Exit_Click(object sender, EventArgs e)
         {
-            //ManageService.Instance.Reset();
             this.Close();
         }
-
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            //using (QuanLyNetDataContext db = new QuanLyNetDataContext())
-            //{
-
-            //    //ManageService.Instance.UpdateItemQuantity(db);
-            //    //ManageService.Instance.AddBill(pos, query, db, txt_Username.Text, ammount);
-
-            //    //ManageService.Instance.Reset();
-            //    dgv_SelectedMatHang.DataSource = null;
-            //    MessageBox.Show("Dat Hang Thanh Cong");
-            //}
             int checkQuantity = 0;
             string notEnoughService = "";
             foreach (Service item in services)
@@ -136,13 +82,39 @@ namespace PBL3_LastReal.View
                     ManageService.Instance.UpdateDB(item.Name, item.Quantity);
                 }
                 int money = 0;
+                DateTime timeOrder = DateTime.Now;
                 foreach (Service item in services)
                 {
                     money += item.Summary;
                 }
-                ManageBill.Instance.addBill(money, 0);
+
+                OrderService order = new OrderService()
+                {
+                    ID_Computer = id_com,
+                    OrderTime = timeOrder,
+                    Summary = money
+                };
+                ManageOrder.Instance.addOrder(order);
+
+                int id_Order = ManageOrder.Instance.GetOrder(id_com, timeOrder).ID_Order;
+                foreach (Service item in services)
+                {
+                    DetailOrder detail = new DetailOrder()
+                    {
+                        ID_Order = id_Order,
+                        ID_Product = ManageService.Instance.GetProduct(item.Name).ID_Product,
+                        Quantity = item.Quantity,
+                    };
+                    ManageOrder.Instance.addDetailOrder(detail);
+                }
+
+                if(Summary != null)
+                {
+                    Summary(money.ToString());
+                }
+
+                ManageBill.Instance.addBill(money, 0, timeOrder);
                 MessageBox.Show("Order thành công");
-                UpdateClientForm(money.ToString());
                 this.Close();
             }
             else
@@ -150,7 +122,6 @@ namespace PBL3_LastReal.View
                 MessageBox.Show("Số lượng "+ notEnoughService + " trong kho hiện không đủ");
             }
         }
-        
         private void btn_Select_Click(object sender, EventArgs e)
         {
             if(dgv_ListThucDon.SelectedRows.Count == 1)
@@ -196,23 +167,9 @@ namespace PBL3_LastReal.View
             UpdateSummary();
             dgv_SelectedMatHang.DataSource = null;
             dgv_SelectedMatHang.DataSource = services;
-            //using (QuanLyNetDataContext db = new QuanLyNetDataContext())
-            //{
-            //    int index = dgv_ListThucDon.CurrentCell.RowIndex;
-            //    //ManageService.Instance.UpdateSelectState(db, InitDGV, index);
-            //    //dgv_SelectedMatHang.DataSource = ManageService.Instance.UpdateSelectedItem(db, index);
-            //    dgv_SelectedMatHang.CurrentCell = null;
-            //}
         }
-
         private void btn_Del_Click(object sender, EventArgs e)
         {
-            //using (QuanLyNetDataContext db = new QuanLyNetDataContext())
-            //{
-            //    int index = dgv_ListThucDon.CurrentCell.RowIndex;
-            //    //ManageService.Instance.RemoveSelectState(db, index);
-            //    //dgv_SelectedMatHang.DataSource = ManageService.Instance.UpdateSelectedItem(db, index);
-            //}
             if(dgv_SelectedMatHang.SelectedRows.Count == 1)
             {
                 int price = 0;
@@ -243,7 +200,6 @@ namespace PBL3_LastReal.View
             dgv_SelectedMatHang.DataSource = null;
             dgv_SelectedMatHang.DataSource = services;
         }
-
         private void txt_Search_TextChanged(object sender, EventArgs e)
         {
             dgv_ListThucDon.DataSource = ManageService.Instance.GetProducts(txt_Search.Text);

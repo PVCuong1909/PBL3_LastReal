@@ -63,8 +63,9 @@
             // 
             this.tb_search.Location = new System.Drawing.Point(11, 23);
             this.tb_search.Name = "tb_search";
-            this.tb_search.Size = new System.Drawing.Size(111, 22);
+            this.tb_search.Size = new System.Drawing.Size(111, 20);
             this.tb_search.TabIndex = 15;
+            this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
             // 
             // btn_search
             // 
@@ -97,7 +98,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(467, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 20);
+            this.label1.Size = new System.Drawing.Size(111, 17);
             this.label1.TabIndex = 18;
             this.label1.Text = "Thông tin máy";
             // 
@@ -108,7 +109,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(491, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 16);
+            this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 19;
             this.label3.Text = "Máy số";
             // 
@@ -119,7 +120,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(491, 119);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 16);
+            this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 20;
             this.label4.Text = "Loại máy";
             // 
@@ -130,7 +131,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(682, 76);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 16);
+            this.label6.Size = new System.Drawing.Size(26, 13);
             this.label6.TabIndex = 21;
             this.label6.Text = "Giá";
             // 
@@ -141,7 +142,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(682, 119);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 16);
+            this.label7.Size = new System.Drawing.Size(69, 13);
             this.label7.TabIndex = 22;
             this.label7.Text = "Trạng thái ";
             // 
@@ -202,7 +203,7 @@
             this.tb_id.Enabled = false;
             this.tb_id.Location = new System.Drawing.Point(554, 73);
             this.tb_id.Name = "tb_id";
-            this.tb_id.Size = new System.Drawing.Size(111, 22);
+            this.tb_id.Size = new System.Drawing.Size(111, 20);
             this.tb_id.TabIndex = 26;
             // 
             // tb_type
@@ -210,7 +211,7 @@
             this.tb_type.Enabled = false;
             this.tb_type.Location = new System.Drawing.Point(555, 116);
             this.tb_type.Name = "tb_type";
-            this.tb_type.Size = new System.Drawing.Size(111, 22);
+            this.tb_type.Size = new System.Drawing.Size(111, 20);
             this.tb_type.TabIndex = 27;
             // 
             // tb_state
@@ -218,7 +219,7 @@
             this.tb_state.Enabled = false;
             this.tb_state.Location = new System.Drawing.Point(758, 116);
             this.tb_state.Name = "tb_state";
-            this.tb_state.Size = new System.Drawing.Size(111, 22);
+            this.tb_state.Size = new System.Drawing.Size(111, 20);
             this.tb_state.TabIndex = 28;
             // 
             // tb_price
@@ -226,7 +227,7 @@
             this.tb_price.Enabled = false;
             this.tb_price.Location = new System.Drawing.Point(758, 73);
             this.tb_price.Name = "tb_price";
-            this.tb_price.Size = new System.Drawing.Size(111, 22);
+            this.tb_price.Size = new System.Drawing.Size(111, 20);
             this.tb_price.TabIndex = 29;
             // 
             // label2
@@ -236,7 +237,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(467, 182);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(245, 20);
+            this.label2.Size = new System.Drawing.Size(215, 17);
             this.label2.TabIndex = 30;
             this.label2.Text = "Thông tin đang sử dụng máy";
             // 
@@ -247,7 +248,7 @@
             this.ID_TaiK.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ID_TaiK.Location = new System.Drawing.Point(491, 240);
             this.ID_TaiK.Name = "ID_TaiK";
-            this.ID_TaiK.Size = new System.Drawing.Size(49, 16);
+            this.ID_TaiK.Size = new System.Drawing.Size(43, 13);
             this.ID_TaiK.TabIndex = 31;
             this.ID_TaiK.Text = "ID_TK";
             // 
@@ -258,7 +259,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(491, 287);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 16);
+            this.label8.Size = new System.Drawing.Size(51, 13);
             this.label8.TabIndex = 32;
             this.label8.Text = "Tên ĐN";
             // 
@@ -269,7 +270,7 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(682, 240);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 16);
+            this.label9.Size = new System.Drawing.Size(74, 13);
             this.label9.TabIndex = 33;
             this.label9.Text = "Tiền còn lại";
             // 
@@ -280,7 +281,7 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(682, 287);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 16);
+            this.label10.Size = new System.Drawing.Size(63, 13);
             this.label10.TabIndex = 34;
             this.label10.Text = "Họ và tên";
             // 
@@ -289,7 +290,7 @@
             this.tb_IDTK.Enabled = false;
             this.tb_IDTK.Location = new System.Drawing.Point(555, 237);
             this.tb_IDTK.Name = "tb_IDTK";
-            this.tb_IDTK.Size = new System.Drawing.Size(111, 22);
+            this.tb_IDTK.Size = new System.Drawing.Size(111, 20);
             this.tb_IDTK.TabIndex = 35;
             // 
             // tb_username
@@ -297,7 +298,7 @@
             this.tb_username.Enabled = false;
             this.tb_username.Location = new System.Drawing.Point(554, 284);
             this.tb_username.Name = "tb_username";
-            this.tb_username.Size = new System.Drawing.Size(111, 22);
+            this.tb_username.Size = new System.Drawing.Size(111, 20);
             this.tb_username.TabIndex = 36;
             // 
             // tb_money
@@ -305,7 +306,7 @@
             this.tb_money.Enabled = false;
             this.tb_money.Location = new System.Drawing.Point(758, 237);
             this.tb_money.Name = "tb_money";
-            this.tb_money.Size = new System.Drawing.Size(111, 22);
+            this.tb_money.Size = new System.Drawing.Size(111, 20);
             this.tb_money.TabIndex = 37;
             // 
             // tb_name
@@ -313,7 +314,7 @@
             this.tb_name.Enabled = false;
             this.tb_name.Location = new System.Drawing.Point(758, 284);
             this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(111, 22);
+            this.tb_name.Size = new System.Drawing.Size(111, 20);
             this.tb_name.TabIndex = 38;
             // 
             // cb_using
@@ -323,7 +324,7 @@
             this.cb_using.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_using.Location = new System.Drawing.Point(128, 26);
             this.cb_using.Name = "cb_using";
-            this.cb_using.Size = new System.Drawing.Size(123, 20);
+            this.cb_using.Size = new System.Drawing.Size(105, 17);
             this.cb_using.TabIndex = 39;
             this.cb_using.Text = "Đang sử dụng";
             this.cb_using.UseVisualStyleBackColor = false;
@@ -335,7 +336,7 @@
             this.cb_free.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_free.Location = new System.Drawing.Point(246, 26);
             this.cb_free.Name = "cb_free";
-            this.cb_free.Size = new System.Drawing.Size(97, 20);
+            this.cb_free.Size = new System.Drawing.Size(82, 17);
             this.cb_free.TabIndex = 40;
             this.cb_free.Text = "Máy trống";
             this.cb_free.UseVisualStyleBackColor = false;

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.WebSockets;
 using System.Windows.Forms;
+using PBL3_LastReal.DTO;
 
 namespace PBL3_LastReal.BLL
 {
@@ -29,7 +30,7 @@ namespace PBL3_LastReal.BLL
         public List<string> getAllID()
         {
             List<string> list = new List<string>();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 foreach (Computer com in db.Computers)
                 {
@@ -41,7 +42,7 @@ namespace PBL3_LastReal.BLL
         public int getState(int id)
         {
             int state = -1;
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using(QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 state = (int)db.Computers.Where(p => p.ID_Computer == id).First().State;
             }
@@ -49,24 +50,24 @@ namespace PBL3_LastReal.BLL
         }
         public void changeStateToUsed(int id)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 db.Computers.Where(p => p.ID_Computer == id).First().State = 1;
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
         public void changeStateToFree(int id)
         {
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 db.Computers.Where(p => p.ID_Computer == id).First().State = 0;
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
         public string getRemainTime(int id_com, string id_acc)
         {
             string time = "";
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 int price = (int)db.Computers.Where(p => p.ID_Computer == id_com).First().Price;
                 int money = (int)db.Accounts.Where(p => p.ID_Account == id_acc).First().Money;
@@ -80,7 +81,7 @@ namespace PBL3_LastReal.BLL
         public int getPrice(int id_com)
         {
             int price = -1;
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 price = (int)db.Computers.Where(p => p.ID_Computer == id_com).First().Price;
             }
@@ -89,7 +90,7 @@ namespace PBL3_LastReal.BLL
         public List<Computer> getAllComputer()
         {
             List<Computer> list = new List<Computer>(); 
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using(QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 list = db.Computers.Select(p => p).ToList();
             }    
@@ -116,7 +117,7 @@ namespace PBL3_LastReal.BLL
             {
                 count = 2;
             }
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using(QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 Computer com = new Computer
                 {
@@ -125,19 +126,20 @@ namespace PBL3_LastReal.BLL
                     Type = Convert.ToInt32(type),
                     State = count
                 };
-                db.Computers.InsertOnSubmit(com);
-                db.SubmitChanges();
+                db.Computers.Add(com);
+                db.SaveChanges();
             }    
         }
         public Computer getComputerByID(string ID_com) 
         {
-            QuanLyNetDataContext db = new QuanLyNetDataContext();
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
+            int id = Convert.ToInt32(ID_com);
             Computer com = new Computer
             {
-                ID_Computer = db.Computers.Where(p => p.ID_Computer == Convert.ToInt32(ID_com)).First().ID_Computer,
-                Price = db.Computers.Where(p => p.ID_Computer == Convert.ToInt32(ID_com)).First().Price,
-                Type = db.Computers.Where(p => p.ID_Computer == Convert.ToInt32(ID_com)).First().Type,
-                State = db.Computers.Where(p => p.ID_Computer == Convert.ToInt32(ID_com)).First().State
+                ID_Computer = db.Computers.Where(p => p.ID_Computer == id).First().ID_Computer,
+                Price = db.Computers.Where(p => p.ID_Computer == id).First().Price,
+                Type = db.Computers.Where(p => p.ID_Computer == id).First().Type,
+                State = db.Computers.Where(p => p.ID_Computer == id).First().State
             };
             return com;
         }
@@ -162,27 +164,29 @@ namespace PBL3_LastReal.BLL
             {
                 count = 2;
             }
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using(QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                db.Computers.Where(p => p.ID_Computer == Convert.ToInt32(ID_com)).First().Price = Convert.ToInt32(price);
-                db.Computers.Where(p => p.ID_Computer == Convert.ToInt32(ID_com)).First().Type = Convert.ToInt32(type);
-                db.Computers.Where(p => p.ID_Computer == Convert.ToInt32(ID_com)).First().State = count;
-                db.SubmitChanges();
+                int id = Convert.ToInt32(ID_com);
+                db.Computers.Where(p => p.ID_Computer == id).First().Price = Convert.ToInt32(price);
+                db.Computers.Where(p => p.ID_Computer == id).First().Type = Convert.ToInt32(type);
+                db.Computers.Where(p => p.ID_Computer == id).First().State = count;
+                db.SaveChanges();
             }    
         }
         public void deleteComputer(string ID_com) 
         {
-            using(QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using(QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
-                db.Computers.DeleteOnSubmit(db.Computers.Where(p => p.ID_Computer == Convert.ToInt32(ID_com)).First());
-                db.SubmitChanges();
+                int id = Convert.ToInt32(ID_com);
+                db.Computers.Remove(db.Computers.Where(p => p.ID_Computer == id).First());
+                db.SaveChanges();
             }    
         }
         public List<Computer> getComputersStateUsed(string txt)
         {
             List<Computer> list = new List<Computer>();
             List<Computer> list1 = new List<Computer>();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 list = db.Computers.Where(p => p.State == 1).Select(p => p).ToList();
             }
@@ -199,7 +203,7 @@ namespace PBL3_LastReal.BLL
         {
             List<Computer> list = new List<Computer>();
             List<Computer> list1 = new List<Computer>();
-            using (QuanLyNetDataContext db = new QuanLyNetDataContext())
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
             {
                 list = db.Computers.Where(p => p.State == 0).Select(p => p).ToList();
             }

@@ -18,30 +18,25 @@ namespace PBL3_LastReal
         public fLogin()
         {
             InitializeComponent();
-            ManageProfit.Instance.EndDay2();
-            ManageProfit.Instance.checkNewDay();
-
-
-
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
             string username = tb_Username.Text, password = tb_Password.Text;
-            if(ManageAccount.Instance.checkLogIn(username, password))
+            if (ManageAccount.Instance.checkLogIn(username, password))
             {
                 int type = ManageAccount.Instance.getType(username);
-                if(type == 0) 
+                if (type == 0)
                 {
                     this.Hide();
                     fAdmin f = new fAdmin();
                     f.ShowDialog();
                     this.Show();
                 }
-                else
+                else if (type == 1)
                 {
                     int moneyRemain = ManageAccount.Instance.getMoneyRemain(username);
-                    if(moneyRemain > 0)
+                    if (moneyRemain > 0)
                     {
                         this.Hide();
                         string id_Account = ManageAccount.Instance.getID(username);
@@ -54,11 +49,18 @@ namespace PBL3_LastReal
                         MessageBox.Show("Tài khoản của bạn đã hết tiền");
                     }
                 }
+                else if(type == 2)
+                {
+                    this.Hide();
+                    fStaff f = new fStaff(ManageAccount.Instance.GetAccountByUsername(username));
+                    f.ShowDialog();
+                    this.Show();
+                }
             }
             else
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không hợp lệ");
-            }      
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)

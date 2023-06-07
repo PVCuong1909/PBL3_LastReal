@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PBL3_LastReal.BLL;
+using PBL3_LastReal.DTO;
+
 
 namespace PBL3_LastReal.View
 {
@@ -20,17 +22,18 @@ namespace PBL3_LastReal.View
         }
         private void GUI(Person per)
         {
-            if(per.Type == 2)
+            Account acc = ManageAccount.Instance.getAccountByID_per(per.ID_Person);
+            if(acc.Type == 2)
             {
                 cbb_type.Text = "Nhân viên";
             }
-            else if(per.Type== 3)
+            else if(acc.Type == 3)
             {
-                cbb_type.Text = "Thu ngân";
+                cbb_type.Text = "Bảo vệ";
             }
             else
             {
-                cbb_type.Text = "Bảo vệ";
+                cbb_type.Text = "Thu ngân";
             }
             tb_name.Text = per.Name;
             tb_CCCD.Text = per.CCCD;
@@ -39,7 +42,7 @@ namespace PBL3_LastReal.View
             string id = per.ID_Person.ToString();
             Salary sar = ManageSalary.Instance.getSalaryByID(Convert.ToInt32(id));
             tb_salary.Text = sar.Salary1.ToString();
-            tb_work.Text = per.Works.ToString();
+            tb_work.Text = acc.Works.ToString();
             
         }
 

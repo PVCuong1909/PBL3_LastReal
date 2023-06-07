@@ -1,0 +1,916 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QL_QuanNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID_Account" />
+          </Key>
+          <Property Name="ID_Account" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="40" />
+          <Property Name="Password" Type="varchar" MaxLength="40" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Money" Type="int" />
+          <Property Name="ID_Person" Type="int" />
+          <Property Name="Works" Type="int" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="ID_Bill" />
+          </Key>
+          <Property Name="ID_Bill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Money" Type="int" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Computer">
+          <Key>
+            <PropertyRef Name="ID_Computer" />
+          </Key>
+          <Property Name="ID_Computer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Type" Type="int" />
+          <Property Name="State" Type="int" />
+        </EntityType>
+        <EntityType Name="DetailOrder">
+          <Key>
+            <PropertyRef Name="ID_DetailOrder" />
+          </Key>
+          <Property Name="ID_DetailOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Order" Type="int" />
+          <Property Name="ID_Product" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="DetailWorkShift">
+          <Key>
+            <PropertyRef Name="ID_Detail" />
+          </Key>
+          <Property Name="ID_Detail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Account" Type="varchar" MaxLength="40" />
+          <Property Name="ID_WorkShift" Type="int" />
+          <Property Name="State" Type="int" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="ID_History" />
+          </Key>
+          <Property Name="ID_History" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Account" Type="varchar" MaxLength="40" />
+          <Property Name="ID_Computer" Type="int" />
+          <Property Name="TimeBegin" Type="datetime" />
+          <Property Name="TimeEnd" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OrderService">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Computer" Type="int" />
+          <Property Name="OrderTime" Type="datetime" />
+          <Property Name="Summary" Type="int" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID_Person" />
+          </Key>
+          <Property Name="ID_Person" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="CCCD" Type="varchar" MaxLength="30" />
+          <Property Name="PhoneNum" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="ID_Price" />
+          </Key>
+          <Property Name="ID_Price" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImPrice" Type="int" />
+          <Property Name="ExPrice" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID_Product" />
+          </Key>
+          <Property Name="ID_Product" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="ID_Price" Type="int" />
+          <Property Name="Path" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Salary">
+          <Key>
+            <PropertyRef Name="ID_Salary" />
+          </Key>
+          <Property Name="ID_Salary" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Person" Type="int" />
+          <Property Name="Salary" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="ID_Ticket" />
+          </Key>
+          <Property Name="ID_Ticket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Vehicle" Type="int" />
+          <Property Name="ArrivalTime" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="ID_Vehicle" />
+          </Key>
+          <Property Name="ID_Vehicle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LicensePlates" Type="varchar" MaxLength="30" />
+          <Property Name="ID_Person" Type="int" />
+        </EntityType>
+        <EntityType Name="WorkShift">
+          <Key>
+            <PropertyRef Name="ID_WorkShift" />
+          </Key>
+          <Property Name="ID_WorkShift" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="int" />
+          <Property Name="TimeBegin" Type="datetime" />
+          <Property Name="TimeEnd" Type="datetime" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <Association Name="FK__Account__ID_Pers__4F7CD00D">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID_Person" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailOrd__ID_Or__0B5CAFEA">
+          <End Role="OrderService" Type="Self.OrderService" Multiplicity="0..1" />
+          <End Role="DetailOrder" Type="Self.DetailOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderService">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="DetailOrder">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailOrd__ID_Pr__0C50D423">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="DetailOrder" Type="Self.DetailOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID_Product" />
+            </Principal>
+            <Dependent Role="DetailOrder">
+              <PropertyRef Name="ID_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailWor__ID_Ac__7B264821">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="DetailWorkShift" Type="Self.DetailWorkShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="DetailWorkShift">
+              <PropertyRef Name="ID_Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailWor__ID_Wo__47DBAE45">
+          <End Role="WorkShift" Type="Self.WorkShift" Multiplicity="0..1" />
+          <End Role="DetailWorkShift" Type="Self.DetailWorkShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkShift">
+              <PropertyRef Name="ID_WorkShift" />
+            </Principal>
+            <Dependent Role="DetailWorkShift">
+              <PropertyRef Name="ID_WorkShift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__History__ID_Acco__52593CB8">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="ID_Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__History__ID_Comp__534D60F1">
+          <End Role="Computer" Type="Self.Computer" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computer">
+              <PropertyRef Name="ID_Computer" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="ID_Computer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderServ__Order__0880433F">
+          <End Role="Computer" Type="Self.Computer" Multiplicity="0..1" />
+          <End Role="OrderService" Type="Self.OrderService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computer">
+              <PropertyRef Name="ID_Computer" />
+            </Principal>
+            <Dependent Role="OrderService">
+              <PropertyRef Name="ID_Computer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__ID_Pric__72910220">
+          <End Role="Price" Type="Self.Price" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Price">
+              <PropertyRef Name="ID_Price" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ID_Price" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Salary__ID_Perso__6AEFE058">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID_Person" />
+            </Principal>
+            <Dependent Role="Salary">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ticket__ID_Vehic__681373AD">
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="ID_Vehicle" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Vehicle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__ID_Pers__65370702">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID_Person" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QL_QuanNetModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Computer" EntityType="Self.Computer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailOrder" EntityType="Self.DetailOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailWorkShift" EntityType="Self.DetailWorkShift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderService" EntityType="Self.OrderService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salary" EntityType="Self.Salary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkShift" EntityType="Self.WorkShift" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Account__ID_Pers__4F7CD00D" Association="Self.FK__Account__ID_Pers__4F7CD00D">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailOrd__ID_Or__0B5CAFEA" Association="Self.FK__DetailOrd__ID_Or__0B5CAFEA">
+            <End Role="OrderService" EntitySet="OrderService" />
+            <End Role="DetailOrder" EntitySet="DetailOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailOrd__ID_Pr__0C50D423" Association="Self.FK__DetailOrd__ID_Pr__0C50D423">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="DetailOrder" EntitySet="DetailOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailWor__ID_Ac__7B264821" Association="Self.FK__DetailWor__ID_Ac__7B264821">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="DetailWorkShift" EntitySet="DetailWorkShift" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailWor__ID_Wo__47DBAE45" Association="Self.FK__DetailWor__ID_Wo__47DBAE45">
+            <End Role="WorkShift" EntitySet="WorkShift" />
+            <End Role="DetailWorkShift" EntitySet="DetailWorkShift" />
+          </AssociationSet>
+          <AssociationSet Name="FK__History__ID_Acco__52593CB8" Association="Self.FK__History__ID_Acco__52593CB8">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__History__ID_Comp__534D60F1" Association="Self.FK__History__ID_Comp__534D60F1">
+            <End Role="Computer" EntitySet="Computer" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderServ__Order__0880433F" Association="Self.FK__OrderServ__Order__0880433F">
+            <End Role="Computer" EntitySet="Computer" />
+            <End Role="OrderService" EntitySet="OrderService" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__ID_Pric__72910220" Association="Self.FK__Product__ID_Pric__72910220">
+            <End Role="Price" EntitySet="Price" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Salary__ID_Perso__6AEFE058" Association="Self.FK__Salary__ID_Perso__6AEFE058">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Salary" EntitySet="Salary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ticket__ID_Vehic__681373AD" Association="Self.FK__Ticket__ID_Vehic__681373AD">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__ID_Pers__65370702" Association="Self.FK__Vehicle__ID_Pers__65370702">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Vehicle" EntitySet="Vehicle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QL_QuanNetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID_Account" />
+          </Key>
+          <Property Name="ID_Account" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Money" Type="Int32" />
+          <Property Name="ID_Person" Type="Int32" />
+          <Property Name="Works" Type="Int32" />
+          <NavigationProperty Name="Person" Relationship="Self.FK__Account__ID_Pers__4F7CD00D" FromRole="Account" ToRole="Person" />
+          <NavigationProperty Name="DetailWorkShifts" Relationship="Self.FK__DetailWor__ID_Ac__7B264821" FromRole="Account" ToRole="DetailWorkShift" />
+          <NavigationProperty Name="Histories" Relationship="Self.FK__History__ID_Acco__52593CB8" FromRole="Account" ToRole="History" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="ID_Bill" />
+          </Key>
+          <Property Name="ID_Bill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Money" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Computer">
+          <Key>
+            <PropertyRef Name="ID_Computer" />
+          </Key>
+          <Property Name="ID_Computer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="State" Type="Int32" />
+          <NavigationProperty Name="Histories" Relationship="Self.FK__History__ID_Comp__534D60F1" FromRole="Computer" ToRole="History" />
+          <NavigationProperty Name="OrderServices" Relationship="Self.FK__OrderServ__Order__0880433F" FromRole="Computer" ToRole="OrderService" />
+        </EntityType>
+        <EntityType Name="DetailOrder">
+          <Key>
+            <PropertyRef Name="ID_DetailOrder" />
+          </Key>
+          <Property Name="ID_DetailOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Order" Type="Int32" />
+          <Property Name="ID_Product" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="OrderService" Relationship="Self.FK__DetailOrd__ID_Or__0B5CAFEA" FromRole="DetailOrder" ToRole="OrderService" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__DetailOrd__ID_Pr__0C50D423" FromRole="DetailOrder" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="DetailWorkShift">
+          <Key>
+            <PropertyRef Name="ID_Detail" />
+          </Key>
+          <Property Name="ID_Detail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Account" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ID_WorkShift" Type="Int32" />
+          <Property Name="State" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__DetailWor__ID_Ac__7B264821" FromRole="DetailWorkShift" ToRole="Account" />
+          <NavigationProperty Name="WorkShift" Relationship="Self.FK__DetailWor__ID_Wo__47DBAE45" FromRole="DetailWorkShift" ToRole="WorkShift" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="ID_History" />
+          </Key>
+          <Property Name="ID_History" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Account" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Computer" Type="Int32" />
+          <Property Name="TimeBegin" Type="DateTime" Precision="3" />
+          <Property Name="TimeEnd" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__History__ID_Acco__52593CB8" FromRole="History" ToRole="Account" />
+          <NavigationProperty Name="Computer" Relationship="Self.FK__History__ID_Comp__534D60F1" FromRole="History" ToRole="Computer" />
+        </EntityType>
+        <EntityType Name="OrderService">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Computer" Type="Int32" />
+          <Property Name="OrderTime" Type="DateTime" Precision="3" />
+          <Property Name="Summary" Type="Int32" />
+          <NavigationProperty Name="Computer" Relationship="Self.FK__OrderServ__Order__0880433F" FromRole="OrderService" ToRole="Computer" />
+          <NavigationProperty Name="DetailOrders" Relationship="Self.FK__DetailOrd__ID_Or__0B5CAFEA" FromRole="OrderService" ToRole="DetailOrder" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="ID_Person" />
+          </Key>
+          <Property Name="ID_Person" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="CCCD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNum" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__ID_Pers__4F7CD00D" FromRole="Person" ToRole="Account" />
+          <NavigationProperty Name="Salaries" Relationship="Self.FK__Salary__ID_Perso__6AEFE058" FromRole="Person" ToRole="Salary" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__ID_Pers__65370702" FromRole="Person" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="ID_Price" />
+          </Key>
+          <Property Name="ID_Price" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImPrice" Type="Int32" />
+          <Property Name="ExPrice" Type="Int32" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product__ID_Pric__72910220" FromRole="Price" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID_Product" />
+          </Key>
+          <Property Name="ID_Product" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="ID_Price" Type="Int32" />
+          <Property Name="Path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DetailOrders" Relationship="Self.FK__DetailOrd__ID_Pr__0C50D423" FromRole="Product" ToRole="DetailOrder" />
+          <NavigationProperty Name="Price" Relationship="Self.FK__Product__ID_Pric__72910220" FromRole="Product" ToRole="Price" />
+        </EntityType>
+        <EntityType Name="Salary">
+          <Key>
+            <PropertyRef Name="ID_Salary" />
+          </Key>
+          <Property Name="ID_Salary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Person" Type="Int32" />
+          <Property Name="Salary1" Type="Int32" />
+          <NavigationProperty Name="Person" Relationship="Self.FK__Salary__ID_Perso__6AEFE058" FromRole="Salary" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="ID_Ticket" />
+          </Key>
+          <Property Name="ID_Ticket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Vehicle" Type="Int32" />
+          <Property Name="ArrivalTime" Type="Time" Precision="7" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK__Ticket__ID_Vehic__681373AD" FromRole="Ticket" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="ID_Vehicle" />
+          </Key>
+          <Property Name="ID_Vehicle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LicensePlates" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Person" Type="Int32" />
+          <NavigationProperty Name="Person" Relationship="Self.FK__Vehicle__ID_Pers__65370702" FromRole="Vehicle" ToRole="Person" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK__Ticket__ID_Vehic__681373AD" FromRole="Vehicle" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="WorkShift">
+          <Key>
+            <PropertyRef Name="ID_WorkShift" />
+          </Key>
+          <Property Name="ID_WorkShift" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="TimeBegin" Type="DateTime" Precision="3" />
+          <Property Name="TimeEnd" Type="DateTime" Precision="3" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="DetailWorkShifts" Relationship="Self.FK__DetailWor__ID_Wo__47DBAE45" FromRole="WorkShift" ToRole="DetailWorkShift" />
+        </EntityType>
+        <Association Name="FK__Account__ID_Pers__4F7CD00D">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID_Person" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailWor__ID_Ac__7B264821">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="DetailWorkShift" Type="Self.DetailWorkShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="DetailWorkShift">
+              <PropertyRef Name="ID_Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__History__ID_Acco__52593CB8">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="ID_Account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__History__ID_Comp__534D60F1">
+          <End Role="Computer" Type="Self.Computer" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computer">
+              <PropertyRef Name="ID_Computer" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="ID_Computer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderServ__Order__0880433F">
+          <End Role="Computer" Type="Self.Computer" Multiplicity="0..1" />
+          <End Role="OrderService" Type="Self.OrderService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Computer">
+              <PropertyRef Name="ID_Computer" />
+            </Principal>
+            <Dependent Role="OrderService">
+              <PropertyRef Name="ID_Computer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailOrd__ID_Or__0B5CAFEA">
+          <End Role="OrderService" Type="Self.OrderService" Multiplicity="0..1" />
+          <End Role="DetailOrder" Type="Self.DetailOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderService">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="DetailOrder">
+              <PropertyRef Name="ID_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailOrd__ID_Pr__0C50D423">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="DetailOrder" Type="Self.DetailOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID_Product" />
+            </Principal>
+            <Dependent Role="DetailOrder">
+              <PropertyRef Name="ID_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailWor__ID_Wo__47DBAE45">
+          <End Role="WorkShift" Type="Self.WorkShift" Multiplicity="0..1" />
+          <End Role="DetailWorkShift" Type="Self.DetailWorkShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkShift">
+              <PropertyRef Name="ID_WorkShift" />
+            </Principal>
+            <Dependent Role="DetailWorkShift">
+              <PropertyRef Name="ID_WorkShift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Salary__ID_Perso__6AEFE058">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID_Person" />
+            </Principal>
+            <Dependent Role="Salary">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__ID_Pers__65370702">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="ID_Person" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__ID_Pric__72910220">
+          <End Role="Price" Type="Self.Price" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Price">
+              <PropertyRef Name="ID_Price" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ID_Price" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ticket__ID_Vehic__681373AD">
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="ID_Vehicle" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="ID_Vehicle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QL_QuanNetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Bills" EntityType="Self.Bill" />
+          <EntitySet Name="Computers" EntityType="Self.Computer" />
+          <EntitySet Name="DetailOrders" EntityType="Self.DetailOrder" />
+          <EntitySet Name="DetailWorkShifts" EntityType="Self.DetailWorkShift" />
+          <EntitySet Name="Histories" EntityType="Self.History" />
+          <EntitySet Name="OrderServices" EntityType="Self.OrderService" />
+          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="Prices" EntityType="Self.Price" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Salaries" EntityType="Self.Salary" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
+          <EntitySet Name="WorkShifts" EntityType="Self.WorkShift" />
+          <AssociationSet Name="FK__Account__ID_Pers__4F7CD00D" Association="Self.FK__Account__ID_Pers__4F7CD00D">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailWor__ID_Ac__7B264821" Association="Self.FK__DetailWor__ID_Ac__7B264821">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="DetailWorkShift" EntitySet="DetailWorkShifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__History__ID_Acco__52593CB8" Association="Self.FK__History__ID_Acco__52593CB8">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="History" EntitySet="Histories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__History__ID_Comp__534D60F1" Association="Self.FK__History__ID_Comp__534D60F1">
+            <End Role="Computer" EntitySet="Computers" />
+            <End Role="History" EntitySet="Histories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderServ__Order__0880433F" Association="Self.FK__OrderServ__Order__0880433F">
+            <End Role="Computer" EntitySet="Computers" />
+            <End Role="OrderService" EntitySet="OrderServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailOrd__ID_Or__0B5CAFEA" Association="Self.FK__DetailOrd__ID_Or__0B5CAFEA">
+            <End Role="OrderService" EntitySet="OrderServices" />
+            <End Role="DetailOrder" EntitySet="DetailOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailOrd__ID_Pr__0C50D423" Association="Self.FK__DetailOrd__ID_Pr__0C50D423">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="DetailOrder" EntitySet="DetailOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailWor__ID_Wo__47DBAE45" Association="Self.FK__DetailWor__ID_Wo__47DBAE45">
+            <End Role="WorkShift" EntitySet="WorkShifts" />
+            <End Role="DetailWorkShift" EntitySet="DetailWorkShifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Salary__ID_Perso__6AEFE058" Association="Self.FK__Salary__ID_Perso__6AEFE058">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Salary" EntitySet="Salaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__ID_Pers__65370702" Association="Self.FK__Vehicle__ID_Pers__65370702">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__ID_Pric__72910220" Association="Self.FK__Product__ID_Pric__72910220">
+            <End Role="Price" EntitySet="Prices" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ticket__ID_Vehic__681373AD" Association="Self.FK__Ticket__ID_Vehic__681373AD">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QL_QuanNetModelStoreContainer" CdmEntityContainer="QL_QuanNetEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="ID_Account" ColumnName="ID_Account" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+                <ScalarProperty Name="Works" ColumnName="Works" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="ID_Bill" ColumnName="ID_Bill" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Computers">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.Computer">
+              <MappingFragment StoreEntitySet="Computer">
+                <ScalarProperty Name="ID_Computer" ColumnName="ID_Computer" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailOrders">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.DetailOrder">
+              <MappingFragment StoreEntitySet="DetailOrder">
+                <ScalarProperty Name="ID_DetailOrder" ColumnName="ID_DetailOrder" />
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailWorkShifts">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.DetailWorkShift">
+              <MappingFragment StoreEntitySet="DetailWorkShift">
+                <ScalarProperty Name="ID_Detail" ColumnName="ID_Detail" />
+                <ScalarProperty Name="ID_Account" ColumnName="ID_Account" />
+                <ScalarProperty Name="ID_WorkShift" ColumnName="ID_WorkShift" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Histories">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="ID_History" ColumnName="ID_History" />
+                <ScalarProperty Name="ID_Account" ColumnName="ID_Account" />
+                <ScalarProperty Name="ID_Computer" ColumnName="ID_Computer" />
+                <ScalarProperty Name="TimeBegin" ColumnName="TimeBegin" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderServices">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.OrderService">
+              <MappingFragment StoreEntitySet="OrderService">
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="ID_Computer" ColumnName="ID_Computer" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="CCCD" ColumnName="CCCD" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prices">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.Price">
+              <MappingFragment StoreEntitySet="Price">
+                <ScalarProperty Name="ID_Price" ColumnName="ID_Price" />
+                <ScalarProperty Name="ImPrice" ColumnName="ImPrice" />
+                <ScalarProperty Name="ExPrice" ColumnName="ExPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ID_Price" ColumnName="ID_Price" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salaries">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.Salary">
+              <MappingFragment StoreEntitySet="Salary">
+                <ScalarProperty Name="ID_Salary" ColumnName="ID_Salary" />
+                <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+                <ScalarProperty Name="Salary1" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+                <ScalarProperty Name="ID_Vehicle" ColumnName="ID_Vehicle" />
+                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicle">
+                <ScalarProperty Name="ID_Vehicle" ColumnName="ID_Vehicle" />
+                <ScalarProperty Name="LicensePlates" ColumnName="LicensePlates" />
+                <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkShifts">
+            <EntityTypeMapping TypeName="QL_QuanNetModel.WorkShift">
+              <MappingFragment StoreEntitySet="WorkShift">
+                <ScalarProperty Name="ID_WorkShift" ColumnName="ID_WorkShift" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TimeBegin" ColumnName="TimeBegin" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

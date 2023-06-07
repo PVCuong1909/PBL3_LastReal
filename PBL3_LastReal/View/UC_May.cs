@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using PBL3_LastReal.DTO;
+
 
 namespace PBL3_LastReal.View
 {
@@ -83,6 +85,7 @@ namespace PBL3_LastReal.View
             }
             else
             {
+
                 GUI();
             }    
         }
@@ -167,15 +170,34 @@ namespace PBL3_LastReal.View
         {
             if (dgv.SelectedRows.Count == 1)
             {
-                string id = dgv.SelectedRows[0].Cells[0].Value.ToString();
-                string user = ManageHistory.Instance.getHistotyByIDAndTimeBeginAcc(id).Username.ToString();
-                fRecharge f = new fRecharge(user);
-                f.UpdateDGV += new fRecharge.UpdateDGVHandler(GUI);
-                f.ShowDialog();
+                int type = Convert.ToInt32(dgv.SelectedRows[0].Cells[3].Value);
+                if(type == 1)
+                {
+                    string id = dgv.SelectedRows[0].Cells[0].Value.ToString();
+                    string user = ManageHistory.Instance.getHistotyByIDAndTimeBeginAcc(id).Username.ToString();
+                    fRecharge f = new fRecharge(user);
+                    f.UpdateDGV += new fRecharge.UpdateDGVHandler(GUI);
+                    f.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Máy hiện tại chưa được sử dụng");
+                }  
             }
             else
             {
                 MessageBox.Show("Chọn 1 tài khoản cần nạp tiền!");
+            }
+        }
+
+        private void tb_search_TextChanged(object sender, EventArgs e)
+        {
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
+            {
+                
+                dgv.DataSource = db.Computers.
+                    Where(p => p.ID_Computer.ToString().Contains(tb_search.Text)).
+                    Select(p => p).ToList();
             }
         }
     }
