@@ -14,6 +14,7 @@ namespace PBL3_LastReal.View
 {
     public partial class fStaff : Form
     {
+        DateTime timeBegin;
         int lastComp;
         int firstComp;
         int end = ManageComputer.Instance.getAllComputer().Count;
@@ -22,6 +23,8 @@ namespace PBL3_LastReal.View
         {
             InitializeComponent();
             staff = acc;
+            timeBegin = DateTime.Now;
+            ManageWorkShift.Instance.checkIn(ManageWorkShift.Instance.GetDetailWorkShift(timeBegin.Date, acc.ID_Account), 1);
             GUI();
         }
 
@@ -94,6 +97,19 @@ namespace PBL3_LastReal.View
         }
         private void btn_Logout_Click(object sender, EventArgs e)
         {
+            DetailWorkShift detail = ManageWorkShift.Instance.GetDetailWorkShift(timeBegin.Date, staff.ID_Account);
+            if(detail.WorkShift.TimeBegin >= timeBegin && detail.WorkShift.TimeEnd <= DateTime.Now)
+            {
+                ManageWorkShift.Instance.checkIn(detail, 2);
+            }
+            if(ManageWorkShift.Instance.GetDetailWorkShift(timeBegin.Date, staff.ID_Account).State == 1)
+            {
+                ManageAccount.Instance.addWork(staff.ID_Account, 1);
+            }
+            else
+            {
+                ManageAccount.Instance.addWork(staff.ID_Account, 2);
+            }
             this.Close();
         }
         private void btn_ChangePassword_Click(object sender, EventArgs e)

@@ -41,6 +41,7 @@ namespace PBL3_LastReal.View
             {
                 int Money = Convert.ToInt32(tb_money.Text);
                 ManageAccount.Instance.editRechargeMoney(User, Money);
+                Application.OpenForms["fClient"].Refresh();
                 MessageBox.Show("Cập nhật số tiền mới thành công!");
             }
             this.Dispose();

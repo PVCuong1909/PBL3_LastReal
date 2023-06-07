@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btn_Logout = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_ChangePassword = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_ShowOrder = new Guna.UI2.WinForms.Guna2Button();
             this.tb_ID = new System.Windows.Forms.TextBox();
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,9 +42,6 @@
             this.flp_Comp = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Pre = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Next = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_ShowOrder = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_ChangePassword = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_Logout = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Pic)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +66,51 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(413, 100);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // btn_Logout
+            // 
+            this.btn_Logout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Logout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Logout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Logout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Logout.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_Logout.ForeColor = System.Drawing.Color.White;
+            this.btn_Logout.Location = new System.Drawing.Point(306, 66);
+            this.btn_Logout.Name = "btn_Logout";
+            this.btn_Logout.Size = new System.Drawing.Size(101, 24);
+            this.btn_Logout.TabIndex = 7;
+            this.btn_Logout.Text = "Đăng xuất";
+            this.btn_Logout.Click += new System.EventHandler(this.btn_Logout_Click);
+            // 
+            // btn_ChangePassword
+            // 
+            this.btn_ChangePassword.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_ChangePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_ChangePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_ChangePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_ChangePassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_ChangePassword.ForeColor = System.Drawing.Color.White;
+            this.btn_ChangePassword.Location = new System.Drawing.Point(199, 66);
+            this.btn_ChangePassword.Name = "btn_ChangePassword";
+            this.btn_ChangePassword.Size = new System.Drawing.Size(101, 24);
+            this.btn_ChangePassword.TabIndex = 6;
+            this.btn_ChangePassword.Text = "Đổi mật khẩu";
+            this.btn_ChangePassword.Click += new System.EventHandler(this.btn_ChangePassword_Click);
+            // 
+            // btn_ShowOrder
+            // 
+            this.btn_ShowOrder.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_ShowOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_ShowOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_ShowOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_ShowOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_ShowOrder.ForeColor = System.Drawing.Color.White;
+            this.btn_ShowOrder.Location = new System.Drawing.Point(92, 66);
+            this.btn_ShowOrder.Name = "btn_ShowOrder";
+            this.btn_ShowOrder.Size = new System.Drawing.Size(101, 24);
+            this.btn_ShowOrder.TabIndex = 5;
+            this.btn_ShowOrder.Text = "Xem đơn";
+            this.btn_ShowOrder.Click += new System.EventHandler(this.btn_ShowOrder_Click);
             // 
             // tb_ID
             // 
@@ -150,51 +195,6 @@
             this.btn_Next.TabIndex = 3;
             this.btn_Next.Text = "Sau";
             this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
-            // 
-            // btn_ShowOrder
-            // 
-            this.btn_ShowOrder.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_ShowOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_ShowOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_ShowOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_ShowOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_ShowOrder.ForeColor = System.Drawing.Color.White;
-            this.btn_ShowOrder.Location = new System.Drawing.Point(92, 66);
-            this.btn_ShowOrder.Name = "btn_ShowOrder";
-            this.btn_ShowOrder.Size = new System.Drawing.Size(101, 24);
-            this.btn_ShowOrder.TabIndex = 5;
-            this.btn_ShowOrder.Text = "Xem đơn";
-            this.btn_ShowOrder.Click += new System.EventHandler(this.btn_ShowOrder_Click);
-            // 
-            // btn_ChangePassword
-            // 
-            this.btn_ChangePassword.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_ChangePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_ChangePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_ChangePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_ChangePassword.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_ChangePassword.ForeColor = System.Drawing.Color.White;
-            this.btn_ChangePassword.Location = new System.Drawing.Point(199, 66);
-            this.btn_ChangePassword.Name = "btn_ChangePassword";
-            this.btn_ChangePassword.Size = new System.Drawing.Size(101, 24);
-            this.btn_ChangePassword.TabIndex = 6;
-            this.btn_ChangePassword.Text = "Đổi mật khẩu";
-            this.btn_ChangePassword.Click += new System.EventHandler(this.btn_ChangePassword_Click);
-            // 
-            // btn_Logout
-            // 
-            this.btn_Logout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Logout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_Logout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_Logout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_Logout.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_Logout.ForeColor = System.Drawing.Color.White;
-            this.btn_Logout.Location = new System.Drawing.Point(306, 66);
-            this.btn_Logout.Name = "btn_Logout";
-            this.btn_Logout.Size = new System.Drawing.Size(101, 24);
-            this.btn_Logout.TabIndex = 7;
-            this.btn_Logout.Text = "Đăng xuất";
-            this.btn_Logout.Click += new System.EventHandler(this.btn_Logout_Click);
             // 
             // fStaff
             // 

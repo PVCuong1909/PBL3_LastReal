@@ -74,7 +74,8 @@ namespace PBL3_LastReal.BLL
                 float remainTime =(float) money / price;
                 int hour = (int)remainTime;
                 int minute = Convert.ToInt32((remainTime - hour) * 60);
-                time = hour.ToString() + " : " + minute.ToString();
+                int second = Convert.ToInt32((remainTime - hour - minute/60) * 3600);
+                time = hour.ToString().PadLeft(2, '0') + ":" + minute.ToString().PadLeft(2, '0') + ":" + second.ToString().PadLeft(2, '0');
             }
             return time;
         }

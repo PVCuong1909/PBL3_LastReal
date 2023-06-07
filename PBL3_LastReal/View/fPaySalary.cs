@@ -62,7 +62,7 @@ namespace PBL3_LastReal.View
                 int work = Convert.ToInt32(tb_work.Text);
                 int salaryDay = Convert.ToInt32(tb_salary.Text);
                 int bonus = Convert.ToInt32(tb_bonus.Text);
-                int total = work * salaryDay + bonus;
+                int total = (int)(work/2 * salaryDay) + bonus;
                 tb_total.Text = total.ToString();
             }
         }

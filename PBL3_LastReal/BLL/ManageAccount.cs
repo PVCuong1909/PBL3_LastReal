@@ -68,6 +68,15 @@ namespace PBL3_LastReal.BLL
             }
             return money;
         }
+        public void editMoneyRemain(string id_acc, int amount)
+        {
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
+            {
+                Account acc = db.Accounts.Where(p => p.ID_Account == id_acc).First();
+                acc.Money -= amount;
+                db.SaveChanges();
+            }
+        }
         public string getID(string usernamef)
         {
             string id = "";
@@ -204,6 +213,14 @@ namespace PBL3_LastReal.BLL
         {
             QL_QuanNetEntities db = new QL_QuanNetEntities();
             return db.Accounts.Where(p => p.ID_Person == id_per).First();
+        }
+        public void addWork(string id_acc, int amount)
+        {
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
+            {
+                db.Accounts.Where(p => p.ID_Account == id_acc).First().Works += amount;
+                db.SaveChanges();
+            }
         }
     }
 }

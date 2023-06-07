@@ -52,6 +52,15 @@ namespace PBL3_LastReal.BLL
             }
             return ws;
         }
+        public DetailWorkShift GetDetailWorkShift(DateTime date, string id_acc)
+        {
+            DetailWorkShift ws = new DetailWorkShift();
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
+            {
+                ws = db.DetailWorkShifts.Where(p => p.WorkShift.Date == date && p.ID_Account == id_acc).First();
+            }
+            return ws;
+        }
         public List<Account> getAllStaffs(int type)
         {
             List<Account> listper = new List<Account>();
@@ -166,10 +175,19 @@ namespace PBL3_LastReal.BLL
                     listadd.Add(new DetailWorkShift
                     {
                         ID_WorkShift = ws.ID_WorkShift,
-                        ID_Account = per.ID_Account
+                        ID_Account = per.ID_Account,
+                        State = 0
                     });
                 }
                 AddDetailWorkShift(listadd);
+            }
+        }
+        public void checkIn(DetailWorkShift detail, int type)
+        {
+            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
+            {
+                db.DetailWorkShifts.Where(p => p.ID_Detail == detail.ID_Detail).First().State = type;
+                db.SaveChanges();
             }
         }
     }
