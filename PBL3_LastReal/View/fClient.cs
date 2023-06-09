@@ -79,12 +79,6 @@ namespace PBL3_LastReal.View
             ManageComputer.Instance.changeStateToFree(id_Computer);
             this.Close();
         }
-
-        private void btn_Mess_Click(object sender, EventArgs e)
-        {
-
-        }
-        
         private void fClient_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer.Stop();

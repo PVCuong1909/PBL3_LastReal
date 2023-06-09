@@ -50,8 +50,7 @@ namespace PBL3_LastReal.View
             else
             {
                 MessageBox.Show("Không thể cập nhật được nhiều máy!");
-            } 
-                
+            }   
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -85,7 +84,6 @@ namespace PBL3_LastReal.View
             }
             else
             {
-
                 GUI();
             }    
         }

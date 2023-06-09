@@ -23,6 +23,8 @@ namespace PBL3_LastReal.DTO
         public int ID_Vehicle { get; set; }
         public string LicensePlates { get; set; }
         public Nullable<int> ID_Person { get; set; }
+        public Nullable<System.DateTime> ArrivalTime { get; set; }
+        public Nullable<System.DateTime> LeaveTime { get; set; }
     
         public virtual Person Person { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

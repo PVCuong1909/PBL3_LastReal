@@ -16,7 +16,6 @@ namespace PBL3_LastReal.DTO
     {
         public int ID_Ticket { get; set; }
         public Nullable<int> ID_Vehicle { get; set; }
-        public Nullable<System.TimeSpan> ArrivalTime { get; set; }
     
         public virtual Vehicle Vehicle { get; set; }
     }

@@ -38,10 +38,11 @@
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ptb_Pic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.flp_Comp = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_Pre = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Next = new Guna.UI2.WinForms.Guna2Button();
+            this.btn_Recharge = new Guna.UI2.WinForms.Guna2Button();
+            this.ptb_Pic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Pic)).BeginInit();
             this.SuspendLayout();
@@ -148,17 +149,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "ID";
             // 
-            // ptb_Pic
-            // 
-            this.ptb_Pic.ImageRotate = 0F;
-            this.ptb_Pic.Location = new System.Drawing.Point(9, 10);
-            this.ptb_Pic.Name = "ptb_Pic";
-            this.ptb_Pic.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.ptb_Pic.Size = new System.Drawing.Size(77, 76);
-            this.ptb_Pic.TabIndex = 0;
-            this.ptb_Pic.TabStop = false;
-            this.ptb_Pic.Click += new System.EventHandler(this.ptb_Pic_Click);
-            // 
             // flp_Comp
             // 
             this.flp_Comp.Location = new System.Drawing.Point(3, 108);
@@ -174,7 +164,7 @@
             this.btn_Pre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_Pre.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Pre.ForeColor = System.Drawing.Color.White;
-            this.btn_Pre.Location = new System.Drawing.Point(95, 411);
+            this.btn_Pre.Location = new System.Drawing.Point(54, 411);
             this.btn_Pre.Name = "btn_Pre";
             this.btn_Pre.Size = new System.Drawing.Size(84, 33);
             this.btn_Pre.TabIndex = 2;
@@ -189,18 +179,45 @@
             this.btn_Next.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_Next.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_Next.ForeColor = System.Drawing.Color.White;
-            this.btn_Next.Location = new System.Drawing.Point(240, 411);
+            this.btn_Next.Location = new System.Drawing.Point(276, 411);
             this.btn_Next.Name = "btn_Next";
             this.btn_Next.Size = new System.Drawing.Size(84, 33);
             this.btn_Next.TabIndex = 3;
             this.btn_Next.Text = "Sau";
             this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
             // 
+            // btn_Recharge
+            // 
+            this.btn_Recharge.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Recharge.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Recharge.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Recharge.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Recharge.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_Recharge.ForeColor = System.Drawing.Color.White;
+            this.btn_Recharge.Location = new System.Drawing.Point(166, 411);
+            this.btn_Recharge.Name = "btn_Recharge";
+            this.btn_Recharge.Size = new System.Drawing.Size(84, 33);
+            this.btn_Recharge.TabIndex = 4;
+            this.btn_Recharge.Text = "Nạp tiền";
+            this.btn_Recharge.Click += new System.EventHandler(this.btn_Recharge_Click);
+            // 
+            // ptb_Pic
+            // 
+            this.ptb_Pic.ImageRotate = 0F;
+            this.ptb_Pic.Location = new System.Drawing.Point(9, 10);
+            this.ptb_Pic.Name = "ptb_Pic";
+            this.ptb_Pic.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.ptb_Pic.Size = new System.Drawing.Size(77, 76);
+            this.ptb_Pic.TabIndex = 0;
+            this.ptb_Pic.TabStop = false;
+            this.ptb_Pic.Click += new System.EventHandler(this.ptb_Pic_Click);
+            // 
             // fStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(419, 450);
+            this.Controls.Add(this.btn_Recharge);
             this.Controls.Add(this.btn_Next);
             this.Controls.Add(this.btn_Pre);
             this.Controls.Add(this.flp_Comp);
@@ -230,5 +247,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_Logout;
         private Guna.UI2.WinForms.Guna2Button btn_ChangePassword;
         private Guna.UI2.WinForms.Guna2Button btn_ShowOrder;
+        private Guna.UI2.WinForms.Guna2Button btn_Recharge;
     }
 }

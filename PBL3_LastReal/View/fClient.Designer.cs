@@ -34,7 +34,6 @@
             this.btn_Service = new System.Windows.Forms.Button();
             this.btn_LogOut = new System.Windows.Forms.Button();
             this.btn_Password = new System.Windows.Forms.Button();
-            this.btn_Mess = new System.Windows.Forms.Button();
             this.tb_ServiceCost = new System.Windows.Forms.TextBox();
             this.tb_TimeCost = new System.Windows.Forms.TextBox();
             this.tb_RemainTime = new System.Windows.Forms.TextBox();
@@ -55,7 +54,7 @@
             this.pn_Title.Controls.Add(this.lb_NameComputer);
             this.pn_Title.Dock = System.Windows.Forms.DockStyle.Top;
             this.pn_Title.Location = new System.Drawing.Point(0, 0);
-            this.pn_Title.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pn_Title.Margin = new System.Windows.Forms.Padding(2);
             this.pn_Title.Name = "pn_Title";
             this.pn_Title.Size = new System.Drawing.Size(286, 30);
             this.pn_Title.TabIndex = 0;
@@ -77,7 +76,6 @@
             this.pn_Main.Controls.Add(this.btn_Service);
             this.pn_Main.Controls.Add(this.btn_LogOut);
             this.pn_Main.Controls.Add(this.btn_Password);
-            this.pn_Main.Controls.Add(this.btn_Mess);
             this.pn_Main.Controls.Add(this.tb_ServiceCost);
             this.pn_Main.Controls.Add(this.tb_TimeCost);
             this.pn_Main.Controls.Add(this.tb_RemainTime);
@@ -89,7 +87,7 @@
             this.pn_Main.Controls.Add(this.label4);
             this.pn_Main.Controls.Add(this.label3);
             this.pn_Main.Location = new System.Drawing.Point(30, 50);
-            this.pn_Main.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pn_Main.Margin = new System.Windows.Forms.Padding(2);
             this.pn_Main.Name = "pn_Main";
             this.pn_Main.Size = new System.Drawing.Size(226, 309);
             this.pn_Main.TabIndex = 1;
@@ -98,10 +96,10 @@
             // 
             this.btn_Service.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_Service.ForeColor = System.Drawing.Color.White;
-            this.btn_Service.Location = new System.Drawing.Point(129, 255);
-            this.btn_Service.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Service.Location = new System.Drawing.Point(34, 210);
+            this.btn_Service.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Service.Name = "btn_Service";
-            this.btn_Service.Size = new System.Drawing.Size(60, 37);
+            this.btn_Service.Size = new System.Drawing.Size(152, 37);
             this.btn_Service.TabIndex = 14;
             this.btn_Service.Text = "Dịch vụ";
             this.btn_Service.UseVisualStyleBackColor = false;
@@ -111,8 +109,8 @@
             // 
             this.btn_LogOut.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_LogOut.ForeColor = System.Drawing.Color.White;
-            this.btn_LogOut.Location = new System.Drawing.Point(129, 210);
-            this.btn_LogOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_LogOut.Location = new System.Drawing.Point(126, 255);
+            this.btn_LogOut.Margin = new System.Windows.Forms.Padding(2);
             this.btn_LogOut.Name = "btn_LogOut";
             this.btn_LogOut.Size = new System.Drawing.Size(60, 37);
             this.btn_LogOut.TabIndex = 13;
@@ -125,7 +123,7 @@
             this.btn_Password.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_Password.ForeColor = System.Drawing.Color.White;
             this.btn_Password.Location = new System.Drawing.Point(34, 255);
-            this.btn_Password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Password.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Password.Name = "btn_Password";
             this.btn_Password.Size = new System.Drawing.Size(60, 37);
             this.btn_Password.TabIndex = 12;
@@ -133,24 +131,11 @@
             this.btn_Password.UseVisualStyleBackColor = false;
             this.btn_Password.Click += new System.EventHandler(this.btn_MatKhau_Click);
             // 
-            // btn_Mess
-            // 
-            this.btn_Mess.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_Mess.ForeColor = System.Drawing.Color.White;
-            this.btn_Mess.Location = new System.Drawing.Point(34, 210);
-            this.btn_Mess.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btn_Mess.Name = "btn_Mess";
-            this.btn_Mess.Size = new System.Drawing.Size(60, 37);
-            this.btn_Mess.TabIndex = 11;
-            this.btn_Mess.Text = "Tin nhắn";
-            this.btn_Mess.UseVisualStyleBackColor = false;
-            this.btn_Mess.Click += new System.EventHandler(this.btn_Mess_Click);
-            // 
             // tb_ServiceCost
             // 
             this.tb_ServiceCost.Enabled = false;
             this.tb_ServiceCost.Location = new System.Drawing.Point(104, 184);
-            this.tb_ServiceCost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_ServiceCost.Margin = new System.Windows.Forms.Padding(2);
             this.tb_ServiceCost.Name = "tb_ServiceCost";
             this.tb_ServiceCost.Size = new System.Drawing.Size(108, 20);
             this.tb_ServiceCost.TabIndex = 10;
@@ -160,7 +145,7 @@
             // 
             this.tb_TimeCost.Enabled = false;
             this.tb_TimeCost.Location = new System.Drawing.Point(104, 144);
-            this.tb_TimeCost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_TimeCost.Margin = new System.Windows.Forms.Padding(2);
             this.tb_TimeCost.Name = "tb_TimeCost";
             this.tb_TimeCost.Size = new System.Drawing.Size(108, 20);
             this.tb_TimeCost.TabIndex = 9;
@@ -170,7 +155,7 @@
             // 
             this.tb_RemainTime.Enabled = false;
             this.tb_RemainTime.Location = new System.Drawing.Point(104, 103);
-            this.tb_RemainTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_RemainTime.Margin = new System.Windows.Forms.Padding(2);
             this.tb_RemainTime.Name = "tb_RemainTime";
             this.tb_RemainTime.Size = new System.Drawing.Size(108, 20);
             this.tb_RemainTime.TabIndex = 8;
@@ -180,7 +165,7 @@
             // 
             this.tb_SumTime.Enabled = false;
             this.tb_SumTime.Location = new System.Drawing.Point(104, 22);
-            this.tb_SumTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_SumTime.Margin = new System.Windows.Forms.Padding(2);
             this.tb_SumTime.Name = "tb_SumTime";
             this.tb_SumTime.Size = new System.Drawing.Size(108, 20);
             this.tb_SumTime.TabIndex = 7;
@@ -190,7 +175,7 @@
             // 
             this.tb_UseTime.Enabled = false;
             this.tb_UseTime.Location = new System.Drawing.Point(104, 63);
-            this.tb_UseTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_UseTime.Margin = new System.Windows.Forms.Padding(2);
             this.tb_UseTime.Name = "tb_UseTime";
             this.tb_UseTime.Size = new System.Drawing.Size(108, 20);
             this.tb_UseTime.TabIndex = 6;
@@ -267,7 +252,7 @@
             this.Controls.Add(this.pn_Main);
             this.Controls.Add(this.pn_Title);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "fClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fClient";
@@ -287,7 +272,6 @@
         private System.Windows.Forms.Button btn_Service;
         private System.Windows.Forms.Button btn_LogOut;
         private System.Windows.Forms.Button btn_Password;
-        private System.Windows.Forms.Button btn_Mess;
         private System.Windows.Forms.TextBox tb_ServiceCost;
         private System.Windows.Forms.TextBox tb_TimeCost;
         private System.Windows.Forms.TextBox tb_RemainTime;

@@ -124,7 +124,6 @@
           </Key>
           <Property Name="ID_Ticket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Vehicle" Type="int" />
-          <Property Name="ArrivalTime" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="Vehicle">
           <Key>
@@ -133,6 +132,8 @@
           <Property Name="ID_Vehicle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LicensePlates" Type="varchar" MaxLength="30" />
           <Property Name="ID_Person" Type="int" />
+          <Property Name="ArrivalTime" Type="datetime" />
+          <Property Name="LeaveTime" Type="datetime" />
         </EntityType>
         <EntityType Name="WorkShift">
           <Key>
@@ -264,7 +265,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ticket__ID_Vehic__681373AD">
+        <Association Name="FK__Ticket__ID_Vehic__4222D4EF">
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
           <ReferentialConstraint>
@@ -276,7 +277,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehicle__ID_Pers__65370702">
+        <Association Name="FK__Vehicle__ID_Pers__38996AB5">
           <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -344,11 +345,11 @@
             <End Role="Person" EntitySet="Person" />
             <End Role="Salary" EntitySet="Salary" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ticket__ID_Vehic__681373AD" Association="Self.FK__Ticket__ID_Vehic__681373AD">
+          <AssociationSet Name="FK__Ticket__ID_Vehic__4222D4EF" Association="Self.FK__Ticket__ID_Vehic__4222D4EF">
             <End Role="Vehicle" EntitySet="Vehicle" />
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehicle__ID_Pers__65370702" Association="Self.FK__Vehicle__ID_Pers__65370702">
+          <AssociationSet Name="FK__Vehicle__ID_Pers__38996AB5" Association="Self.FK__Vehicle__ID_Pers__38996AB5">
             <End Role="Person" EntitySet="Person" />
             <End Role="Vehicle" EntitySet="Vehicle" />
           </AssociationSet>
@@ -449,7 +450,7 @@
           <Property Name="PhoneNum" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__ID_Pers__4F7CD00D" FromRole="Person" ToRole="Account" />
           <NavigationProperty Name="Salaries" Relationship="Self.FK__Salary__ID_Perso__6AEFE058" FromRole="Person" ToRole="Salary" />
-          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__ID_Pers__65370702" FromRole="Person" ToRole="Vehicle" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__ID_Pers__38996AB5" FromRole="Person" ToRole="Vehicle" />
         </EntityType>
         <EntityType Name="Price">
           <Key>
@@ -497,8 +498,7 @@
           </Key>
           <Property Name="ID_Ticket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Vehicle" Type="Int32" />
-          <Property Name="ArrivalTime" Type="Time" Precision="7" />
-          <NavigationProperty Name="Vehicle" Relationship="Self.FK__Ticket__ID_Vehic__681373AD" FromRole="Ticket" ToRole="Vehicle" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK__Ticket__ID_Vehic__4222D4EF" FromRole="Ticket" ToRole="Vehicle" />
         </EntityType>
         <EntityType Name="Vehicle">
           <Key>
@@ -507,8 +507,10 @@
           <Property Name="ID_Vehicle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LicensePlates" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="ID_Person" Type="Int32" />
-          <NavigationProperty Name="Person" Relationship="Self.FK__Vehicle__ID_Pers__65370702" FromRole="Vehicle" ToRole="Person" />
-          <NavigationProperty Name="Tickets" Relationship="Self.FK__Ticket__ID_Vehic__681373AD" FromRole="Vehicle" ToRole="Ticket" />
+          <Property Name="ArrivalTime" Type="DateTime" Precision="3" />
+          <Property Name="LeaveTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Person" Relationship="Self.FK__Vehicle__ID_Pers__38996AB5" FromRole="Vehicle" ToRole="Person" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK__Ticket__ID_Vehic__4222D4EF" FromRole="Vehicle" ToRole="Ticket" />
         </EntityType>
         <EntityType Name="WorkShift">
           <Key>
@@ -629,7 +631,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vehicle__ID_Pers__65370702">
+        <Association Name="FK__Vehicle__ID_Pers__38996AB5">
           <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
           <ReferentialConstraint>
@@ -653,7 +655,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ticket__ID_Vehic__681373AD">
+        <Association Name="FK__Ticket__ID_Vehic__4222D4EF">
           <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
           <ReferentialConstraint>
@@ -717,7 +719,7 @@
             <End Role="Person" EntitySet="People" />
             <End Role="Salary" EntitySet="Salaries" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vehicle__ID_Pers__65370702" Association="Self.FK__Vehicle__ID_Pers__65370702">
+          <AssociationSet Name="FK__Vehicle__ID_Pers__38996AB5" Association="Self.FK__Vehicle__ID_Pers__38996AB5">
             <End Role="Person" EntitySet="People" />
             <End Role="Vehicle" EntitySet="Vehicles" />
           </AssociationSet>
@@ -725,7 +727,7 @@
             <End Role="Price" EntitySet="Prices" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ticket__ID_Vehic__681373AD" Association="Self.FK__Ticket__ID_Vehic__681373AD">
+          <AssociationSet Name="FK__Ticket__ID_Vehic__4222D4EF" Association="Self.FK__Ticket__ID_Vehic__4222D4EF">
             <End Role="Vehicle" EntitySet="Vehicles" />
             <End Role="Ticket" EntitySet="Tickets" />
           </AssociationSet>
@@ -866,7 +868,6 @@
               <MappingFragment StoreEntitySet="Ticket">
                 <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
                 <ScalarProperty Name="ID_Vehicle" ColumnName="ID_Vehicle" />
-                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -876,6 +877,8 @@
                 <ScalarProperty Name="ID_Vehicle" ColumnName="ID_Vehicle" />
                 <ScalarProperty Name="LicensePlates" ColumnName="LicensePlates" />
                 <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+                <ScalarProperty Name="LeaveTime" ColumnName="LeaveTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

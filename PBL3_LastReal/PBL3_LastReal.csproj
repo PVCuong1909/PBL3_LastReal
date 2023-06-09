@@ -354,6 +354,9 @@
     <EmbeddedResource Include="View\fPaySalary.resx">
       <DependentUpon>fPaySalary.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\fRecharge.resx">
+      <DependentUpon>fRecharge.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\fStaff.resx">
       <DependentUpon>fStaff.cs</DependentUpon>
     </EmbeddedResource>

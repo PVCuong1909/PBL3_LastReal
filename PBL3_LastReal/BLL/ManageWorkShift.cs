@@ -55,10 +55,8 @@ namespace PBL3_LastReal.BLL
         public DetailWorkShift GetDetailWorkShift(DateTime date, string id_acc)
         {
             DetailWorkShift ws = new DetailWorkShift();
-            using (QL_QuanNetEntities db = new QL_QuanNetEntities())
-            {
-                ws = db.DetailWorkShifts.Where(p => p.WorkShift.Date == date && p.ID_Account == id_acc).First();
-            }
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
+            ws = db.DetailWorkShifts.Where(p => p.WorkShift.Date == date && p.ID_Account == id_acc).First();
             return ws;
         }
         public List<Account> getAllStaffs(int type)

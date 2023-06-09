@@ -71,10 +71,15 @@ namespace PBL3_LastReal.BLL
             {
                 int price = (int)db.Computers.Where(p => p.ID_Computer == id_com).First().Price;
                 int money = (int)db.Accounts.Where(p => p.ID_Account == id_acc).First().Money;
-                float remainTime =(float) money / price;
-                int hour = (int)remainTime;
-                int minute = Convert.ToInt32((remainTime - hour) * 60);
-                int second = Convert.ToInt32((remainTime - hour - minute/60) * 3600);
+                float remainTime = (float)money / price;
+                int hour = 0, minute = 0, second = 0;
+                hour = (int)remainTime;
+                remainTime -= hour;
+                remainTime *= 60;
+                minute = (int)(remainTime);
+                remainTime -= minute;
+                remainTime *= 60;
+                second = (int)(remainTime);
                 time = hour.ToString().PadLeft(2, '0') + ":" + minute.ToString().PadLeft(2, '0') + ":" + second.ToString().PadLeft(2, '0');
             }
             return time;

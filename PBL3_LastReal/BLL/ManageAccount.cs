@@ -147,6 +147,22 @@ namespace PBL3_LastReal.BLL
             }
             return nextID;
         }
+        private Account GetAccountByID_Acc(string id)
+        {
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
+            return db.Accounts.Where(p => p.ID_Account == id).First();
+        }
+        public Account GetAccountByID_Com(int id)
+        {
+            Account acc = new Account();
+            History his = new History();
+            List<History> list = new List<History>();
+            QL_QuanNetEntities db = new QL_QuanNetEntities();
+            list = db.Histories.Where(p => p.Computer.ID_Computer == id).ToList();
+            his = list[list.Count - 1];
+            acc = GetAccountByID_Acc(his.ID_Account);
+            return acc;
+        }
         public Account GetAccountByUsername(string username)
         {
             Account acc = new Account();

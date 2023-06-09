@@ -122,5 +122,11 @@ namespace PBL3_LastReal.View
             fOrder f = new fOrder();
             f.ShowDialog();
         }
+
+        private void btn_Recharge_Click(object sender, EventArgs e)
+        {
+            fRecharge f = new fRecharge();
+            f.ShowDialog();
+        }
     }
 }
