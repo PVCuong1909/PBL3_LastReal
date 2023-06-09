@@ -56,6 +56,13 @@ namespace PBL3_LastReal
                     f.ShowDialog();
                     this.Show();
                 }
+                else if (type == 3)
+                {
+                    this.Hide();
+                    fSecurity f = new fSecurity();
+                    f.ShowDialog();
+                    this.Show();
+                }
             }
             else
             {

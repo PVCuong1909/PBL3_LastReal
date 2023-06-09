@@ -4,34 +4,33 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c61f16e33f024e0d8bcb32e25ce192b9" Name="Diagram1">
-        <EntityTypeShape EntityType="QL_QuanNetModel.Account" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.Bill" Width="1.5" PointX="7.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.Computer" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.DetailOrder" Width="1.5" PointX="12.25" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.DetailWorkShift" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.History" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.OrderService" Width="1.5" PointX="10" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.Person" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.Price" Width="1.5" PointX="7.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.Product" Width="1.5" PointX="10" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.Salary" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.sysdiagram" Width="1.5" PointX="9.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.Ticket" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.Vehicle" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QL_QuanNetModel.WorkShift" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+      <Diagram DiagramId="da71b670d63747099fcdf380304067ae" Name="Diagram1">
+        <EntityTypeShape EntityType="QL_QuanNetModel.Account" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.Bill" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.Bill_Thang" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.Computer" Width="1.5" PointX="5.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.DetailOrder" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.DetailWorkShift" Width="1.5" PointX="10" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.History" Width="1.5" PointX="8" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.OrderService" Width="1.5" PointX="8" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.Person" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.Price" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.Product" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.Salary" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.sysdiagram" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.Ticket" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.Vehicle" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_QuanNetModel.WorkShift" Width="1.5" PointX="7.75" PointY="4.875" IsExpanded="true" />
         <AssociationConnector Association="QL_QuanNetModel.FK__Account__ID_Pers__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_QuanNetModel.FK__DetailWor__ID_Ac__7B264821" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_QuanNetModel.FK__History__ID_Acco__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="QL_QuanNetModel.FK__History__ID_Comp__534D60F1" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_QuanNetModel.FK__OrderServ__Order__0880433F" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_QuanNetModel.FK__DetailOrd__ID_Or__0B5CAFEA" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_QuanNetModel.FK__DetailOrd__ID_Pr__0C50D423" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_QuanNetModel.FK__OrderServ__ID_Co__2EA5EC27" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_QuanNetModel.FK__DetailOrd__ID_Or__318258D2" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_QuanNetModel.FK__DetailOrd__ID_Pr__32767D0B" ManuallyRouted="false" />
         <AssociationConnector Association="QL_QuanNetModel.FK__DetailWor__ID_Wo__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_QuanNetModel.FK__Salary__ID_Perso__6AEFE058" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_QuanNetModel.FK__Vehicle__ID_Pers__65370702" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_QuanNetModel.FK__Product__ID_Pric__72910220" ManuallyRouted="false" />
-        <AssociationConnector Association="QL_QuanNetModel.FK__Ticket__ID_Vehic__681373AD" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_QuanNetModel.FK__Salary__ID_Perso__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_QuanNetModel.FK__Vehicle__ID_Pers__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_QuanNetModel.FK__Product__ID_Pric__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_QuanNetModel.FK__Ticket__ID_Vehic__4222D4EF" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

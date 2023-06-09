@@ -19,7 +19,6 @@ namespace PBL3_LastReal.DTO
         public Nullable<int> ID_WorkShift { get; set; }
         public Nullable<int> State { get; set; }
     
-        public virtual Account Account { get; set; }
         public virtual WorkShift WorkShift { get; set; }
     }
 }

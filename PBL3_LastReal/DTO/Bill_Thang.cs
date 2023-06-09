@@ -12,16 +12,12 @@ namespace PBL3_LastReal.DTO
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class Bill_Thang
     {
-        public string ID_Account { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> Type { get; set; }
-        public Nullable<int> Money { get; set; }
-        public Nullable<int> ID_Person { get; set; }
-        public Nullable<int> Works { get; set; }
-    
-        public virtual Person Person { get; set; }
+        public int Id_Bill2 { get; set; }
+        public Nullable<int> TienMay { get; set; }
+        public Nullable<int> DichVu { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<int> LuongNhanVien { get; set; }
     }
 }
