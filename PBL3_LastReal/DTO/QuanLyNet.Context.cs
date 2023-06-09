@@ -27,6 +27,7 @@ namespace PBL3_LastReal.DTO
     
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
+        public virtual DbSet<Bill_Thang> Bill_Thang { get; set; }
         public virtual DbSet<Computer> Computers { get; set; }
         public virtual DbSet<DetailOrder> DetailOrders { get; set; }
         public virtual DbSet<DetailWorkShift> DetailWorkShifts { get; set; }

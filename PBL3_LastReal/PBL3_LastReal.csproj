@@ -72,12 +72,16 @@
     <Compile Include="BLL\ManageProfit.cs" />
     <Compile Include="BLL\ManagerService.cs" />
     <Compile Include="BLL\ManageSalary.cs" />
+    <Compile Include="BLL\ManageTicket.cs" />
     <Compile Include="BLL\ManageWorkShift.cs" />
     <Compile Include="BLL\ToolTime.cs" />
     <Compile Include="DTO\Account.cs">
       <DependentUpon>QuanLyNet.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\Bill.cs">
+      <DependentUpon>QuanLyNet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Bill_Thang.cs">
       <DependentUpon>QuanLyNet.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\Computer.cs">
@@ -135,6 +139,18 @@
     <Compile Include="DTO\WorkShift.cs">
       <DependentUpon>QuanLyNet.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\fAddVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fAddVehicle.Designer.cs">
+      <DependentUpon>fAddVehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\fCheckTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fCheckTicket.Designer.cs">
+      <DependentUpon>fCheckTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\fDetailOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +174,12 @@
     </Compile>
     <Compile Include="View\fPaySalary.Designer.cs">
       <DependentUpon>fPaySalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\fSecurity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\fSecurity.Designer.cs">
+      <DependentUpon>fSecurity.cs</DependentUpon>
     </Compile>
     <Compile Include="View\fStaff.cs">
       <SubType>Form</SubType>
@@ -342,6 +364,12 @@
     <EmbeddedResource Include="View\fAddEditStaff.resx">
       <DependentUpon>fAddEditStaff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\fAddVehicle.resx">
+      <DependentUpon>fAddVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\fCheckTicket.resx">
+      <DependentUpon>fCheckTicket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\fDetailOrder.resx">
       <DependentUpon>fDetailOrder.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,9 +381,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\fPaySalary.resx">
       <DependentUpon>fPaySalary.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\fRecharge.resx">
-      <DependentUpon>fRecharge.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\fStaff.resx">
       <DependentUpon>fStaff.cs</DependentUpon>

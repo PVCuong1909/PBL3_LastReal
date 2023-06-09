@@ -74,11 +74,7 @@ namespace PBL3_LastReal.View
         private void btn_search_Click(object sender, EventArgs e)
         {
             string txt = tb_search.Text;
-            if(cb_using.Checked)
-            {
-                dgv.DataSource = ManageComputer.Instance.getComputersStateUsed(txt);
-            }
-            else if (cb_free.Checked)
+            if (cb_free.Checked)
             {
                 dgv.DataSource = ManageComputer.Instance.getComputersStateFree(txt);
             }
@@ -108,11 +104,14 @@ namespace PBL3_LastReal.View
 
         private void dgv_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+
             if(dgv.SelectedRows.Count == 1)
             {
                 string id = dgv.SelectedRows[0].Cells[0].Value.ToString();
                 string state = dgv.SelectedRows[0].Cells[3].Value.ToString();
-                if(state == "1")
+              
+
+                if (state == "1")
                 {
                     Computer s = ManageComputer.Instance.getComputerByID(id);
                     tb_id.Text = s.ID_Computer.ToString();

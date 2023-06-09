@@ -76,12 +76,13 @@ namespace PBL3_LastReal.View
                     cbb_type.Text = "Thu ngân";
                 }
                 tb_name.Text = per.Name;
-                dt_dob.Text = per.DOB.Value.ToString("dd/MM/yyyy");
+                dt_dob.Text = per.DOB.Value.ToString("yyyy/MM/dd");
                 tb_CCCD.Text = per.CCCD.ToString();
                 tb_phone.Text = per.PhoneNum.ToString();
                 string id = per.ID_Person.ToString();
                 Salary sar = ManageSalary.Instance.getSalaryByID(Convert.ToInt32(id));
                 tb_salary.Text = sar.Salary1.ToString();
+                tb_work.Text = acc.Works.ToString();
             }
         }
         private void tb_search_TextChanged(object sender, EventArgs e)

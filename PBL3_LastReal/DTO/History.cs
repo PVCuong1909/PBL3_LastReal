@@ -20,7 +20,7 @@ namespace PBL3_LastReal.DTO
         public Nullable<System.DateTime> TimeBegin { get; set; }
         public Nullable<System.DateTime> TimeEnd { get; set; }
     
-        public virtual Account Account { get; set; }
         public virtual Computer Computer { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

@@ -53,7 +53,6 @@
             this.tb_username = new System.Windows.Forms.TextBox();
             this.tb_money = new System.Windows.Forms.TextBox();
             this.tb_name = new System.Windows.Forms.TextBox();
-            this.cb_using = new System.Windows.Forms.CheckBox();
             this.cb_free = new System.Windows.Forms.CheckBox();
             this.btn_recharge = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -63,7 +62,7 @@
             // 
             this.tb_search.Location = new System.Drawing.Point(11, 23);
             this.tb_search.Name = "tb_search";
-            this.tb_search.Size = new System.Drawing.Size(111, 20);
+            this.tb_search.Size = new System.Drawing.Size(159, 20);
             this.tb_search.TabIndex = 15;
             this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
             // 
@@ -317,24 +316,12 @@
             this.tb_name.Size = new System.Drawing.Size(111, 20);
             this.tb_name.TabIndex = 38;
             // 
-            // cb_using
-            // 
-            this.cb_using.AutoSize = true;
-            this.cb_using.BackColor = System.Drawing.Color.Transparent;
-            this.cb_using.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_using.Location = new System.Drawing.Point(128, 26);
-            this.cb_using.Name = "cb_using";
-            this.cb_using.Size = new System.Drawing.Size(105, 17);
-            this.cb_using.TabIndex = 39;
-            this.cb_using.Text = "Đang sử dụng";
-            this.cb_using.UseVisualStyleBackColor = false;
-            // 
             // cb_free
             // 
             this.cb_free.AutoSize = true;
             this.cb_free.BackColor = System.Drawing.Color.Transparent;
             this.cb_free.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_free.Location = new System.Drawing.Point(246, 26);
+            this.cb_free.Location = new System.Drawing.Point(200, 25);
             this.cb_free.Name = "cb_free";
             this.cb_free.Size = new System.Drawing.Size(82, 17);
             this.cb_free.TabIndex = 40;
@@ -361,7 +348,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.btn_recharge);
             this.Controls.Add(this.cb_free);
-            this.Controls.Add(this.cb_using);
             this.Controls.Add(this.tb_name);
             this.Controls.Add(this.tb_money);
             this.Controls.Add(this.tb_username);
@@ -421,7 +407,6 @@
         private System.Windows.Forms.TextBox tb_username;
         private System.Windows.Forms.TextBox tb_money;
         private System.Windows.Forms.TextBox tb_name;
-        private System.Windows.Forms.CheckBox cb_using;
         private System.Windows.Forms.CheckBox cb_free;
         private System.Windows.Forms.Button btn_recharge;
     }
